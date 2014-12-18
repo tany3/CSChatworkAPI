@@ -5,7 +5,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChatworkAPI", "CSChatworkAPI\CSChatworkAPI.csproj", "{E46A11F2-AFE4-4A07-9B7F-820A1503B618}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{299E522E-8E4E-49B5-AACA-408CEAA38477}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChatworkAPITest", "CSChatworkAPITest\CSChatworkAPITest.csproj", "{EF2370BD-3F24-421F-A40C-0A345E6F785E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{43C5A0D7-25E5-40A1-85A6-45C69E6CE6E0}"
+	ProjectSection(SolutionItems) = preProject
+		CSChatworkAPI.vsmdi = CSChatworkAPI.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = CSChatworkAPI.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -35,6 +54,16 @@ Global
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,22 @@
+﻿{
+  "APIToken": "yourAPIToken",
+  "members_admin_ids": [-1, -1, -1],
+  "members_member_ids": -1,
+  "members_readonly_ids": -1,
+
+  "AddTaskTestRID": -1,
+  "AddTaskTestToIDs": [-1],
+
+  "GetFileTestRoomID": -1,
+  "GetFileTestFileID": -1,
+
+  "GetFilesTestRoomID": -1,
+  "GetFilesTestAccountID": -1,
+
+  "GetMessageTestRoomID": -1,
+  "GetMessageTestMessageID": -1,
+
+  "GetMessagesTestRoomID": -1,
+
+  "GetRoomTestRoomId": -1,
+}

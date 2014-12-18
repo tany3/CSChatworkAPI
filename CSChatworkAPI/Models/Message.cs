@@ -1,5 +1,10 @@
 ﻿/* See the file "LICENSE" for the full license governing this code. */
 
+using System;
+using System.Collections.Generic;
+using CSChatworkAPI.Extensions;
+using Newtonsoft.Json;
+
 namespace CSChatworkAPI.Models
 {
     public class Message
@@ -7,8 +12,12 @@ namespace CSChatworkAPI.Models
         public int message_id { get; set; }
         public Account account { get; set; }
         public string body { get; set; }
-        public int send_time { get; set; }
-        public int update_time { get; set; }
+        [JsonProperty]
+        [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
+        public DateTime send_time { get; set; }
+        [JsonProperty]
+        [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
+        public DateTime update_time { get; set; }
 
         public override string ToString()
         {
@@ -35,6 +44,16 @@ namespace CSChatworkAPI.Models
         public override string ToString()
         {
             return string.Format("message_id: {0}", message_id);
+        }
+    }
+
+    public class ResponseTaskIds
+    {
+        public List<int> task_ids { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("task_ids: {0}", task_ids);
         }
     }
 }

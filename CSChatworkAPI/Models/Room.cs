@@ -1,5 +1,9 @@
 ﻿/* See the file "LICENSE" for the full license governing this code. */
 
+using System;
+using CSChatworkAPI.Extensions;
+using Newtonsoft.Json;
+
 namespace CSChatworkAPI.Models
 {
     public class Room
@@ -16,7 +20,9 @@ namespace CSChatworkAPI.Models
         public int file_num { get; set; }
         public int task_num { get; set; }
         public string icon_path { get; set; }
-        public int last_update_time { get; set; }
+        [JsonProperty]
+        [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
+        public DateTime last_update_time { get; set; }
 
         public override string ToString()
         {
