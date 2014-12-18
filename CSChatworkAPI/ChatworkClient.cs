@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using CSChatworkAPI.Communicators;
 using CSChatworkAPI.Extensions;
 using CSChatworkAPI.Models;
@@ -51,16 +52,22 @@ namespace CSChatworkAPI
         /// <returns>自分のタスク一覧</returns>
         public IEnumerable<MyTask> GetTasks(int assigned_by_account_id, IEnumerable<string> statuses)
         {
-            const string resource = @"my/status";
+            if (statuses == null)
+            {
+                throw new ArgumentNullException("statuses");
+            }
+            if (!statuses.Any())
+            {
+                throw new InvalidOperationException("statuses is empty(add open/close).");
+            }
+
+            const string resource = @"my/tasks";
             
             var parameters = new Dictionary<string, object>
             {
                 {"assigned_by_account_id", assigned_by_account_id},
+                {@"status", string.Join(",", statuses)},
             };
-            foreach (var status in statuses)
-            {
-                parameters.Add(@"status", status);
-            }
 
             return GetT<IEnumerable<MyTask>>(resource); 
         }
@@ -131,7 +138,7 @@ namespace CSChatworkAPI
         /// <param name="icon_preset">グループチャットのアイコン種類</param>
         /// <param name="name">グループチャットのチャット名</param>
         /// <returns>ルームId</returns>
-        public ResponseMessage UpdateRoom(int roomId, string description, string icon_preset, string name)
+        public ResponseRoomId UpdateRoom(int roomId, string description, string icon_preset, string name)
         {
             var resource = string.Format("rooms/{0}", roomId);
 
@@ -142,7 +149,7 @@ namespace CSChatworkAPI
                 {"name", name},
             };
 
-            return SendT<ResponseMessage>(resource, parameters, Method.PUT);
+            return SendT<ResponseRoomId>(resource, parameters, Method.PUT);
         }
 
         /// <summary>
@@ -207,7 +214,7 @@ namespace CSChatworkAPI
                 {"members_readonly_ids", string.Join(",", members_readonly_ids)},
             };
 
-            return PostT<MemberRoles>(resource, parameters);
+            return SendT<MemberRoles>(resource, parameters, Method.PUT);
         }
 
         /// <summary>
@@ -266,7 +273,7 @@ namespace CSChatworkAPI
         /// <para>正しい値の一覧：open, done</para>
         /// </param>
         /// <returns></returns>
-        public IEnumerable<Task> GetTasks(int roomId, int account_id, int assigned_by_account_id, int status)
+        public IEnumerable<Task> GetTasks(int roomId, int account_id, int assigned_by_account_id, string status)
         {
             var resource = string.Format("rooms/{0}/tasks", roomId);
 

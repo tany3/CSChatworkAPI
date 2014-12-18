@@ -29,4 +29,9 @@ namespace CSChatworkAPI.Models
             return string.Format("file_num: {0}, icon_path: {1}, last_update_time: {2}, mention_num: {3}, message_num: {4}, mytask_num: {5}, name: {6}, role: {7}, room_id: {8}, sticky: {9}, task_num: {10}, type: {11}, unread_num: {12}", file_num, icon_path, last_update_time, mention_num, message_num, mytask_num, name, role, room_id, sticky, task_num, type, unread_num);
         }
     }
+
+    public class ResponseRoomId
+    {
+        public int room_id { get; set; }
+    }
 }

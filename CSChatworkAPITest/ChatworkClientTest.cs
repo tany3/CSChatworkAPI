@@ -108,7 +108,7 @@ namespace CSChatworkAPITest
         public void AddTaskTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.AddTaskTestRID;
+            int roomId = TestData.AddTaskTestRoomId;
             string body = "Test @" + DateTime.Now;
             DateTime? limit = DateTime.Now.AddDays(7);
             var to_ids = TestData.AddTaskTestToIDs;
@@ -124,7 +124,7 @@ namespace CSChatworkAPITest
         public void DeleteRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.AddTaskTestRID;
+            int roomId = TestData.AddTaskTestRoomId;
             target.DeleteRoom(roomId);
         }
 
@@ -146,8 +146,8 @@ namespace CSChatworkAPITest
         public void GetFileTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetFileTestRoomID;
-            int fileId = TestData.GetFileTestFileID;
+            int roomId = TestData.GetFileTestRoomId;
+            int fileId = TestData.GetFileTestFileId;
             bool createDownloadUrl = false;
             File actual = target.GetFile(roomId, fileId, createDownloadUrl);
             Assert.AreNotEqual(actual.file_id, 0);
@@ -160,8 +160,8 @@ namespace CSChatworkAPITest
         public void GetFilesTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetFilesTestRoomID;
-            int account_id = TestData.GetFilesTestAccountID;
+            int roomId = TestData.GetFilesTestRoomId;
+            int account_id = TestData.GetFilesTestAccountId;
             var actual = target.GetFiles(roomId, account_id);
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
@@ -186,8 +186,8 @@ namespace CSChatworkAPITest
         public void GetMessageTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetMessageTestRoomID;
-            int messageId = TestData.GetMessageTestMessageID;
+            int roomId = TestData.GetMessageTestRoomId;
+            int messageId = TestData.GetMessageTestMessageId;
             var actual = target.GetMessage(roomId, messageId);
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.message_id, 0);
@@ -200,7 +200,7 @@ namespace CSChatworkAPITest
         public void GetMessagesTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetMessagesTestRoomID;
+            int roomId = TestData.GetMessagesTestRoomId;
             bool force = false;
             var actual = target.GetMessages(roomId, force);
             Assert.IsNotNull(actual);
@@ -226,14 +226,11 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void GetRoomMembersTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int roomId = 0; // TODO: 適切な値に初期化してください
-            IEnumerable<Member> expected = null; // TODO: 適切な値に初期化してください
-            IEnumerable<Member> actual;
-            actual = target.GetRoomMembers(roomId);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            int roomId = TestData.GetRoomMembersTestRoomId;
+            var actual = target.GetRoomMembers(roomId);
+            Assert.IsNotNull(actual);
+            Assert.IsTrue(actual.Any());
         }
 
         /// <summary>
@@ -242,13 +239,10 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void GetRoomsTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            IEnumerable<Room> expected = null; // TODO: 適切な値に初期化してください
-            IEnumerable<Room> actual;
-            actual = target.GetRooms();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            var actual = target.GetRooms();
+            Assert.IsNotNull(actual);
+            Assert.IsTrue(actual.Any());
         }
 
         /// <summary>
@@ -257,13 +251,15 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void GetStatusTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            MyStatus expected = null; // TODO: 適切な値に初期化してください
-            MyStatus actual;
-            actual = target.GetStatus();
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            var actual = target.GetStatus();
+            Assert.IsNotNull(actual);
+            Assert.IsTrue(actual.mention_num != 0
+                || actual.mention_room_num != 0
+                || actual.mytask_num != 0
+                || actual.mytask_room_num != 0
+                || actual.unread_num != 0
+                || actual.unread_room_num != 0);
         }
 
         /// <summary>
@@ -272,15 +268,12 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void GetTaskTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int roomId = 0; // TODO: 適切な値に初期化してください
-            int taskId = 0; // TODO: 適切な値に初期化してください
-            Task expected = null; // TODO: 適切な値に初期化してください
-            Task actual;
-            actual = target.GetTask(roomId, taskId);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            int roomId = TestData.GetTaskTestRoomId;
+            int taskId = TestData.GetTaskTestTaskId;
+            var actual = target.GetTask(roomId, taskId);
+            Assert.IsNotNull(actual);
+            Assert.AreNotEqual(actual.task_id, 0);
         }
 
         /// <summary>
@@ -289,17 +282,14 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void GetTasksTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int roomId = 0; // TODO: 適切な値に初期化してください
-            int account_id = 0; // TODO: 適切な値に初期化してください
-            int assigned_by_account_id = 0; // TODO: 適切な値に初期化してください
-            int status = 0; // TODO: 適切な値に初期化してください
-            IEnumerable<Task> expected = null; // TODO: 適切な値に初期化してください
-            IEnumerable<Task> actual;
-            actual = target.GetTasks(roomId, account_id, assigned_by_account_id, status);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            int roomId = TestData.GetTasksTestRoomId;
+            int account_id = TestData.GetTasksTestAccountId;
+            int assigned_by_account_id = TestData.GetTasksTestAssignedByAccountId;
+            string status = "done";
+            var actual = target.GetTasks(roomId, account_id, assigned_by_account_id, status);
+            Assert.IsNotNull(actual);
+            Assert.IsTrue(actual.Any());
         }
 
         /// <summary>
@@ -308,15 +298,12 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void GetTasksTest1()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int assigned_by_account_id = 0; // TODO: 適切な値に初期化してください
-            IEnumerable<string> statuses = null; // TODO: 適切な値に初期化してください
-            IEnumerable<MyTask> expected = null; // TODO: 適切な値に初期化してください
-            IEnumerable<MyTask> actual;
-            actual = target.GetTasks(assigned_by_account_id, statuses);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            int assigned_by_account_id = 0;
+            IEnumerable<string> statuses = new List<string> {"open", "done"};
+            var actual = target.GetTasks(assigned_by_account_id, statuses);
+            Assert.IsNotNull(actual);
+            Assert.IsTrue(actual.Any());
         }
 
         /// <summary>
@@ -325,11 +312,9 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void LeaveRoomTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int roomId = 0; // TODO: 適切な値に初期化してください
+            var target = new ChatworkClient(TestData.APIToken);
+            int roomId = TestData.LeaveRoomTestRoomId;
             target.LeaveRoom(roomId);
-            Assert.Inconclusive("値を返さないメソッドは確認できません。");
         }
 
         /// <summary>
@@ -338,15 +323,12 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void SendMessageTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int roomId = 0; // TODO: 適切な値に初期化してください
-            string messageBody = string.Empty; // TODO: 適切な値に初期化してください
-            ResponseMessage expected = null; // TODO: 適切な値に初期化してください
-            ResponseMessage actual;
-            actual = target.SendMessage(roomId, messageBody);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            int roomId = TestData.SendMessageTestRoomId;
+            string messageBody = "SendMessageTest @" + DateTime.Now;
+            var actual = target.SendMessage(roomId, messageBody);
+            Assert.IsNotNull(actual);
+            Assert.AreNotEqual(actual.message_id, 0);
         }
 
         /// <summary>
@@ -355,17 +337,14 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void UpdateRoomTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int roomId = 0; // TODO: 適切な値に初期化してください
-            string description = string.Empty; // TODO: 適切な値に初期化してください
-            string icon_preset = string.Empty; // TODO: 適切な値に初期化してください
-            string name = string.Empty; // TODO: 適切な値に初期化してください
-            ResponseMessage expected = null; // TODO: 適切な値に初期化してください
-            ResponseMessage actual;
-            actual = target.UpdateRoom(roomId, description, icon_preset, name);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            int roomId = TestData.UpdateRoomTestRoomId;
+            string description = "UpdateRoomTest @" + DateTime.Now;
+            string icon_preset = "star";
+            string name = "UpdateRoomTest @" + DateTime.Now;
+            var actual = target.UpdateRoom(roomId, description, icon_preset, name);
+            Assert.IsNotNull(actual);
+            Assert.AreNotEqual(actual.room_id, 0);
         }
 
         /// <summary>
@@ -374,17 +353,26 @@ namespace CSChatworkAPITest
         [TestMethod]
         public void UpdateRoomMembersTest()
         {
-            string apiToken = string.Empty; // TODO: 適切な値に初期化してください
-            ChatworkClient target = new ChatworkClient(apiToken); // TODO: 適切な値に初期化してください
-            int roomId = 0; // TODO: 適切な値に初期化してください
-            IEnumerable<int> members_admin_ids = null; // TODO: 適切な値に初期化してください
-            IEnumerable<int> members_member_ids = null; // TODO: 適切な値に初期化してください
-            IEnumerable<int> members_readonly_ids = null; // TODO: 適切な値に初期化してください
-            MemberRoles expected = null; // TODO: 適切な値に初期化してください
-            MemberRoles actual;
-            actual = target.UpdateRoomMembers(roomId, members_admin_ids, members_member_ids, members_readonly_ids);
-            Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("このテストメソッドの正確性を確認します。");
+            var target = new ChatworkClient(TestData.APIToken);
+            int roomId = TestData.UpdateRoomMembersTestRoomId;
+            var members = target.GetRoomMembers(roomId);
+            var members_admin_ids = members.Where(x => x.role.Equals("admin")).ToList();
+            var members_member_ids = members.Where(x => x.role.Equals("member")).ToList();
+            var members_readonly_ids = members.Where(x => x.role.Equals("readonly")).ToList();
+
+            members_admin_ids.Add(new Member { account_id = TestData.UpdateRoomMembersTestAddAdminAccountId });
+            members_member_ids.Add(new Member { account_id = TestData.UpdateRoomMembersTestAddMemberAccountId });
+            members_readonly_ids.Add(new Member { account_id = TestData.UpdateRoomMembersTestAddReadOnlyAccountId });
+
+            var actual = target.UpdateRoomMembers(
+                roomId,
+                members_admin_ids.Select(x => x.account_id),
+                members_member_ids.Select(x => x.account_id),
+                members_readonly_ids.Select(x => x.account_id));
+
+            Assert.IsNotNull(actual);
+            Assert.AreNotEqual(actual.admin.Any(), 0);
+            Assert.AreNotEqual(actual.member.Any(), 0);
         }
     }
 }

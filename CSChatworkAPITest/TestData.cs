@@ -16,21 +16,41 @@ namespace CSChatworkAPITest
         public List<int> members_member_ids { get; set; }
         public List<int> members_readonly_ids { get; set; } 
 
-        public int AddTaskTestRID { get; set; }
+        public int AddTaskTestRoomId { get; set; }
         public List<int> AddTaskTestToIDs { get; set; }
 
-        public int GetFileTestRoomID { get; set; }
-        public int GetFileTestFileID { get; set; }
+        public int GetFileTestRoomId { get; set; }
+        public int GetFileTestFileId { get; set; }
 
-        public int GetFilesTestRoomID { get; set; }
-        public int GetFilesTestAccountID { get; set; }
+        public int GetFilesTestRoomId { get; set; }
+        public int GetFilesTestAccountId { get; set; }
         
-        public int GetMessageTestRoomID { get; set; }
-        public int GetMessageTestMessageID { get; set; }
+        public int GetMessageTestRoomId { get; set; }
+        public int GetMessageTestMessageId { get; set; }
 
-        public int GetMessagesTestRoomID { get; set; }
+        public int GetMessagesTestRoomId { get; set; }
 
         public int GetRoomTestRoomId { get; set; }
+
+        public int GetRoomMembersTestRoomId { get; set; }
+
+        public int GetTaskTestRoomId { get; set; }
+        public int GetTaskTestTaskId { get; set; }
+
+        public int GetTasksTestRoomId { get; set; }
+        public int GetTasksTestAccountId { get; set; }
+        public int GetTasksTestAssignedByAccountId { get; set; }
+
+        public int LeaveRoomTestRoomId { get; set; }
+
+        public int SendMessageTestRoomId { get; set; }
+
+        public int UpdateRoomTestRoomId { get; set; }
+
+        public int UpdateRoomMembersTestRoomId { get; set; }
+        public int UpdateRoomMembersTestAddAdminAccountId { get; set; }
+        public int UpdateRoomMembersTestAddMemberAccountId { get; set; }
+        public int UpdateRoomMembersTestAddReadOnlyAccountId { get; set; }
 
         /// <summary>
         /// Return new TestData.
