@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CSChatworkAPI.Models;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -40,6 +41,18 @@ namespace CSChatworkAPI.Communicators
             var response = client.Execute(request);
             var content = response.Content;
 
+            var rl = new RateLimit(response);
+            if (rl.Remaining == 0)
+            {
+                throw new TooManyRequestsException(rl);
+            }
+
+            //var errors = JsonConvert.DeserializeObject<Errors>(content);
+            //if (errors.errors != null && errors.errors.Any())
+            //{
+            //    throw new Exception(errors.ToString());
+            //}
+
             return JsonConvert.DeserializeObject<T>(content);
         }
 
@@ -60,6 +73,18 @@ namespace CSChatworkAPI.Communicators
             var response = client.Execute(request);
             var content = response.Content;
 
+            var rl = new RateLimit(response);
+            if (rl.Remaining == 0)
+            {
+                throw new TooManyRequestsException(rl);
+            }
+
+            //var errors = JsonConvert.DeserializeObject<Errors>(content);
+            //if (errors.errors != null && errors.errors.Any())
+            //{
+            //    throw new Exception(errors.ToString());
+            //}
+
             return JsonConvert.DeserializeObject<T>(content);
         }
 
@@ -79,6 +104,18 @@ namespace CSChatworkAPI.Communicators
 
             var response = client.Execute(request);
             var content = response.Content;
+            
+            var rl = new RateLimit(response);
+            if (rl.Remaining == 0)
+            {
+                throw new TooManyRequestsException(rl);
+            }
+
+            //var errors = JsonConvert.DeserializeObject<Errors>(content);
+            //if (errors.errors != null && errors.errors.Any())
+            //{
+            //    throw new Exception(errors.ToString());
+            //}
 
             return JsonConvert.DeserializeObject<T>(content);
         }

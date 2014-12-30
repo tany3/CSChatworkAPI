@@ -22,17 +22,5 @@ namespace Example.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("yourAPIToken")]
-        public string APIToken {
-            get {
-                return ((string)(this["APIToken"]));
-            }
-            set {
-                this["APIToken"] = value;
-            }
-        }
     }
 }

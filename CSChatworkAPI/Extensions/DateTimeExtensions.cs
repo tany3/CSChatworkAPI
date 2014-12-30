@@ -25,6 +25,11 @@ namespace CSChatworkAPI.Extensions
             return (long)delta.TotalSeconds;
         }
 
+        public static DateTime ToDateTime(long unixTime)
+        {
+            return EpocDateTime.AddSeconds(unixTime);
+        }
+
         public class UnixDateTimeConverter : DateTimeConverterBase
         {
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue,

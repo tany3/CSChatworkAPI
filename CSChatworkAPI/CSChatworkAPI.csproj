@@ -52,14 +52,17 @@
     <Compile Include="Communicators\AbstractCommunicator.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Me.cs" />
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MyStatus.cs" />
     <Compile Include="Models\MyTask.cs" />
+    <Compile Include="Models\RateLimit.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\TooManyRequestsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
