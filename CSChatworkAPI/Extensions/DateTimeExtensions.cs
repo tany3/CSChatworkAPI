@@ -9,12 +9,17 @@ namespace CSChatworkAPI.Extensions
     /// <summary>
     /// DateTimeExtensions
     /// </summary>
-    /// <see cref="http://tech.tanaka733.net/entry/chatwork-api-csharp-with-pcl"/>
-    /// <seealso cref="http://blog.ch3cooh.jp/entry/20130225/1361776951"/>
+    /// <remarks>
+    /// http://tech.tanaka733.net/entry/chatwork-api-csharp-with-pcl
+    /// http://blog.ch3cooh.jp/entry/20130225/1361776951
+    /// </remarks>
     public static class DateTimeExtensions
     {
         internal static readonly DateTime EpocDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
+        /// <summary>
+        /// Convert to UnixTime
+        /// </summary>
         public static long ToUnixTime(this DateTime date)
         {
             var delta = date - EpocDateTime;
@@ -25,13 +30,22 @@ namespace CSChatworkAPI.Extensions
             return (long)delta.TotalSeconds;
         }
 
+        /// <summary>
+        /// Convert to DateTime
+        /// </summary>
         public static DateTime ToDateTime(long unixTime)
         {
             return EpocDateTime.AddSeconds(unixTime);
         }
 
+        /// <summary>
+        /// UnixDateTimeConverter
+        /// </summary>
         public class UnixDateTimeConverter : DateTimeConverterBase
         {
+            /// <summary>
+            /// ReadJson
+            /// </summary>
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
                     JsonSerializer serializer)
             {
@@ -46,6 +60,9 @@ namespace CSChatworkAPI.Extensions
                 return EpocDateTime.AddSeconds(ticks);
             }
 
+            /// <summary>
+            /// WriteJson
+            /// </summary>
             public override void WriteJson(JsonWriter writer, object value,
                 JsonSerializer serializer)
             {
