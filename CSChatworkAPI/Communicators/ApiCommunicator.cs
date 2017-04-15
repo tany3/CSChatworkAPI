@@ -24,7 +24,7 @@ namespace CSChatworkAPI.Communicators
             get { return @"https://api.chatwork.com/v1/"; }
         }
 
-        public T GetT<T>(string resource, Dictionary<string, object> parameters = null)
+        public T Get<T>(string resource, Dictionary<string, object> parameters = null)
         {
             var client = new RestClient
             {
@@ -56,7 +56,7 @@ namespace CSChatworkAPI.Communicators
             return JsonConvert.DeserializeObject<T>(content);
         }
 
-        public T PostT<T>(string resource, Dictionary<string, object> parameters)
+        public T Post<T>(string resource, Dictionary<string, object> parameters)
         {
             var client = new RestClient
             {
@@ -88,7 +88,7 @@ namespace CSChatworkAPI.Communicators
             return JsonConvert.DeserializeObject<T>(content);
         }
 
-        public T SendT<T>(string resource, Dictionary<string, object> parameters, Method method)
+        public T Send<T>(string resource, Dictionary<string, object> parameters, Method method)
         {
             var client = new RestClient
             {
