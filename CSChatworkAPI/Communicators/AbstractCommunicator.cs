@@ -9,22 +9,22 @@ using RestSharp;
 
 namespace CSChatworkAPI.Communicators
 {
-    public abstract class AbstractCommunicator
+    internal class ApiCommunicator
     {
         protected string ApiToken { get; private set; }
 
-        protected AbstractCommunicator(string apiToken)
+        public ApiCommunicator(string apiToken)
         {
             if (string.IsNullOrWhiteSpace(apiToken)) { throw new ArgumentNullException(apiToken); }
             ApiToken = apiToken;
         }
 
-        protected string BaseUri
+        private string BaseUri
         {
             get { return @"https://api.chatwork.com/v1/"; }
         }
 
-        protected T GetT<T>(string resource, Dictionary<string, object> parameters = null)
+        public T GetT<T>(string resource, Dictionary<string, object> parameters = null)
         {
             var client = new RestClient
             {
@@ -56,7 +56,7 @@ namespace CSChatworkAPI.Communicators
             return JsonConvert.DeserializeObject<T>(content);
         }
 
-        protected T PostT<T>(string resource, Dictionary<string, object> parameters)
+        public T PostT<T>(string resource, Dictionary<string, object> parameters)
         {
             var client = new RestClient
             {
@@ -88,7 +88,7 @@ namespace CSChatworkAPI.Communicators
             return JsonConvert.DeserializeObject<T>(content);
         }
 
-        protected T SendT<T>(string resource, Dictionary<string, object> parameters, Method method)
+        public T SendT<T>(string resource, Dictionary<string, object> parameters, Method method)
         {
             var client = new RestClient
             {
