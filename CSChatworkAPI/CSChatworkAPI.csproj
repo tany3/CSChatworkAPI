@@ -54,10 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChatworkClient.cs" />
-    <Compile Include="Communicators\AbstractCommunicator.cs" />
+    <Compile Include="Communicators\ApiCommunicator.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\Errors.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Me.cs" />
     <Compile Include="Models\Member.cs" />

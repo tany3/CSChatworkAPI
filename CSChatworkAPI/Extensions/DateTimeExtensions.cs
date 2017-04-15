@@ -9,13 +9,18 @@ namespace CSChatworkAPI.Extensions
     /// <summary>
     /// DateTimeExtensions
     /// </summary>
-    /// <see cref="http://tech.tanaka733.net/entry/chatwork-api-csharp-with-pcl"/>
-    /// <seealso cref="http://blog.ch3cooh.jp/entry/20130225/1361776951"/>
-    public static class DateTimeExtensions
+    /// <remarks>
+    /// http://tech.tanaka733.net/entry/chatwork-api-csharp-with-pcl
+    /// http://blog.ch3cooh.jp/entry/20130225/1361776951
+    /// </remarks>
+    internal static class DateTimeExtensions
     {
         internal static readonly DateTime EpocDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
-        public static long ToUnixTime(this DateTime date)
+        /// <summary>
+        /// Convert to UnixTime
+        /// </summary>
+        internal static long ToUnixTime(this DateTime date)
         {
             var delta = date - EpocDateTime;
             if (delta.TotalSeconds < 0)
@@ -25,13 +30,22 @@ namespace CSChatworkAPI.Extensions
             return (long)delta.TotalSeconds;
         }
 
-        public static DateTime ToDateTime(long unixTime)
+        /// <summary>
+        /// Convert to DateTime
+        /// </summary>
+        internal static DateTime ToDateTime(long unixTime)
         {
             return EpocDateTime.AddSeconds(unixTime);
         }
 
-        public class UnixDateTimeConverter : DateTimeConverterBase
+        /// <summary>
+        /// UnixDateTimeConverter
+        /// </summary>
+        internal class UnixDateTimeConverter : DateTimeConverterBase
         {
+            /// <summary>
+            /// ReadJson
+            /// </summary>
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
                     JsonSerializer serializer)
             {
@@ -46,6 +60,9 @@ namespace CSChatworkAPI.Extensions
                 return EpocDateTime.AddSeconds(ticks);
             }
 
+            /// <summary>
+            /// WriteJson
+            /// </summary>
             public override void WriteJson(JsonWriter writer, object value,
                 JsonSerializer serializer)
             {

@@ -14,10 +14,18 @@ namespace CSChatworkAPI
     /// <summary>
     /// Chatwork Client
     /// </summary>
-    public class ChatworkClient : AbstractCommunicator
+    public class ChatworkClient
     {
-        public ChatworkClient(string apiToken) : base(apiToken)
-        {}
+        private readonly ApiCommunicator _api;
+
+        /// <summary>
+        /// ChatworkClient
+        /// </summary>
+        /// <param name="apiToken"></param>
+        public ChatworkClient(string apiToken)
+        {
+            _api = new ApiCommunicator(apiToken);
+        }
 
 #region endpoint /me
         /// <summary>
@@ -27,7 +35,7 @@ namespace CSChatworkAPI
         public Me GetMe()
         {
             const string resource = @"me";
-            return GetT<Me>(resource); 
+            return _api.Get<Me>(resource); 
         }
 #endregion endpoint /me
 
@@ -41,7 +49,7 @@ namespace CSChatworkAPI
         public MyStatus GetStatus()
         {
             const string resource = @"my/status";
-            return GetT<MyStatus>(resource); 
+            return _api.Get<MyStatus>(resource); 
         }
 
         /// <summary>
@@ -69,7 +77,7 @@ namespace CSChatworkAPI
                 {@"status", string.Join(",", statuses)},
             };
 
-            return GetT<IEnumerable<MyTask>>(resource); 
+            return _api.Get<IEnumerable<MyTask>>(resource); 
         }
 #endregion endpoint /my
 
@@ -83,7 +91,7 @@ namespace CSChatworkAPI
         public IEnumerable<Contact> GetContacts()
         {
             const string resource = @"contacts";
-            return GetT<IEnumerable<Contact>>(resource); 
+            return _api.Get<IEnumerable<Contact>>(resource); 
         }
 #endregion endpoint /contacts
 
@@ -96,7 +104,7 @@ namespace CSChatworkAPI
         public IEnumerable<Room> GetRooms()
         {
             const string resource = @"rooms";
-            return GetT<IEnumerable<Room>>(resource);
+            return _api.Get<IEnumerable<Room>>(resource);
         }
 
         /// <summary>
@@ -118,7 +126,7 @@ namespace CSChatworkAPI
                 {"name", name},
             };
 
-            return PostT<Room>(resource, parameters);
+            return _api.Post<Room>(resource, parameters);
         }
 
         /// <summary>
@@ -127,7 +135,7 @@ namespace CSChatworkAPI
         public Room GetRoom(int roomId)
         {
             var resource = string.Format("rooms/{0}", roomId);
-            return GetT<Room>(resource);
+            return _api.Get<Room>(resource);
         }
 
         /// <summary>
@@ -149,7 +157,7 @@ namespace CSChatworkAPI
                 {"name", name},
             };
 
-            return SendT<ResponseRoomId>(resource, parameters, Method.PUT);
+            return _api.Send<ResponseRoomId>(resource, parameters, Method.PUT);
         }
 
         /// <summary>
@@ -165,7 +173,7 @@ namespace CSChatworkAPI
                 {"action_type", "leave"},
             };
 
-            var resp = SendT<ResponseMessage>(resource, parameters, Method.DELETE);
+            var resp = _api.Send<ResponseMessage>(resource, parameters, Method.DELETE);
             Debug.WriteLine(resp);
         }
 
@@ -181,7 +189,7 @@ namespace CSChatworkAPI
                 {"action_type", "delete"},
             };
 
-            var resp = SendT<ResponseMessage>(resource, parameters, Method.DELETE);
+            var resp = _api.Send<ResponseMessage>(resource, parameters, Method.DELETE);
             Debug.WriteLine(resp);
         }
 
@@ -191,7 +199,7 @@ namespace CSChatworkAPI
         public IEnumerable<Member> GetRoomMembers(int roomId)
         {
             var resource = string.Format("rooms/{0}/members", roomId);
-            return GetT<IEnumerable<Member>>(resource);
+            return _api.Get<IEnumerable<Member>>(resource);
         }
 
         /// <summary>
@@ -214,7 +222,7 @@ namespace CSChatworkAPI
                 {"members_readonly_ids", string.Join(",", members_readonly_ids)},
             };
 
-            return SendT<MemberRoles>(resource, parameters, Method.PUT);
+            return _api.Send<MemberRoles>(resource, parameters, Method.PUT);
         }
 
         /// <summary>
@@ -229,7 +237,7 @@ namespace CSChatworkAPI
         public IEnumerable<Message> GetMessages(int roomId, bool force = false)
         {
             var resource = string.Format("rooms/{0}/messages?force={1}", roomId, force ? 1 : 0);
-            return GetT<IEnumerable<Message>>(resource);
+            return _api.Get<IEnumerable<Message>>(resource);
         }
 
         /// <summary>
@@ -247,7 +255,7 @@ namespace CSChatworkAPI
                 {"body", messageBody},
             };
 
-            return PostT<ResponseMessage>(resource, parameters);
+            return _api.Post<ResponseMessage>(resource, parameters);
         }
 
         /// <summary>
@@ -259,7 +267,7 @@ namespace CSChatworkAPI
         public Message GetMessage(int roomId, int messageId)
         {
             var resource = string.Format("rooms/{0}/messages/{1}", roomId, messageId);
-            return GetT<Message>(resource);
+            return _api.Get<Message>(resource);
         }
 
         /// <summary>
@@ -284,7 +292,7 @@ namespace CSChatworkAPI
                 {"status", status},
             };
 
-            return GetT<IEnumerable<Task>>(resource, parameters);
+            return _api.Get<IEnumerable<Task>>(resource, parameters);
         }
 
         /// <summary>
@@ -313,7 +321,7 @@ namespace CSChatworkAPI
                 parameters.Add("limit", limit.Value.ToUnixTime());
             }
 
-            return SendT<ResponseTaskIds>(resource, parameters, Method.POST);
+            return _api.Send<ResponseTaskIds>(resource, parameters, Method.POST);
         }
 
         /// <summary>
@@ -325,7 +333,7 @@ namespace CSChatworkAPI
         public Task GetTask(int roomId, int taskId)
         {
             var resource = string.Format("rooms/{0}/tasks/{1}", roomId, taskId);
-            return GetT<Task>(resource);
+            return _api.Get<Task>(resource);
         }
 
         /// <summary>
@@ -343,7 +351,7 @@ namespace CSChatworkAPI
                 {"account_id", account_id},
             };
 
-            return GetT<IEnumerable<File>>(resource, parameters);
+            return _api.Get<IEnumerable<File>>(resource, parameters);
         }
 
         /// <summary>
@@ -365,7 +373,7 @@ namespace CSChatworkAPI
                 {"createDownloadUrl", createDownloadUrl},
             };
 
-            return GetT<File>(resource, parameters);
+            return _api.Get<File>(resource, parameters);
         }
 #endregion endpoint /rooms
     }
