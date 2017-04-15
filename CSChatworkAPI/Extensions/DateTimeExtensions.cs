@@ -13,14 +13,14 @@ namespace CSChatworkAPI.Extensions
     /// http://tech.tanaka733.net/entry/chatwork-api-csharp-with-pcl
     /// http://blog.ch3cooh.jp/entry/20130225/1361776951
     /// </remarks>
-    public static class DateTimeExtensions
+    internal static class DateTimeExtensions
     {
         internal static readonly DateTime EpocDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 
         /// <summary>
         /// Convert to UnixTime
         /// </summary>
-        public static long ToUnixTime(this DateTime date)
+        internal static long ToUnixTime(this DateTime date)
         {
             var delta = date - EpocDateTime;
             if (delta.TotalSeconds < 0)
@@ -33,7 +33,7 @@ namespace CSChatworkAPI.Extensions
         /// <summary>
         /// Convert to DateTime
         /// </summary>
-        public static DateTime ToDateTime(long unixTime)
+        internal static DateTime ToDateTime(long unixTime)
         {
             return EpocDateTime.AddSeconds(unixTime);
         }
@@ -41,7 +41,7 @@ namespace CSChatworkAPI.Extensions
         /// <summary>
         /// UnixDateTimeConverter
         /// </summary>
-        public class UnixDateTimeConverter : DateTimeConverterBase
+        internal class UnixDateTimeConverter : DateTimeConverterBase
         {
             /// <summary>
             /// ReadJson
