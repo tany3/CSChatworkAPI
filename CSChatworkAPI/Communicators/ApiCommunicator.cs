@@ -21,7 +21,7 @@ namespace CSChatworkAPI.Communicators
 
         private string BaseUri
         {
-            get { return @"https://api.chatwork.com/v1/"; }
+            get { return @"https://api.chatwork.com/v2/"; }
         }
 
         public T Get<T>(string resource, Dictionary<string, object> parameters = null)
