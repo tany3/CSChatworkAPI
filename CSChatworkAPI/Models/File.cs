@@ -14,7 +14,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// file_id
         /// </summary>
-        public int file_id { get; set; }
+        public string file_id { get; set; }
 
         /// <summary>
         /// account
@@ -24,7 +24,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account
         /// </summary>
-        public int message_id { get; set; }
+        public string message_id { get; set; }
 
         /// <summary>
         /// filename

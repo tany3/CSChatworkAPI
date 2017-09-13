@@ -15,7 +15,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// message_id
         /// </summary>
-        public int message_id { get; set; }
+        public string message_id { get; set; }
 
         /// <summary>
         /// account
@@ -58,7 +58,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account_id
         /// </summary>
-        public int account_id { get; set; }
+        public string account_id { get; set; }
 
         /// <summary>
         /// name
@@ -87,7 +87,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// message_id
         /// </summary>
-        public int message_id { get; set; }
+        public string message_id { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します
@@ -106,7 +106,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// task_ids
         /// </summary>
-        public List<int> task_ids { get; set; }
+        public List<string> task_ids { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します

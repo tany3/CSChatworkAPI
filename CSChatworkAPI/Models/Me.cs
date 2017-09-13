@@ -10,12 +10,12 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account_id
         /// </summary>
-        public int account_id { get; set; }
+        public string account_id { get; set; }
 
         /// <summary>
         /// room_id
         /// </summary>
-        public int room_id { get; set; }
+        public string room_id { get; set; }
 
         /// <summary>
         /// name
@@ -30,7 +30,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// organization_id
         /// </summary>
-        public int organization_id { get; set; }
+        public string organization_id { get; set; }
 
         /// <summary>
         /// organization_name

@@ -32,7 +32,7 @@ namespace Example
             }
 
             // send message
-            const int roomId = int.MinValue; // TODO:yourRoomId
+            const string roomId = ""; // TODO:yourRoomId
             const string body = "Hello Chatwork!";
             var resp = client.SendMessage(roomId, body);
             Console.WriteLine(resp);

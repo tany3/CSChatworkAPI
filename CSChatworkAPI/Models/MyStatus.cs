@@ -10,32 +10,32 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// unread_room_num
         /// </summary>
-        public int unread_room_num { get; set; }
+        public long unread_room_num { get; set; }
 
         /// <summary>
         /// mention_room_num
         /// </summary>
-        public int mention_room_num { get; set; }
+        public long mention_room_num { get; set; }
 
         /// <summary>
         /// mytask_room_num
         /// </summary>
-        public int mytask_room_num { get; set; }
+        public long mytask_room_num { get; set; }
 
         /// <summary>
         /// unread_num
         /// </summary>
-        public int unread_num { get; set; }
+        public long unread_num { get; set; }
 
         /// <summary>
         /// mention_num
         /// </summary>
-        public int mention_num { get; set; }
+        public long mention_num { get; set; }
 
         /// <summary>
         /// mytask_num
         /// </summary>
-        public int mytask_num { get; set; }
+        public long mytask_num { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します

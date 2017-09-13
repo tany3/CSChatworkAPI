@@ -19,7 +19,7 @@ namespace CSChatworkAPI.Models
             /// <summary>
             /// room_id
             /// </summary>
-            public int room_id { get; set; }
+            public string room_id { get; set; }
 
             /// <summary>
             /// name
@@ -48,7 +48,7 @@ namespace CSChatworkAPI.Models
             /// <summary>
             /// account_id
             /// </summary>
-            public int account_id { get; set; }
+            public string account_id { get; set; }
 
             /// <summary>
             /// name
@@ -72,7 +72,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// task_id
         /// </summary>
-        public int task_id { get; set; }
+        public string task_id { get; set; }
 
         /// <summary>
         /// room
@@ -87,7 +87,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// message_id
         /// </summary>
-        public int message_id { get; set; }
+        public string message_id { get; set; }
 
         /// <summary>
         /// body

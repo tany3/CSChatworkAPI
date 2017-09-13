@@ -11,7 +11,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account_id
         /// </summary>
-        public int account_id { get; set; }
+        public string account_id { get; set; }
 
         /// <summary>
         /// role
@@ -31,7 +31,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// organization_id
         /// </summary>
-        public int organization_id { get; set; }
+        public string organization_id { get; set; }
 
         /// <summary>
         /// organization_name
@@ -65,17 +65,17 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// admin
         /// </summary>
-        public List<int> admin { get; set; }
+        public List<string> admin { get; set; }
 
         /// <summary>
         /// member
         /// </summary>
-        public List<int> member { get; set; }
+        public List<string> member { get; set; }
 
         /// <summary>
         /// @readonly
         /// </summary>
-        public List<int> @readonly { get; set; }
+        public List<string> @readonly { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します

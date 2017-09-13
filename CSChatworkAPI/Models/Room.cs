@@ -14,7 +14,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// room_id
         /// </summary>
-        public int room_id { get; set; }
+        public string room_id { get; set; }
 
         /// <summary>
         /// name
@@ -39,32 +39,32 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// unread_num
         /// </summary>
-        public int unread_num { get; set; }
+        public long unread_num { get; set; }
 
         /// <summary>
         /// mention_num
         /// </summary>
-        public int mention_num { get; set; }
+        public long mention_num { get; set; }
 
         /// <summary>
         /// mytask_num
         /// </summary>
-        public int mytask_num { get; set; }
+        public long mytask_num { get; set; }
 
         /// <summary>
         /// message_num
         /// </summary>
-        public int message_num { get; set; }
+        public long message_num { get; set; }
 
         /// <summary>
         /// file_num
         /// </summary>
-        public int file_num { get; set; }
+        public long file_num { get; set; }
 
         /// <summary>
         /// task_num
         /// </summary>
-        public int task_num { get; set; }
+        public long task_num { get; set; }
 
         /// <summary>
         /// last_update_time

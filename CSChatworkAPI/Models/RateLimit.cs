@@ -13,12 +13,12 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// Limit
         /// </summary>
-        public int Limit { get; set; }
+        public long Limit { get; set; }
 
         /// <summary>
         /// Remaining
         /// </summary>
-        public int Remaining { get; set; }
+        public long Remaining { get; set; }
 
         /// <summary>
         /// Reset
