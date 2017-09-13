@@ -91,12 +91,12 @@ namespace CSChatworkAPITest
         public void AddRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            string description = @"description Test @" + DateTime.Now;
-            string icon_preset = @"star";
+            var description = @"description Test @" + DateTime.Now;
+            var icon_preset = @"star";
             var members_admin_ids = TestData.members_admin_ids;
             var members_member_ids = TestData.members_member_ids;
             var members_readonly_ids = TestData.members_readonly_ids;
-            string name = "Test @" + DateTime.Now;
+            var name = "Test @" + DateTime.Now;
             Room actual = target.AddRoom(description, icon_preset, members_admin_ids, members_member_ids, members_readonly_ids, name);
             Assert.AreNotEqual(actual.room_id, 0);
         }
@@ -108,8 +108,8 @@ namespace CSChatworkAPITest
         public void AddTaskTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.AddTaskTestRoomId;
-            string body = "Test @" + DateTime.Now;
+            var roomId = TestData.AddTaskTestRoomId;
+            var body = "Test @" + DateTime.Now;
             DateTime? limit = DateTime.Now.AddDays(7);
             var to_ids = TestData.AddTaskTestToIDs;
             var actual = target.AddTask(roomId, body, limit, to_ids);
@@ -124,7 +124,7 @@ namespace CSChatworkAPITest
         public void DeleteRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.AddTaskTestRoomId;
+            var roomId = TestData.AddTaskTestRoomId;
             target.DeleteRoom(roomId);
         }
 
@@ -146,8 +146,8 @@ namespace CSChatworkAPITest
         public void GetFileTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetFileTestRoomId;
-            int fileId = TestData.GetFileTestFileId;
+            var roomId = TestData.GetFileTestRoomId;
+            var fileId = TestData.GetFileTestFileId;
             bool createDownloadUrl = false;
             File actual = target.GetFile(roomId, fileId, createDownloadUrl);
             Assert.AreNotEqual(actual.file_id, 0);
@@ -160,8 +160,8 @@ namespace CSChatworkAPITest
         public void GetFilesTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetFilesTestRoomId;
-            int account_id = TestData.GetFilesTestAccountId;
+            var roomId = TestData.GetFilesTestRoomId;
+            var account_id = TestData.GetFilesTestAccountId;
             var actual = target.GetFiles(roomId, account_id);
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
@@ -186,8 +186,8 @@ namespace CSChatworkAPITest
         public void GetMessageTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetMessageTestRoomId;
-            int messageId = TestData.GetMessageTestMessageId;
+            var roomId = TestData.GetMessageTestRoomId;
+            var messageId = TestData.GetMessageTestMessageId;
             var actual = target.GetMessage(roomId, messageId);
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.message_id, 0);
@@ -200,7 +200,7 @@ namespace CSChatworkAPITest
         public void GetMessagesTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetMessagesTestRoomId;
+            var roomId = TestData.GetMessagesTestRoomId;
             bool force = false;
             var actual = target.GetMessages(roomId, force);
             Assert.IsNotNull(actual);
@@ -214,7 +214,7 @@ namespace CSChatworkAPITest
         public void GetRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetRoomTestRoomId;
+            var roomId = TestData.GetRoomTestRoomId;
             var actual = target.GetRoom(roomId);
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.room_id, 0);
@@ -227,7 +227,7 @@ namespace CSChatworkAPITest
         public void GetRoomMembersTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetRoomMembersTestRoomId;
+            var roomId = TestData.GetRoomMembersTestRoomId;
             var actual = target.GetRoomMembers(roomId);
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
@@ -269,8 +269,8 @@ namespace CSChatworkAPITest
         public void GetTaskTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetTaskTestRoomId;
-            int taskId = TestData.GetTaskTestTaskId;
+            var roomId = TestData.GetTaskTestRoomId;
+            var taskId = TestData.GetTaskTestTaskId;
             var actual = target.GetTask(roomId, taskId);
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.task_id, 0);
@@ -283,9 +283,9 @@ namespace CSChatworkAPITest
         public void GetTasksTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.GetTasksTestRoomId;
-            int account_id = TestData.GetTasksTestAccountId;
-            int assigned_by_account_id = TestData.GetTasksTestAssignedByAccountId;
+            var roomId = TestData.GetTasksTestRoomId;
+            var account_id = TestData.GetTasksTestAccountId;
+            var assigned_by_account_id = TestData.GetTasksTestAssignedByAccountId;
             string status = "done";
             var actual = target.GetTasks(roomId, account_id, assigned_by_account_id, status);
             Assert.IsNotNull(actual);
@@ -299,7 +299,7 @@ namespace CSChatworkAPITest
         public void GetTasksTest1()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int assigned_by_account_id = 0;
+            var assigned_by_account_id = "0";
             IEnumerable<string> statuses = new List<string> {"open", "done"};
             var actual = target.GetTasks(assigned_by_account_id, statuses);
             Assert.IsNotNull(actual);
@@ -313,7 +313,7 @@ namespace CSChatworkAPITest
         public void LeaveRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.LeaveRoomTestRoomId;
+            var roomId = TestData.LeaveRoomTestRoomId;
             target.LeaveRoom(roomId);
         }
 
@@ -324,7 +324,7 @@ namespace CSChatworkAPITest
         public void SendMessageTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.SendMessageTestRoomId;
+            var roomId = TestData.SendMessageTestRoomId;
             string messageBody = "SendMessageTest @" + DateTime.Now;
             var actual = target.SendMessage(roomId, messageBody);
             Assert.IsNotNull(actual);
@@ -338,7 +338,7 @@ namespace CSChatworkAPITest
         public void UpdateRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.UpdateRoomTestRoomId;
+            var roomId = TestData.UpdateRoomTestRoomId;
             string description = "UpdateRoomTest @" + DateTime.Now;
             string icon_preset = "star";
             string name = "UpdateRoomTest @" + DateTime.Now;
@@ -354,7 +354,7 @@ namespace CSChatworkAPITest
         public void UpdateRoomMembersTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
-            int roomId = TestData.UpdateRoomMembersTestRoomId;
+            var roomId = TestData.UpdateRoomMembersTestRoomId;
             var members = target.GetRoomMembers(roomId);
             var members_admin_ids = members.Where(x => x.role.Equals("admin")).ToList();
             var members_member_ids = members.Where(x => x.role.Equals("member")).ToList();

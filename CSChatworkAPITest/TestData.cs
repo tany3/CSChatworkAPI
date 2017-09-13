@@ -12,45 +12,45 @@ namespace CSChatworkAPITest
     {
         public string APIToken { get; set; }
 
-        public List<int> members_admin_ids { get; set; }
-        public List<int> members_member_ids { get; set; }
-        public List<int> members_readonly_ids { get; set; } 
+        public List<string> members_admin_ids { get; set; }
+        public List<string> members_member_ids { get; set; }
+        public List<string> members_readonly_ids { get; set; } 
 
-        public int AddTaskTestRoomId { get; set; }
-        public List<int> AddTaskTestToIDs { get; set; }
+        public string AddTaskTestRoomId { get; set; }
+        public List<string> AddTaskTestToIDs { get; set; }
 
-        public int GetFileTestRoomId { get; set; }
-        public int GetFileTestFileId { get; set; }
+        public string GetFileTestRoomId { get; set; }
+        public string GetFileTestFileId { get; set; }
 
-        public int GetFilesTestRoomId { get; set; }
-        public int GetFilesTestAccountId { get; set; }
+        public string GetFilesTestRoomId { get; set; }
+        public string GetFilesTestAccountId { get; set; }
         
-        public int GetMessageTestRoomId { get; set; }
-        public int GetMessageTestMessageId { get; set; }
+        public string GetMessageTestRoomId { get; set; }
+        public string GetMessageTestMessageId { get; set; }
 
-        public int GetMessagesTestRoomId { get; set; }
+        public string GetMessagesTestRoomId { get; set; }
 
-        public int GetRoomTestRoomId { get; set; }
+        public string GetRoomTestRoomId { get; set; }
 
-        public int GetRoomMembersTestRoomId { get; set; }
+        public string GetRoomMembersTestRoomId { get; set; }
 
-        public int GetTaskTestRoomId { get; set; }
-        public int GetTaskTestTaskId { get; set; }
+        public string GetTaskTestRoomId { get; set; }
+        public string GetTaskTestTaskId { get; set; }
 
-        public int GetTasksTestRoomId { get; set; }
-        public int GetTasksTestAccountId { get; set; }
-        public int GetTasksTestAssignedByAccountId { get; set; }
+        public string GetTasksTestRoomId { get; set; }
+        public string GetTasksTestAccountId { get; set; }
+        public string GetTasksTestAssignedByAccountId { get; set; }
 
-        public int LeaveRoomTestRoomId { get; set; }
+        public string LeaveRoomTestRoomId { get; set; }
 
-        public int SendMessageTestRoomId { get; set; }
+        public string SendMessageTestRoomId { get; set; }
 
-        public int UpdateRoomTestRoomId { get; set; }
+        public string UpdateRoomTestRoomId { get; set; }
 
-        public int UpdateRoomMembersTestRoomId { get; set; }
-        public int UpdateRoomMembersTestAddAdminAccountId { get; set; }
-        public int UpdateRoomMembersTestAddMemberAccountId { get; set; }
-        public int UpdateRoomMembersTestAddReadOnlyAccountId { get; set; }
+        public string UpdateRoomMembersTestRoomId { get; set; }
+        public string UpdateRoomMembersTestAddAdminAccountId { get; set; }
+        public string UpdateRoomMembersTestAddMemberAccountId { get; set; }
+        public string UpdateRoomMembersTestAddReadOnlyAccountId { get; set; }
 
         /// <summary>
         /// Return new TestData.
