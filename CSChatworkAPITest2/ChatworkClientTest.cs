@@ -10,8 +10,6 @@ namespace CSChatworkAPITest2
     [TestFixture]
     public class ChatworkClientTest
     {
-        private ChatworkClient client = new ChatworkClient(TestContext.TestData.InputData.APIToken);
-
         [OneTimeSetUp]
         public void Setup()
         {
@@ -28,7 +26,7 @@ namespace CSChatworkAPITest2
         [TestCaseSource(typeof(TestCase.MeTestCase), nameof(TestCase.MeTestCase.TestCases))]
         public void Test_Me(string chatworkId)
         {
-            var me = client.GetMe();
+            var me = TestContext.ChatworkClient.GetMe();
 
             Assert.IsNotNull(me);
             Assert.IsNotEmpty(me.account_id);
@@ -41,7 +39,7 @@ namespace CSChatworkAPITest2
         [TestCase]
         public void Test_GetStatus()
         {
-            var status = client.GetStatus();
+            var status = TestContext.ChatworkClient.GetStatus();
             Assert.IsNotNull(status);
         }
 
@@ -56,6 +54,26 @@ namespace CSChatworkAPITest2
         #endregion endpoint /contacts
 
         #region endpoint /rooms
+        [TestCase]
+        public void Test_AddTask()
+        {
+            var room = TestCase.TestCaseUtility.CreateRoomForTest();
+
+            var ids = TestContext.ChatworkClient.AddTask(room.room_id, $"task body created at {DateTime.Today}", DateTime.Today.AddDays(1), new[] { TestContext.Me.account_id });
+
+            Assert.IsNotEmpty(ids.task_ids);
+
+            TestContext.ChatworkClient.DeleteRoom(room.room_id);
+        }
+
+        [TestCase]
+        public void Test_DeleteRoom()
+        {
+            var room = TestCase.TestCaseUtility.CreateRoomForTest();
+            TestContext.ChatworkClient.DeleteRoom(room.room_id);
+            var deletedRoom = TestContext.ChatworkClient.GetRoom(room.room_id);
+            Assert.IsNull(deletedRoom.room_id);
+        }
         #endregion endpoint /rooms
     }
 }
