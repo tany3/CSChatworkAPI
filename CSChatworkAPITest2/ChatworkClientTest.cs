@@ -1,6 +1,7 @@
 ﻿/* See the file "LICENSE" for the full license governing this code. */
 
 using System;
+using System.Collections.Generic;
 using CSChatworkAPI;
 using NUnit.Framework;
 
@@ -38,10 +39,16 @@ namespace CSChatworkAPITest2
 
         #region endpoint /my
         [TestCase]
-        public void Test_My()
+        public void Test_GetStatus()
         {
             var status = client.GetStatus();
             Assert.IsNotNull(status);
+        }
+
+        [TestCaseSource(typeof(TestCase.GetTasksTestCase), nameof(TestCase.GetTasksTestCase.TestCases))]
+        public void Test_GetTasks(string assignedByAccountId, IEnumerable<string> statuses, IEnumerable<CSChatworkAPI.Models.Task> result)
+        {
+            Assert.Inconclusive();
         }
         #endregion endpoint /my
 
