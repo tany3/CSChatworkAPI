@@ -23,6 +23,7 @@ namespace CSChatworkAPITest2
             Assert.Throws<ArgumentNullException>(() => new ChatworkClient(null));
         }
 
+        #region endpoint /me
         [TestCaseSource(typeof(TestCase.MeTestCase), nameof(TestCase.MeTestCase.TestCases))]
         public void Test_Me(string chatworkId)
         {
@@ -33,5 +34,21 @@ namespace CSChatworkAPITest2
             Assert.IsNotEmpty(me.chatwork_id);
             Assert.AreEqual(me.chatwork_id, chatworkId);
         }
+        #endregion endpoint /me
+
+        #region endpoint /my
+        [TestCase]
+        public void Test_My()
+        {
+            var status = client.GetStatus();
+            Assert.IsNotNull(status);
+        }
+        #endregion endpoint /my
+
+        #region endpoint /contacts
+        #endregion endpoint /contacts
+
+        #region endpoint /rooms
+        #endregion endpoint /rooms
     }
 }
