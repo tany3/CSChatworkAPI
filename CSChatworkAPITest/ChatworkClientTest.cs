@@ -9,85 +9,12 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CSChatworkAPITest
 {
-    /// <summary>
-    ///ChatworkClientTest のテスト クラスです。すべての
-    ///ChatworkClientTest 単体テストをここに含めます
-    ///</summary>
-    [TestClass]
     public class ChatworkClientTest
     {
-        /// <summary>
-        ///現在のテストの実行についての情報および機能を
-        ///提供するテスト コンテキストを取得または設定します。
-        ///</summary>
         public TestContext TestContext { get; set; }
 
         public static TestData TestData { get; set; }
-
-        #region 追加のテスト属性
-        [ClassInitialize]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-            TestData = TestData.CreateNew("ChatworkClientTestData.json");
-        }
-        //[ClassCleanup()]
-        //public static void MyClassCleanup()
-        //{
-        //}
-        //[TestInitialize()]
-        //public void MyTestInitialize()
-        //{
-        //}
-        //[TestCleanup()]
-        //public void MyTestCleanup()
-        //{
-        //}
-        //
-        #endregion
-
-
-
-        #region ConstructorTest
-        /// <summary>
-        ///ChatworkClient コンストラクター のテスト1
-        ///</summary>
-        [TestMethod]
-        public void ChatworkClientConstructorTest1()
-        {
-            try
-            {
-                var target = new ChatworkClient(null);
-            }
-            catch (ArgumentNullException)
-            {
-                return;
-            }
-            Assert.Fail("unexpected exception.");
-        }
-
-        /// <summary>
-        ///ChatworkClient コンストラクター のテスト2
-        ///</summary>
-        [TestMethod]
-        public void ChatworkClientConstructorTest2()
-        {
-            try
-            {
-                var target = new ChatworkClient(TestData.APIToken);
-            }
-            catch (ArgumentNullException)
-            {
-                Assert.Fail("unexpected exception.");
-            }
-        }
-        #endregion ConstructorTest
-
-
-
-        /// <summary>
-        ///AddRoom のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void AddRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -100,11 +27,7 @@ namespace CSChatworkAPITest
             Room actual = target.AddRoom(description, icon_preset, members_admin_ids, members_member_ids, members_readonly_ids, name);
             Assert.AreNotEqual(actual.room_id, 0);
         }
-
-        /// <summary>
-        ///AddTask のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void AddTaskTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -116,33 +39,21 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual.task_ids);
             Assert.AreEqual(actual.task_ids.Any(), true);
         }
-
-        /// <summary>
-        ///DeleteRoom のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void DeleteRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
             var roomId = TestData.AddTaskTestRoomId;
             target.DeleteRoom(roomId);
         }
-
-        /// <summary>
-        ///GetContacts のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetContactsTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
             var actual = target.GetContacts();
             Assert.AreEqual(actual.Any(), true);
         }
-
-        /// <summary>
-        ///GetFile のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetFileTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -152,11 +63,7 @@ namespace CSChatworkAPITest
             File actual = target.GetFile(roomId, fileId, createDownloadUrl);
             Assert.AreNotEqual(actual.file_id, 0);
         }
-
-        /// <summary>
-        ///GetFiles のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetFilesTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -166,11 +73,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
         }
-
-        /// <summary>
-        ///GetMe のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetMeTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -178,11 +81,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.account_id, 0);
         }
-
-        /// <summary>
-        ///GetMessage のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetMessageTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -192,11 +91,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.message_id, 0);
         }
-
-        /// <summary>
-        ///GetMessages のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetMessagesTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -206,11 +101,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
         }
-
-        /// <summary>
-        ///GetRoom のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -219,11 +110,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.room_id, 0);
         }
-
-        /// <summary>
-        ///GetRoomMembers のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetRoomMembersTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -232,11 +119,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
         }
-
-        /// <summary>
-        ///GetRooms のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetRoomsTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -244,11 +127,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
         }
-
-        /// <summary>
-        ///GetStatus のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetStatusTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -261,11 +140,7 @@ namespace CSChatworkAPITest
                 || actual.unread_num != 0
                 || actual.unread_room_num != 0);
         }
-
-        /// <summary>
-        ///GetTask のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetTaskTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -275,11 +150,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.task_id, 0);
         }
-
-        /// <summary>
-        ///GetTasks のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetTasksTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -291,11 +162,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
         }
-
-        /// <summary>
-        ///GetTasks のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void GetTasksTest1()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -305,22 +172,14 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.IsTrue(actual.Any());
         }
-
-        /// <summary>
-        ///LeaveRoom のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void LeaveRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
             var roomId = TestData.LeaveRoomTestRoomId;
             target.LeaveRoom(roomId);
         }
-
-        /// <summary>
-        ///SendMessage のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void SendMessageTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -330,11 +189,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.message_id, 0);
         }
-
-        /// <summary>
-        ///UpdateRoom のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void UpdateRoomTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
@@ -346,11 +201,7 @@ namespace CSChatworkAPITest
             Assert.IsNotNull(actual);
             Assert.AreNotEqual(actual.room_id, 0);
         }
-
-        /// <summary>
-        ///UpdateRoomMembers のテスト
-        ///</summary>
-        [TestMethod]
+        
         public void UpdateRoomMembersTest()
         {
             var target = new ChatworkClient(TestData.APIToken);
