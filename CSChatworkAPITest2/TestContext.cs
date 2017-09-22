@@ -48,6 +48,8 @@ namespace CSChatworkAPITest2
         
         public static CSChatworkAPI.Models.Me Me { get; private set; }
 
+        public static CSChatworkAPI.Models.Room TestRoom { get; private set; }
+
         static TestContext()
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
@@ -55,6 +57,7 @@ namespace CSChatworkAPITest2
 
             ChatworkClient = new CSChatworkAPI.ChatworkClient(TestData.InputData.APIToken);
             Me = ChatworkClient.GetMe();
+            TestRoom = TestCase.TestCaseUtility.CreateRoomForTest();
         }
     }
 }
