@@ -1,4 +1,7 @@
-﻿using CSChatworkAPI;
+﻿/* See the file "LICENSE" for the full license governing this code. */
+
+using System;
+using CSChatworkAPI;
 using NUnit.Framework;
 
 namespace CSChatworkAPITest2
@@ -11,6 +14,13 @@ namespace CSChatworkAPITest2
         [OneTimeSetUp]
         public void Setup()
         {
+        }
+
+        [TestCase]
+        public void Test_Constructor()
+        {
+            Assert.DoesNotThrow(() => new ChatworkClient("dummyApiToken"));
+            Assert.Throws<ArgumentNullException>(() => new ChatworkClient(null));
         }
 
         [TestCaseSource(typeof(TestCase.MeTestCase), nameof(TestCase.MeTestCase.TestCases))]
