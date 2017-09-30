@@ -37,9 +37,9 @@ namespace CSChatworkAPI.Test.E2E
             var me = TestContext.ChatworkClient.GetMe();
 
             Assert.IsNotNull(me);
-            Assert.IsNotEmpty(me.account_id);
-            Assert.IsNotEmpty(me.chatwork_id);
-            Assert.AreEqual(me.chatwork_id, chatworkId);
+            Assert.IsNotEmpty(me.AccountId);
+            Assert.IsNotEmpty(me.ChatworkId);
+            Assert.AreEqual(me.ChatworkId, chatworkId);
         }
         #endregion endpoint /me
 
@@ -223,13 +223,13 @@ namespace CSChatworkAPI.Test.E2E
                 TestContext.TestRoom.room_id,
                 $"task body created at {DateTime.Today}",
                 DateTime.Today.AddDays(1),
-                new[] { TestContext.Me.account_id });
+                new[] { TestContext.Me.AccountId });
 
             // act
             var tasks = TestContext.ChatworkClient.GetTasks(
                 TestContext.TestRoom.room_id,
-                TestContext.Me.account_id,
-                TestContext.Me.account_id,
+                TestContext.Me.AccountId,
+                TestContext.Me.AccountId,
                 "open").ToList();
             var task = TestContext.ChatworkClient.GetTask(
                 TestContext.TestRoom.room_id,
@@ -247,10 +247,10 @@ namespace CSChatworkAPI.Test.E2E
             // act
             // 予めファイルをアップロードしておくこと
             var files = TestContext.ChatworkClient.GetFiles(
-                TestContext.Me.room_id,
-                TestContext.Me.account_id).ToList();
+                TestContext.Me.RoomId,
+                TestContext.Me.AccountId).ToList();
             var file = TestContext.ChatworkClient.GetFile(
-                TestContext.Me.room_id,
+                TestContext.Me.RoomId,
                 files.First().FileId,
                 false);
 

@@ -9,7 +9,7 @@ namespace CSChatworkAPI.Test.E2E
         public static Models.Room CreateRoomForTest()
         {
             var now = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss.fff");
-            var accountId = Client.GetMe().account_id;
+            var accountId = Client.GetMe().AccountId;
 
             var admins = new[] { accountId };
             var members = new[] { "" };
