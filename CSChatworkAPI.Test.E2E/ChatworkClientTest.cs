@@ -185,7 +185,13 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_SendMessage()
         {
-            Assert.Inconclusive();
+            // act
+            var messageBody = $"message created at {DateTime.Now:yyyy/MM/dd hh:mm:ss.fff}";
+            TestContext.ChatworkClient.SendMessage(TestContext.TestRoom.room_id, messageBody);
+
+            // assert
+            var messages = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id);
+            Assert.IsTrue(messages.Any(_ => _.body == messageBody));
         }
 
         [TestCase]
