@@ -63,10 +63,13 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MyStatus.cs" />
-    <Compile Include="Models\MyTask.cs" />
+    <Compile Include="Models\MyTasks\AssignedByAccount.cs" />
+    <Compile Include="Models\MyTasks\MyTask.cs" />
+    <Compile Include="Models\MyTasks\Room.cs" />
     <Compile Include="Models\RateLimit.cs" />
     <Compile Include="Models\Room.cs" />
-    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\Tasks\AssignedByAccount.cs" />
+    <Compile Include="Models\Tasks\Task.cs" />
     <Compile Include="Models\TooManyRequestsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

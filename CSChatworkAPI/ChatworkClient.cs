@@ -7,6 +7,8 @@ using System.Linq;
 using CSChatworkAPI.Communicators;
 using CSChatworkAPI.Extensions;
 using CSChatworkAPI.Models;
+using CSChatworkAPI.Models.MyTasks;
+using CSChatworkAPI.Models.Tasks;
 using RestSharp;
 
 namespace CSChatworkAPI

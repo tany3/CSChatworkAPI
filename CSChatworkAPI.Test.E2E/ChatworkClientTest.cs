@@ -233,11 +233,11 @@ namespace CSChatworkAPI.Test.E2E
                 "open").ToList();
             var task = TestContext.ChatworkClient.GetTask(
                 TestContext.TestRoom.RoomId,
-                tasks.First().task_id);
+                tasks.First().TaskId);
 
             // assert
             Assert.IsNotEmpty(responseTaskIds.TaskIds);
-            Assert.IsTrue(responseTaskIds.TaskIds.Any(_ => _ == task.task_id));
+            Assert.IsTrue(responseTaskIds.TaskIds.Any(_ => _ == task.TaskId));
             Assert.GreaterOrEqual(tasks.Count, 1);
         }
 
