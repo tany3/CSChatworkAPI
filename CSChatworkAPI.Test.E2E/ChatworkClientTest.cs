@@ -27,7 +27,7 @@ namespace CSChatworkAPI.Test.E2E
         public void Test_Constructor()
         {
             Assert.DoesNotThrow(() => new ChatworkClient("dummyApiToken"));
-            Assert.Throws<ArgumentNullException>(() => new ChatworkClient(null));
+            Assert.Throws<ArgumentException>(() => new ChatworkClient(null));
         }
 
         #region endpoint /me
