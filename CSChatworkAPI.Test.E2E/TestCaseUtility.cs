@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSChatworkAPI.Test.E2E.TestCase
+namespace CSChatworkAPI.Test.E2E
 {
     public static class TestCaseUtility
     {
@@ -23,6 +23,13 @@ namespace CSChatworkAPI.Test.E2E.TestCase
                 readonlyMembers,
                 $"Test at {now}");
             return room;
+        }
+
+        public static string SendMessage(string roomId)
+        {
+            var messageBody = $"message created at {DateTime.Now:yyyy/MM/dd hh:mm:ss.fff}";
+            Client.SendMessage(roomId, messageBody);
+            return messageBody;
         }
     }
 }

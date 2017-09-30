@@ -42,7 +42,7 @@ namespace CSChatworkAPI.Communicators
             var content = response.Content;
 
             var rl = new RateLimit(response);
-            if (rl.Remaining == 0)
+            if ((int)response.StatusCode == 429)
             {
                 throw new TooManyRequestsException(rl);
             }

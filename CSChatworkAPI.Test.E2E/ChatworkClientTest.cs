@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CSChatworkAPI.Test.E2E.TestCase;
 using NUnit.Framework;
 
@@ -10,13 +11,13 @@ namespace CSChatworkAPI.Test.E2E
     [TestFixture]
     public class ChatworkClientTest
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
             TestContext.SetUp();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             TestContext.TearDown();
@@ -26,7 +27,7 @@ namespace CSChatworkAPI.Test.E2E
         public void Test_Constructor()
         {
             Assert.DoesNotThrow(() => new ChatworkClient("dummyApiToken"));
-            Assert.Throws<ArgumentNullException>(() => new ChatworkClient(null));
+            Assert.Throws<ArgumentException>(() => new ChatworkClient(null));
         }
 
         #region endpoint /me
@@ -70,23 +71,30 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetRooms()
         {
-            Assert.Inconclusive();
+            // prepare
+            var room1 = TestCaseUtility.CreateRoomForTest();
+            var room2 = TestCaseUtility.CreateRoomForTest();
+
+            // act
+            var actual = TestContext.ChatworkClient.GetRooms();
+
+            // assert
+            Assert.Greater(actual.Count(), 2);
+
+            // tear down
+            TestContext.ChatworkClient.DeleteRoom(room1.room_id);
+            TestContext.ChatworkClient.DeleteRoom(room2.room_id);
         }
 
         [TestCase]
         public void Test_AddRoom()
         {
-            Assert.Inconclusive();
+            Assert.IsNotNull(TestContext.TestRoom);
+            Assert.IsNotNull(TestContext.TestRoom.room_id);
         }
 
         [TestCase]
-        public void Test_GetRoom()
-        {
-            Assert.Inconclusive();
-        }
-
-        [TestCase]
-        public void Test_UpdateRoom()
+        public void Test_GetRoom_UpdateRoom()
         {
             // prepare
             var room = TestCaseUtility.CreateRoomForTest();
@@ -152,13 +160,41 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetMessages()
         {
-            Assert.Inconclusive();
+            // prepare
+            var room = TestCaseUtility.CreateRoomForTest();
+            var expectMessageList = new List<string>
+            {
+                TestCaseUtility.SendMessage(room.room_id),
+                TestCaseUtility.SendMessage(room.room_id),
+                TestCaseUtility.SendMessage(room.room_id),
+            };
+
+            // act
+            var actualMessages = TestContext.ChatworkClient.GetMessages(room.room_id).ToList();
+
+            // assert
+            Assert.IsTrue(actualMessages.Count == (expectMessageList.Count + 1/* room created message*/));
+
+            // act
+            var actualMessagesAfter= TestContext.ChatworkClient.GetMessages(room.room_id);
+
+            // assert
+            Assert.IsNull(actualMessagesAfter);
+
+            // tear down
+            TestContext.ChatworkClient.DeleteRoom(room.room_id);
         }
 
         [TestCase]
         public void Test_SendMessage()
         {
-            Assert.Inconclusive();
+            // act
+            var messageBody = $"message created at {DateTime.Now:yyyy/MM/dd hh:mm:ss.fff}";
+            TestContext.ChatworkClient.SendMessage(TestContext.TestRoom.room_id, messageBody);
+
+            // assert
+            var messages = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id);
+            Assert.IsTrue(messages.Any(_ => _.body == messageBody));
         }
 
         [TestCase]

@@ -24,6 +24,8 @@ namespace CSChatworkAPI
         /// <param name="apiToken"></param>
         public ChatworkClient(string apiToken)
         {
+            if (string.IsNullOrEmpty(apiToken)) throw new ArgumentException($"{nameof(apiToken)} must not be NullOrEmpty.");
+
             _api = new ApiCommunicator(apiToken);
         }
 
@@ -134,6 +136,8 @@ namespace CSChatworkAPI
         /// </summary>
         public Room GetRoom(string roomId)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}", roomId);
             return _api.Get<Room>(resource);
         }
@@ -148,6 +152,8 @@ namespace CSChatworkAPI
         /// <returns>ルームId</returns>
         public ResponseRoomId UpdateRoom(string roomId, string description, string icon_preset, string name)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}", roomId);
 
             var parameters = new Dictionary<string, object>
@@ -166,6 +172,8 @@ namespace CSChatworkAPI
         /// <param name="roomId">ルームId</param>
         public void LeaveRoom(string roomId)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}", roomId);
             
             var parameters = new Dictionary<string, object>
@@ -182,6 +190,8 @@ namespace CSChatworkAPI
         /// </summary>
         public void DeleteRoom(string roomId)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}", roomId);
 
             var parameters = new Dictionary<string, object>
@@ -198,6 +208,8 @@ namespace CSChatworkAPI
         /// </summary>
         public IEnumerable<Member> GetRoomMembers(string roomId)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/members", roomId);
             return _api.Get<IEnumerable<Member>>(resource);
         }
@@ -213,6 +225,8 @@ namespace CSChatworkAPI
         public MemberRoles UpdateRoomMembers(string roomId,
             IEnumerable<string> members_admin_ids, IEnumerable<string> members_member_ids, IEnumerable<string> members_readonly_ids)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/members", roomId);
 
             var parameters = new Dictionary<string, object>
@@ -236,6 +250,8 @@ namespace CSChatworkAPI
         /// <returns>チャットのメッセージ一覧</returns>
         public IEnumerable<Message> GetMessages(string roomId, bool force = false)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/messages?force={1}", roomId, force ? 1 : 0);
             return _api.Get<IEnumerable<Message>>(resource);
         }
@@ -248,6 +264,8 @@ namespace CSChatworkAPI
         /// <returns>新しいメッセージId</returns>
         public ResponseMessage SendMessage(string roomId, string messageBody)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/messages", roomId);
 
             var parameters = new Dictionary<string, object>
@@ -266,6 +284,9 @@ namespace CSChatworkAPI
         /// <returns>メッセージ</returns>
         public Message GetMessage(string roomId, string messageId)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+            if (string.IsNullOrEmpty(messageId)) throw new ArgumentException($"{nameof(messageId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/messages/{1}", roomId, messageId);
             return _api.Get<Message>(resource);
         }
@@ -283,6 +304,8 @@ namespace CSChatworkAPI
         /// <returns></returns>
         public IEnumerable<Task> GetTasks(string roomId, string account_id, string assigned_by_account_id, string status)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/tasks", roomId);
 
             var parameters = new Dictionary<string, object>
@@ -309,6 +332,8 @@ namespace CSChatworkAPI
         /// <returns>新しいタスクId</returns>
         public ResponseTaskIds AddTask(string roomId, string body, DateTime? limit, IEnumerable<string> to_ids)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/tasks", roomId);
 
             var parameters = new Dictionary<string, object>
@@ -332,6 +357,9 @@ namespace CSChatworkAPI
         /// <returns>タスク情報</returns>
         public Task GetTask(string roomId, string taskId)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+            if (string.IsNullOrEmpty(taskId)) throw new ArgumentException($"{nameof(taskId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/tasks/{1}", roomId, taskId);
             return _api.Get<Task>(resource);
         }
@@ -344,6 +372,9 @@ namespace CSChatworkAPI
         /// <returns>ファイル情報一覧</returns>
         public IEnumerable<File> GetFiles(string roomId, string account_id)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+            if (string.IsNullOrEmpty(account_id)) throw new ArgumentException($"{nameof(account_id)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/files", roomId);
 
             var parameters = new Dictionary<string, object>
@@ -366,6 +397,9 @@ namespace CSChatworkAPI
         /// <returns>ファイル情報</returns>
         public File GetFile(string roomId, string fileId, bool createDownloadUrl)
         {
+            if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+            if (string.IsNullOrEmpty(fileId)) throw new ArgumentException($"{nameof(fileId)} must not be NullOrEmpty.");
+
             var resource = string.Format("rooms/{0}/files/{1}", roomId, fileId);
 
             var parameters = new Dictionary<string, object>
