@@ -2,10 +2,10 @@
 
 using System;
 using System.Collections.Generic;
-using CSChatworkAPI;
+using CSChatworkAPI.Test.E2E.TestCase;
 using NUnit.Framework;
 
-namespace CSChatworkAPITest2
+namespace CSChatworkAPI.Test.E2E
 {
     [TestFixture]
     public class ChatworkClientTest
@@ -18,7 +18,7 @@ namespace CSChatworkAPITest2
         }
 
         #region endpoint /me
-        [TestCaseSource(typeof(TestCase.MeTestCase), nameof(TestCase.MeTestCase.TestCases))]
+        [TestCaseSource(typeof(MeTestCase), nameof(MeTestCase.TestCases))]
         public void Test_Me(string chatworkId)
         {
             var me = TestContext.ChatworkClient.GetMe();
@@ -38,7 +38,7 @@ namespace CSChatworkAPITest2
             Assert.IsNotNull(status);
         }
 
-        [TestCaseSource(typeof(TestCase.GetTasksTestCase), nameof(TestCase.GetTasksTestCase.TestCases))]
+        [TestCaseSource(typeof(GetTasksTestCase), nameof(GetTasksTestCase.TestCases))]
         public void Test_GetTasks(string assignedByAccountId, IEnumerable<string> statuses, IEnumerable<CSChatworkAPI.Models.Task> result)
         {
             Assert.Inconclusive();
@@ -64,7 +64,7 @@ namespace CSChatworkAPITest2
         public void Test_DeleteRoom()
         {
             // prepare
-            var room = TestCase.TestCaseUtility.CreateRoomForTest();
+            var room = TestCaseUtility.CreateRoomForTest();
 
             // act
             TestContext.ChatworkClient.DeleteRoom(room.room_id);

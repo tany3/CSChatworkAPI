@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChatworkAPI", "CSChatworkAPI\CSChatworkAPI.csproj", "{E46A11F2-AFE4-4A07-9B7F-820A1503B618}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChatworkAPI.Test.E2E", "CSChatworkAPI.Test.E2E\CSChatworkAPI.Test.E2E.csproj", "{301E9A87-D10C-4901-B8FA-40BA74E42DA4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,18 @@ Global
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|x86.ActiveCfg = Release|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Debug|x86.Build.0 = Debug|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Release|x86.ActiveCfg = Release|Any CPU
+		{301E9A87-D10C-4901-B8FA-40BA74E42DA4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

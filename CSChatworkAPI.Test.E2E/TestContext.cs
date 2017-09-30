@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Text;
 using System.IO;
+using System.Text;
+using CSChatworkAPI.Test.E2E.TestCase;
 using Newtonsoft.Json;
 
-namespace CSChatworkAPITest2
+namespace CSChatworkAPI.Test.E2E
 {
     public class TestData
     {
@@ -57,7 +58,7 @@ namespace CSChatworkAPITest2
 
             ChatworkClient = new CSChatworkAPI.ChatworkClient(TestData.InputData.APIToken);
             Me = ChatworkClient.GetMe();
-            TestRoom = TestCase.TestCaseUtility.CreateRoomForTest();
+            TestRoom = TestCaseUtility.CreateRoomForTest();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using NUnit.Framework;
 
-namespace CSChatworkAPITest2.TestCase
+namespace CSChatworkAPI.Test.E2E.TestCase
 {
     public class MeTestCase
     {
