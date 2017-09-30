@@ -55,10 +55,6 @@ namespace CSChatworkAPI.Test.E2E
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
             TestData = TestData.Create(path);
-        }
-
-        public static void SetUp()
-        {
             ChatworkClient = new ChatworkClient(TestData.InputData.APIToken);
             Me = ChatworkClient.GetMe();
             TestRoom = TestCaseUtility.CreateRoomForTest();
@@ -66,7 +62,8 @@ namespace CSChatworkAPI.Test.E2E
 
         public static void TearDown()
         {
-            ChatworkClient.DeleteRoom(TestRoom.room_id);
+            if (TestRoom != null)
+                ChatworkClient.DeleteRoom(TestRoom.room_id);
         }
     }
 }

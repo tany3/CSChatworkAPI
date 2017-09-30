@@ -15,7 +15,6 @@ namespace CSChatworkAPI.Test.E2E
         [SetUp]
         public void SetUp()
         {
-            TestContext.SetUp();
         }
 
         [TearDown]
