@@ -12,7 +12,7 @@ namespace CSChatworkAPI.Communicators
 {
     internal class ApiCommunicator
     {
-        protected string ApiToken { get; private set; }
+        protected string ApiToken { get; }
 
         public ApiCommunicator(string apiToken)
         {
@@ -20,10 +20,7 @@ namespace CSChatworkAPI.Communicators
             ApiToken = apiToken;
         }
 
-        private string BaseUri
-        {
-            get { return @"https://api.chatwork.com/v2/"; }
-        }
+        private static string BaseUri => @"https://api.chatwork.com/v2/";
 
         public T Get<T>(string resource, Dictionary<string, object> parameters = null)
         {
@@ -40,16 +37,10 @@ namespace CSChatworkAPI.Communicators
             BuildParameters(request, parameters);
 
             var response = client.Execute(request);
-            var content = response.Content;
 
-            var rl = new RateLimit(response);
-            if ((int)response.StatusCode == 429)
-                throw new TooManyRequestsException(rl);
+            ThrowExceptionIfNeed(response);
 
-            if (response.StatusCode != HttpStatusCode.NoContent && (int)response.StatusCode != 200)
-                throw new Exception($"API returns {response.StatusCode}. API response is here: {content}");
-
-            return JsonConvert.DeserializeObject<T>(content);
+            return JsonConvert.DeserializeObject<T>(response.Content);
         }
 
         public T Post<T>(string resource, Dictionary<string, object> parameters)
@@ -67,16 +58,10 @@ namespace CSChatworkAPI.Communicators
             BuildParameters(request, parameters);
 
             var response = client.Execute(request);
-            var content = response.Content;
 
-            var rl = new RateLimit(response);
-            if ((int)response.StatusCode == 429)
-                throw new TooManyRequestsException(rl);
+            ThrowExceptionIfNeed(response);
 
-            if (response.StatusCode != HttpStatusCode.NoContent && (int)response.StatusCode != 200)
-                throw new Exception($"API returns {response.StatusCode}. API response is here: {content}");
-
-            return JsonConvert.DeserializeObject<T>(content);
+            return JsonConvert.DeserializeObject<T>(response.Content);
         }
 
         public T Send<T>(string resource, Dictionary<string, object> parameters, Method method)
@@ -94,19 +79,13 @@ namespace CSChatworkAPI.Communicators
             BuildParameters(request, parameters);
 
             var response = client.Execute(request);
-            var content = response.Content;
 
-            var rl = new RateLimit(response);
-            if ((int)response.StatusCode == 429)
-                throw new TooManyRequestsException(rl);
+            ThrowExceptionIfNeed(response);
 
-            if (response.StatusCode != HttpStatusCode.NoContent && (int)response.StatusCode != 200)
-                throw new Exception($"API returns {response.StatusCode}. API response is here: {content}");
-
-            return JsonConvert.DeserializeObject<T>(content);
+            return JsonConvert.DeserializeObject<T>(response.Content);
         }
 
-        private void BuildParameters(RestRequest request, Dictionary<string, object> parameters)
+        private static void BuildParameters(RestRequest request, Dictionary<string, object> parameters)
         {
             if (parameters == null || !parameters.Any()) return;
 
@@ -114,6 +93,16 @@ namespace CSChatworkAPI.Communicators
             {
                 request.AddParameter(parameter.Key, parameter.Value);
             }
+        }
+
+        private static void ThrowExceptionIfNeed(IRestResponse response)
+        {
+            var rl = new RateLimit(response);
+            if ((int)response.StatusCode == 429)
+                throw new TooManyRequestsException(rl);
+
+            if (response.StatusCode != HttpStatusCode.NoContent && (int)response.StatusCode != 200)
+                throw new Exception($"API returns {response.StatusCode}. API response is here: {response.Content}");
         }
     }
 }
