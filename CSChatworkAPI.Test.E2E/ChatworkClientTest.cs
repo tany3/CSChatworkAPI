@@ -2,7 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using CSChatworkAPI.Models;
 using CSChatworkAPI.Test.E2E.TestCase;
+using CSChatworkAPI.Test.E2E.TestCaseSource;
 using NUnit.Framework;
 
 namespace CSChatworkAPI.Test.E2E
@@ -85,12 +87,9 @@ namespace CSChatworkAPI.Test.E2E
             Assert.Inconclusive();
         }
 
-        [TestCase]
-        public void Test_UpdateRoom()
+        [TestCaseSource(typeof(RoomForTest), nameof(RoomForTest.TestCases))]
+        public void Test_UpdateRoom(Room room)
         {
-            // prepare
-            var room = TestCaseUtility.CreateRoomForTest();
-
             // act
             var now = $"{DateTime.Now:yyyy/MM/dd hh:mm:ss.fff}";
             var newIcon = "star";
@@ -109,12 +108,9 @@ namespace CSChatworkAPI.Test.E2E
             TestContext.ChatworkClient.DeleteRoom(room.room_id);
         }
 
-        [TestCase]
-        public void Test_LeaveRoom()
+        [TestCaseSource(typeof(RoomForTest), nameof(RoomForTest.TestCases))]
+        public void Test_LeaveRoom(Room room)
         {
-            // prepare
-            var room = TestCaseUtility.CreateRoomForTest();
-
             // act
             TestContext.ChatworkClient.LeaveRoom(room.room_id);
 
@@ -123,12 +119,9 @@ namespace CSChatworkAPI.Test.E2E
             Assert.IsNull(actual.room_id);
         }
 
-        [TestCase]
-        public void Test_DeleteRoom()
+        [TestCaseSource(typeof(RoomForTest), nameof(RoomForTest.TestCases))]
+        public void Test_DeleteRoom(Room room)
         {
-            // prepare
-            var room = TestCaseUtility.CreateRoomForTest();
-
             // act
             TestContext.ChatworkClient.DeleteRoom(room.room_id);
 

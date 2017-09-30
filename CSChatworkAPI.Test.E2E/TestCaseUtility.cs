@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSChatworkAPI.Test.E2E.TestCase
+namespace CSChatworkAPI.Test.E2E
 {
     public static class TestCaseUtility
     {
