@@ -88,13 +88,39 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_UpdateRoom()
         {
-            Assert.Inconclusive();
+            // prepare
+            var room = TestCaseUtility.CreateRoomForTest();
+
+            // act
+            var now = $"{DateTime.Now:yyyy/MM/dd hh:mm:ss.fff}";
+            var newIcon = "star";
+            var newIconPath = "https://appdata.chatwork.com/icon/ico_star.png";
+            var newDescription = $"description for test room created at {now}";
+            var newRoomName = $"test room created at {now}";
+            TestContext.ChatworkClient.UpdateRoom(room.room_id, newDescription, newIcon, newRoomName);
+
+            // assert
+            var actual = TestContext.ChatworkClient.GetRoom(room.room_id);
+            Assert.AreEqual(newIconPath, actual.icon_path);
+            Assert.AreEqual(newDescription, actual.description);
+            Assert.AreEqual(newRoomName, actual.name);
+
+            // tear down
+            TestContext.ChatworkClient.DeleteRoom(room.room_id);
         }
 
         [TestCase]
         public void Test_LeaveRoom()
         {
-            Assert.Inconclusive();
+            // prepare
+            var room = TestCaseUtility.CreateRoomForTest();
+
+            // act
+            TestContext.ChatworkClient.LeaveRoom(room.room_id);
+
+            // assert
+            var actual = TestContext.ChatworkClient.GetRoom(room.room_id);
+            Assert.IsNull(actual.room_id);
         }
 
         [TestCase]

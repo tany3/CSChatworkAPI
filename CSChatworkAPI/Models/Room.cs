@@ -79,11 +79,16 @@ namespace CSChatworkAPI.Models
         public DateTime last_update_time { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// description
+        /// </summary>
+        public string description { get; set; }
+
+        /// <summary>
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("file_num: {0}, icon_path: {1}, last_update_time: {2}, mention_num: {3}, message_num: {4}, mytask_num: {5}, name: {6}, role: {7}, room_id: {8}, sticky: {9}, task_num: {10}, type: {11}, unread_num: {12}", file_num, icon_path, last_update_time, mention_num, message_num, mytask_num, name, role, room_id, sticky, task_num, type, unread_num);
+            return $"{nameof(room_id)}: {room_id}, {nameof(name)}: {name}, {nameof(type)}: {type}, {nameof(role)}: {role}, {nameof(sticky)}: {sticky}, {nameof(unread_num)}: {unread_num}, {nameof(mention_num)}: {mention_num}, {nameof(mytask_num)}: {mytask_num}, {nameof(message_num)}: {message_num}, {nameof(file_num)}: {file_num}, {nameof(task_num)}: {task_num}, {nameof(icon_path)}: {icon_path}, {nameof(last_update_time)}: {last_update_time}, {nameof(description)}: {description}";
         }
     }
 
