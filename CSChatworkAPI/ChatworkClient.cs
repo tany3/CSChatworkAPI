@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using CSChatworkAPI.Communicators;
 using CSChatworkAPI.Extensions;
@@ -303,6 +302,7 @@ namespace CSChatworkAPI
         public IEnumerable<Task> GetTasks(string roomId, string accountId, string assignedByAccountId, string status)
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
+            if (string.IsNullOrEmpty(status)) throw new ArgumentException($"{nameof(status)} must not be NullOrEmpty.");
 
             var resource = $"rooms/{roomId}/tasks";
 
