@@ -100,6 +100,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// message_id
         /// </summary>
+        [JsonProperty("message_id")]
         public string MessageId { get; set; }
 
         /// <summary>
@@ -149,6 +150,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// task_ids
         /// </summary>
+        [JsonProperty("task_ids")]
         public List<string> TaskIds { get; set; }
 
         /// <summary>

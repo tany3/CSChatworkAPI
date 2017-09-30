@@ -96,6 +96,7 @@ namespace CSChatworkAPI.Models
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -150,6 +151,7 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 
     /// <summary>
@@ -160,8 +162,10 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// room_id
         /// </summary>
+        [JsonProperty("room_id")]
         public string RoomId { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -199,5 +203,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }
