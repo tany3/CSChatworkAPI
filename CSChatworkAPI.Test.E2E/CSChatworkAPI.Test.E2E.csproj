@@ -56,7 +56,9 @@
   <ItemGroup>
     <None Include="packages.config" />
     <None Include="ReadMe.md" />
-    <None Include="TestData.json" />
+    <None Include="TestData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="TestData.template.json" />
   </ItemGroup>
   <ItemGroup>
