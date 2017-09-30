@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSChatworkAPI.Models.Tasks
+namespace CSChatworkAPI.Models
 {
     /// <summary>
     /// AssignedByAccount
@@ -10,12 +10,12 @@ namespace CSChatworkAPI.Models.Tasks
         /// <summary>
         /// account_id
         /// </summary>
-        public string account_id { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
         /// name
         /// </summary>
-        public string name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// avatar_image_url
@@ -27,14 +27,14 @@ namespace CSChatworkAPI.Models.Tasks
         /// </summary>
         public override string ToString()
         {
-            return $"account_id: {account_id}, avatar_image_url: {AvatarImageUrl}, name: {name}";
+            return $"account_id: {AccountId}, avatar_image_url: {AvatarImageUrl}, name: {Name}";
         }
 
         public bool Equals(AssignedByAccount other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(account_id, other.account_id) && string.Equals(name, other.name) && string.Equals(AvatarImageUrl, other.AvatarImageUrl);
+            return string.Equals(AccountId, other.AccountId) && string.Equals(Name, other.Name) && string.Equals(AvatarImageUrl, other.AvatarImageUrl);
         }
 
         public override bool Equals(object obj)
@@ -49,8 +49,8 @@ namespace CSChatworkAPI.Models.Tasks
         {
             unchecked
             {
-                var hashCode = (account_id != null ? account_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
+                var hashCode = (AccountId != null ? AccountId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (AvatarImageUrl != null ? AvatarImageUrl.GetHashCode() : 0);
                 return hashCode;
             }

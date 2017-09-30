@@ -63,12 +63,11 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MyStatus.cs" />
-    <Compile Include="Models\MyTasks\AssignedByAccountInMyTask.cs" />
     <Compile Include="Models\MyTasks\MyTask.cs" />
     <Compile Include="Models\MyTasks\RoomInMyTask.cs" />
     <Compile Include="Models\RateLimit.cs" />
     <Compile Include="Models\Room.cs" />
-    <Compile Include="Models\Tasks\AssignedByAccount.cs" />
+    <Compile Include="Models\AssignedByAccount.cs" />
     <Compile Include="Models\Tasks\Task.cs" />
     <Compile Include="Models\TooManyRequestsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -24,7 +24,7 @@ namespace CSChatworkAPI.Models.MyTasks
         /// <summary>
         /// assigned_by_account
         /// </summary>
-        public AssignedByAccountInMyTask AssignedByAccount { get; set; }
+        public AssignedByAccount AssignedByAccount { get; set; }
 
         /// <summary>
         /// message_id
