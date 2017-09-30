@@ -9,7 +9,7 @@ namespace CSChatworkAPI.Models
     /// <summary>
     /// File
     /// </summary>
-    public class File
+    public class File : IEquatable<File>
     {
         /// <summary>
         /// file_id
@@ -51,8 +51,10 @@ namespace CSChatworkAPI.Models
             return string.Format("account: {0}, file_id: {1}, filename: {2}, filesize: {3}, message_id: {4}, upload_time: {5}", account, file_id, filename, filesize, message_id, upload_time);
         }
 
-        protected bool Equals(File other)
+        public bool Equals(File other)
         {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
             return string.Equals(file_id, other.file_id) && Equals(account, other.account) && string.Equals(message_id, other.message_id) && string.Equals(filename, other.filename) && filesize == other.filesize && upload_time.Equals(other.upload_time);
         }
 
