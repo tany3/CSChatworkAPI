@@ -56,6 +56,10 @@ namespace CSChatworkAPI.Test.E2E
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
             TestData = TestData.Create(path);
             ChatworkClient = new ChatworkClient(TestData.InputData.APIToken);
+        }
+
+        public static void SetUp()
+        {
             Me = ChatworkClient.GetMe();
             TestRoom = TestCaseUtility.CreateRoomForTest();
         }

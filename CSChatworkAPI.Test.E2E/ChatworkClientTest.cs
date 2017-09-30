@@ -12,12 +12,13 @@ namespace CSChatworkAPI.Test.E2E
     [TestFixture]
     public class ChatworkClientTest
     {
-        [SetUp]
+        [OneTimeSetUp]
         public void SetUp()
         {
+            TestContext.SetUp();
         }
 
-        [TearDown]
+        [OneTimeTearDown]
         public void TearDown()
         {
             TestContext.TearDown();
