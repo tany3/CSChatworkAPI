@@ -7,36 +7,38 @@ namespace Example
 {
     class Program
     {
-        private const string ApiToken = @"yourAPIToken";
+        private static string ApiToken = @"yourAPIToken";
 
-        static void Main(string[] args)
+        static void Main()
         {
             var client = new ChatworkClient(ApiToken);
 
             // Me
             Console.WriteLine("=== Me ===");
-            Console.WriteLine(client.GetMe());
+            var me = client.GetMe();
+            Console.WriteLine(me);
 
             // rooms
             Console.WriteLine("=== Rooms ===");
             foreach (var room in client.GetRooms())
-            {
                 Console.WriteLine(room);
-            }
 
             // members
             Console.WriteLine("=== Contacts ===");
             foreach (var contacts in client.GetContacts())
-            {
                 Console.WriteLine(contacts);
-            }
 
             // send message
-            const string roomId = ""; // TODO:yourRoomId
-            const string body = "Hello Chatwork!";
-            var resp = client.SendMessage(roomId, body);
-            Console.WriteLine(resp);
-            Console.WriteLine("Message: id={0} body={1}", resp.MessageId, body);
+            Console.WriteLine("=== Send Message ===");
+            var roomId = me.RoomId; // my chat
+            var messageBody = "Hello Chatwork!";
+            var responseMessage = client.SendMessage(roomId, messageBody);
+            Console.WriteLine($"{responseMessage} as \"{messageBody}\"");
+
+            // get message
+            Console.WriteLine("=== Get Message ===");
+            var message = client.GetMessage(me.RoomId, responseMessage.MessageId);
+            Console.WriteLine(message);
         }
     }
 }
