@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
 {
@@ -10,16 +11,19 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account_id
         /// </summary>
+        [JsonProperty("account_id")]
         public string AccountId { get; set; }
 
         /// <summary>
         /// name
         /// </summary>
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// avatar_image_url
         /// </summary>
+        [JsonProperty("avatar_image_url")]
         public string AvatarImageUrl { get; set; }
 
         /// <summary>

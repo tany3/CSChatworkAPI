@@ -14,73 +14,86 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// room_id
         /// </summary>
+        [JsonProperty("room_id")]
         public string RoomId { get; set; }
 
         /// <summary>
         /// name
         /// </summary>
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// type
         /// </summary>
+        [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
         /// role
         /// </summary>
+        [JsonProperty("role")]
         public string Role { get; set; }
 
         /// <summary>
         /// sticky
         /// </summary>
+        [JsonProperty("sticky")]
         public bool Sticky { get; set; }
 
         /// <summary>
         /// unread_num
         /// </summary>
+        [JsonProperty("unread_num")]
         public long UnreadNum { get; set; }
 
         /// <summary>
         /// mention_num
         /// </summary>
+        [JsonProperty("mention_num")]
         public long MentionNum { get; set; }
 
         /// <summary>
         /// mytask_num
         /// </summary>
+        [JsonProperty("mytask_num")]
         public long MyTaskNum { get; set; }
 
         /// <summary>
         /// message_num
         /// </summary>
+        [JsonProperty("message_num")]
         public long MessageNum { get; set; }
 
         /// <summary>
         /// file_num
         /// </summary>
+        [JsonProperty("file_num")]
         public long FileNum { get; set; }
 
         /// <summary>
         /// task_num
         /// </summary>
+        [JsonProperty("task_num")]
         public long TaskNum { get; set; }
 
         /// <summary>
-        /// last_update_time
+        /// icon_path
         /// </summary>
+        [JsonProperty("icon_path")]
         public string IconPath { get; set; }
 
         /// <summary>
         /// last_update_time
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("last_update_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
         public DateTime LastUpdateTime { get; set; }
 
         /// <summary>
         /// description
         /// </summary>
+        [JsonProperty("description")]
         public string Description { get; set; }
 
         /// <summary>

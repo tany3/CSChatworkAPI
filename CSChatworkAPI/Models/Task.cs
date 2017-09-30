@@ -14,38 +14,44 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// task_id
         /// </summary>
+        [JsonProperty("task_id")]
         public string TaskId { get; set; }
 
         /// <summary>
         /// account
         /// </summary>
+        [JsonProperty("account")]
         public Account Account { get; set; }
 
         /// <summary>
         /// assigned_by_account
         /// </summary>
+        [JsonProperty("assigned_by_account")]
         public AssignedByAccount AssignedByAccount { get; set; }
 
         /// <summary>
         /// message_id
         /// </summary>
+        [JsonProperty("message_id")]
         public string MessageId { get; set; }
 
         /// <summary>
         /// body
         /// </summary>
+        [JsonProperty("body")]
         public string Body { get; set; }
 
         /// <summary>
         /// limit_time
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("limit_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
         public DateTime LimitTime { get; set; }
 
         /// <summary>
         /// status
         /// </summary>
+        [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>

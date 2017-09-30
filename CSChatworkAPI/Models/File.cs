@@ -14,32 +14,37 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// file_id
         /// </summary>
+        [JsonProperty("file_id")]
         public string FileId { get; set; }
 
         /// <summary>
         /// account
         /// </summary>
+        [JsonProperty("account")]
         public Account Account { get; set; }
 
         /// <summary>
-        /// account
+        /// message_id
         /// </summary>
+        [JsonProperty("message_id")]
         public string MessageId { get; set; }
 
         /// <summary>
         /// filename
         /// </summary>
+        [JsonProperty("filename")]
         public string Filename { get; set; }
 
         /// <summary>
         /// filesize
         /// </summary>
+        [JsonProperty("filesize")]
         public int FileSize { get; set; }
 
         /// <summary>
         /// upload_time
-        /// </summary>
-        [JsonProperty]
+        /// </summary
+        [JsonProperty("upload_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
         public DateTime UploadTime { get; set; }
 

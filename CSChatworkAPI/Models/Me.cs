@@ -1,6 +1,7 @@
 ﻿/* See the file "LICENSE" for the full license governing this code. */
 
 using System;
+using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
 {
@@ -12,91 +13,109 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account_id
         /// </summary>
+        [JsonProperty("account_id")]
         public string AccountId { get; set; }
 
         /// <summary>
         /// room_id
         /// </summary>
+        [JsonProperty("room_id")]
         public string RoomId { get; set; }
 
         /// <summary>
         /// name
         /// </summary>
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// chatwork_id
         /// </summary>
+        [JsonProperty("chatwork_id")]
         public string ChatworkId { get; set; }
 
         /// <summary>
         /// organization_id
         /// </summary>
+        [JsonProperty("organization_id")]
         public string OrganizationId { get; set; }
 
         /// <summary>
         /// organization_name
         /// </summary>
+        [JsonProperty("organization_name")]
         public string OrganizationName { get; set; }
 
         /// <summary>
         /// department
         /// </summary>
+        [JsonProperty("department")]
         public string Department { get; set; }
 
         /// <summary>
         /// title
         /// </summary>
+        [JsonProperty("title")]
         public string Title { get; set; }
 
         /// <summary>
         /// url
         /// </summary>
+        [JsonProperty("url")]
         public string Url { get; set; }
 
         /// <summary>
-        /// 
+        /// introduction
         /// </summary>
+        [JsonProperty("introduction")]
         public string Introduction { get; set; }
 
         /// <summary>
         /// mail
         /// </summary>
+        [JsonProperty("mail")]
         public string Mail { get; set; }
 
         /// <summary>
         /// tel_organization
         /// </summary>
+        [JsonProperty("tel_organization")]
         public string TelOrganization { get; set; }
 
         /// <summary>
         /// tel_extension
         /// </summary>
+        [JsonProperty("tel_extension")]
         public string TelExtension { get; set; }
 
         /// <summary>
         /// tel_mobile
         /// </summary>
+        [JsonProperty("tel_mobile")]
         public string TelMobile { get; set; }
 
         /// <summary>
         /// skype
         /// </summary>
+        [JsonProperty("skype")]
         public string Skype { get; set; }
 
         /// <summary>
         /// facebook
         /// </summary>
+        [JsonProperty("facebook")]
         public string Facebook { get; set; }
 
         /// <summary>
         /// twitter
         /// </summary>
+        [JsonProperty("twitter")]
         public string Twitter { get; set; }
 
         /// <summary>
         /// avatar_image_url
         /// </summary>
+        [JsonProperty("avatar_image_url")]
         public string AvatarImageUrl { get; set; }
 
         /// <summary>

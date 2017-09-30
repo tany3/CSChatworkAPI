@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CSChatworkAPI.Extensions;
+using Newtonsoft.Json;
 using RestSharp;
 
 namespace CSChatworkAPI.Models
@@ -11,18 +12,21 @@ namespace CSChatworkAPI.Models
     public class RateLimit
     {
         /// <summary>
-        /// Limit
+        /// limit
         /// </summary>
+        [JsonProperty("limit")]
         public long Limit { get; set; }
 
         /// <summary>
-        /// Remaining
+        /// remaining
         /// </summary>
+        [JsonProperty("remaining")]
         public long Remaining { get; set; }
 
         /// <summary>
-        /// Reset
+        /// reset
         /// </summary>
+        [JsonProperty("reset")]
         public DateTime Reset { get; set; }
 
         /// <summary>

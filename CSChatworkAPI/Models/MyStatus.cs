@@ -1,6 +1,7 @@
 ﻿/* See the file "LICENSE" for the full license governing this code. */
 
 using System;
+using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
 {
@@ -12,31 +13,37 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// unread_room_num
         /// </summary>
+        [JsonProperty("unread_room_num")]
         public long UnreadRoomNum { get; set; }
 
         /// <summary>
         /// mention_room_num
         /// </summary>
+        [JsonProperty("mention_room_num")]
         public long MentionRoomNum { get; set; }
 
         /// <summary>
         /// mytask_room_num
         /// </summary>
+        [JsonProperty("mytask_room_num")]
         public long MyTaskRoomNum { get; set; }
 
         /// <summary>
         /// unread_num
         /// </summary>
+        [JsonProperty("unread_num")]
         public long UnreadNum { get; set; }
 
         /// <summary>
         /// mention_num
         /// </summary>
+        [JsonProperty("mention_num")]
         public long MentionNum { get; set; }
 
         /// <summary>
         /// mytask_num
         /// </summary>
+        [JsonProperty("mytask_num")]
         public long MyTaskNum { get; set; }
 
         /// <summary>

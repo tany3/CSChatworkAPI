@@ -15,29 +15,32 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// message_id
         /// </summary>
+        [JsonProperty("message_id")]
         public string MessageId { get; set; }
 
         /// <summary>
         /// account
         /// </summary>
+        [JsonProperty("account")]
         public Account Account { get; set; }
 
         /// <summary>
         /// body
         /// </summary>
+        [JsonProperty("body")]
         public string Body { get; set; }
 
         /// <summary>
         /// send_time
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("send_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
         public DateTime SendTime { get; set; }
 
         /// <summary>
         /// update_time
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("update_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
         public DateTime UpdateTime { get; set; }
 

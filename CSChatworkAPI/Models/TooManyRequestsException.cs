@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
 {
@@ -10,6 +11,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// RateLimit
         /// </summary>
+        [JsonProperty("rate_limit")]
         public RateLimit RateLimit { get; private set; }
 
         /// <summary>
@@ -26,7 +28,7 @@ namespace CSChatworkAPI.Models
         /// </summary>
         public override string ToString()
         {
-            return string.Format("{0}, RateLimit: {1}", base.ToString(), RateLimit);
+            return $"{base.ToString()}, RateLimit: {RateLimit}";
         }
     }
 }

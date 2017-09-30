@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
 {
@@ -13,41 +14,49 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account_id
         /// </summary>
+        [JsonProperty("account_id")]
         public string AccountId { get; set; }
 
         /// <summary>
         /// role
         /// </summary>
+        [JsonProperty("role")]
         public string Role { get; set; }
 
         /// <summary>
         /// name
         /// </summary>
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
         /// chatwork_id
         /// </summary>
+        [JsonProperty("chatwork_id")]
         public string ChatworkId { get; set; }
 
         /// <summary>
         /// organization_id
         /// </summary>
+        [JsonProperty("organization_id")]
         public string OrganizationId { get; set; }
 
         /// <summary>
         /// organization_name
         /// </summary>
+        [JsonProperty("organization_name")]
         public string OrganizationName { get; set; }
 
         /// <summary>
         /// department
         /// </summary>
+        [JsonProperty("department")]
         public string Department { get; set; }
 
         /// <summary>
         /// avatar_image_url
         /// </summary>
+        [JsonProperty("avatar_image_url")]
         public string AvatarImageUrl { get; set; }
 
         /// <summary>
