@@ -1,29 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example", "Example\Example.csproj", "{0EA5A0FD-9063-470D-95D4-AD4C16480176}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChatworkAPI", "CSChatworkAPI\CSChatworkAPI.csproj", "{E46A11F2-AFE4-4A07-9B7F-820A1503B618}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{299E522E-8E4E-49B5-AACA-408CEAA38477}"
-	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChatworkAPITest", "CSChatworkAPITest\CSChatworkAPITest.csproj", "{EF2370BD-3F24-421F-A40C-0A345E6F785E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{43C5A0D7-25E5-40A1-85A6-45C69E6CE6E0}"
-	ProjectSection(SolutionItems) = preProject
-		CSChatworkAPI.vsmdi = CSChatworkAPI.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSChatworkAPITest2", "CSChatworkAPITest2\CSChatworkAPITest2.csproj", "{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,31 +37,12 @@ Global
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E46A11F2-AFE4-4A07-9B7F-820A1503B618}.Release|x86.ActiveCfg = Release|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{EF2370BD-3F24-421F-A40C-0A345E6F785E}.Release|x86.ActiveCfg = Release|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Debug|x86.Build.0 = Debug|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Release|x86.ActiveCfg = Release|Any CPU
-		{8B36C8D0-85AE-457B-9BEA-5627757C3AA4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D0D80D2A-97B8-4582-ACA3-DF8F8190C921}
 	EndGlobalSection
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = CSChatworkAPI.vsmdi
