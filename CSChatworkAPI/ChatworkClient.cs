@@ -138,7 +138,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}", roomId);
+            var resource = $"rooms/{roomId}";
             return _api.Get<Room>(resource);
         }
 
@@ -154,7 +154,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}", roomId);
+            var resource = $"rooms/{roomId}";
 
             var parameters = new Dictionary<string, object>
             {
@@ -174,7 +174,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}", roomId);
+            var resource = $"rooms/{roomId}";
             
             var parameters = new Dictionary<string, object>
             {
@@ -191,7 +191,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}", roomId);
+            var resource = $"rooms/{roomId}";
 
             var parameters = new Dictionary<string, object>
             {
@@ -208,7 +208,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/members", roomId);
+            var resource = $"rooms/{roomId}/members";
             return _api.Get<IEnumerable<Member>>(resource);
         }
 
@@ -225,7 +225,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/members", roomId);
+            var resource = $"rooms/{roomId}/members";
 
             var parameters = new Dictionary<string, object>
             {
@@ -250,7 +250,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/messages?force={1}", roomId, force ? 1 : 0);
+            var resource = $"rooms/{roomId}/messages?force={(force ? 1 : 0)}";
             return _api.Get<IEnumerable<Message>>(resource);
         }
 
@@ -264,7 +264,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/messages", roomId);
+            var resource = $"rooms/{roomId}/messages";
 
             var parameters = new Dictionary<string, object>
             {
@@ -285,7 +285,7 @@ namespace CSChatworkAPI
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
             if (string.IsNullOrEmpty(messageId)) throw new ArgumentException($"{nameof(messageId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/messages/{1}", roomId, messageId);
+            var resource = $"rooms/{roomId}/messages/{messageId}";
             return _api.Get<Message>(resource);
         }
 
@@ -304,13 +304,13 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/tasks", roomId);
+            var resource = $"rooms/{roomId}/tasks";
 
             var parameters = new Dictionary<string, object>
             {
                 {"account_id", accountId},
                 {"assigned_by_account_id", assignedByAccountId},
-                {"status", status},
+                {"status", status}
             };
 
             return _api.Get<IEnumerable<Task>>(resource, parameters);
@@ -332,7 +332,7 @@ namespace CSChatworkAPI
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/tasks", roomId);
+            var resource = $"rooms/{roomId}/tasks";
 
             var parameters = new Dictionary<string, object>
             {
@@ -358,7 +358,7 @@ namespace CSChatworkAPI
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
             if (string.IsNullOrEmpty(taskId)) throw new ArgumentException($"{nameof(taskId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/tasks/{1}", roomId, taskId);
+            var resource = $"rooms/{roomId}/tasks/{taskId}";
             return _api.Get<Task>(resource);
         }
 
@@ -373,7 +373,7 @@ namespace CSChatworkAPI
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
             if (string.IsNullOrEmpty(accountId)) throw new ArgumentException($"{nameof(accountId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/files", roomId);
+            var resource = $"rooms/{roomId}/files";
 
             var parameters = new Dictionary<string, object>
             {
@@ -398,7 +398,7 @@ namespace CSChatworkAPI
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
             if (string.IsNullOrEmpty(fileId)) throw new ArgumentException($"{nameof(fileId)} must not be NullOrEmpty.");
 
-            var resource = string.Format("rooms/{0}/files/{1}", roomId, fileId);
+            var resource = $"rooms/{roomId}/files/{fileId}";
 
             var parameters = new Dictionary<string, object>
             {
