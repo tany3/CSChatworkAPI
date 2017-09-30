@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ReadMe.md" />
     <None Include="TestData.json" />
+    <None Include="TestData.template.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CSChatworkAPI\CSChatworkAPI.csproj">
