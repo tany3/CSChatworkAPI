@@ -14,48 +14,48 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// file_id
         /// </summary>
-        public string file_id { get; set; }
+        public string FileId { get; set; }
 
         /// <summary>
         /// account
         /// </summary>
-        public Account account { get; set; }
+        public Account Account { get; set; }
 
         /// <summary>
         /// account
         /// </summary>
-        public string message_id { get; set; }
+        public string MessageId { get; set; }
 
         /// <summary>
         /// filename
         /// </summary>
-        public string filename { get; set; }
+        public string Filename { get; set; }
 
         /// <summary>
         /// filesize
         /// </summary>
-        public int filesize { get; set; }
+        public int Filesize { get; set; }
 
         /// <summary>
         /// upload_time
         /// </summary>
         [JsonProperty]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
-        public DateTime upload_time { get; set; }
+        public DateTime UploadTime { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account: {0}, file_id: {1}, filename: {2}, filesize: {3}, message_id: {4}, upload_time: {5}", account, file_id, filename, filesize, message_id, upload_time);
+            return string.Format("account: {0}, file_id: {1}, filename: {2}, filesize: {3}, message_id: {4}, upload_time: {5}", Account, FileId, Filename, Filesize, MessageId, UploadTime);
         }
 
         public bool Equals(File other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(file_id, other.file_id) && Equals(account, other.account) && string.Equals(message_id, other.message_id) && string.Equals(filename, other.filename) && filesize == other.filesize && upload_time.Equals(other.upload_time);
+            return string.Equals(FileId, other.FileId) && Equals(Account, other.Account) && string.Equals(MessageId, other.MessageId) && string.Equals(Filename, other.Filename) && Filesize == other.Filesize && UploadTime.Equals(other.UploadTime);
         }
 
         public override bool Equals(object obj)
@@ -70,12 +70,12 @@ namespace CSChatworkAPI.Models
         {
             unchecked
             {
-                var hashCode = (file_id != null ? file_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (account != null ? account.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (message_id != null ? message_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (filename != null ? filename.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ filesize;
-                hashCode = (hashCode * 397) ^ upload_time.GetHashCode();
+                var hashCode = (FileId != null ? FileId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Account != null ? Account.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (MessageId != null ? MessageId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Filename != null ? Filename.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Filesize;
+                hashCode = (hashCode * 397) ^ UploadTime.GetHashCode();
                 return hashCode;
             }
         }

@@ -251,7 +251,7 @@ namespace CSChatworkAPI.Test.E2E
                 TestContext.Me.account_id).ToList();
             var file = TestContext.ChatworkClient.GetFile(
                 TestContext.Me.room_id,
-                files.First().file_id,
+                files.First().FileId,
                 false);
 
             // assert
