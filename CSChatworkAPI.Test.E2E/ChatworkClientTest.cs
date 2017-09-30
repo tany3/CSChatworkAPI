@@ -71,7 +71,19 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetRooms()
         {
-            Assert.Inconclusive();
+            // prepare
+            var room1 = TestCaseUtility.CreateRoomForTest();
+            var room2 = TestCaseUtility.CreateRoomForTest();
+
+            // act
+            var actual = TestContext.ChatworkClient.GetRooms();
+
+            // assert
+            Assert.Greater(actual.Count(), 2);
+
+            // tear down
+            TestContext.ChatworkClient.DeleteRoom(room1.room_id);
+            TestContext.ChatworkClient.DeleteRoom(room2.room_id);
         }
 
         [TestCase]
