@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using CSChatworkAPI.Models;
 using Newtonsoft.Json;
 using RestSharp;
@@ -43,15 +44,10 @@ namespace CSChatworkAPI.Communicators
 
             var rl = new RateLimit(response);
             if ((int)response.StatusCode == 429)
-            {
                 throw new TooManyRequestsException(rl);
-            }
 
-            //var errors = JsonConvert.DeserializeObject<Errors>(content);
-            //if (errors.errors != null && errors.errors.Any())
-            //{
-            //    throw new Exception(errors.ToString());
-            //}
+            if (response.StatusCode != HttpStatusCode.NoContent && (int)response.StatusCode != 200)
+                throw new Exception($"API returns {response.StatusCode}. API response is here: {content}");
 
             return JsonConvert.DeserializeObject<T>(content);
         }
@@ -74,16 +70,11 @@ namespace CSChatworkAPI.Communicators
             var content = response.Content;
 
             var rl = new RateLimit(response);
-            if (rl.Remaining == 0)
-            {
+            if ((int)response.StatusCode == 429)
                 throw new TooManyRequestsException(rl);
-            }
 
-            //var errors = JsonConvert.DeserializeObject<Errors>(content);
-            //if (errors.errors != null && errors.errors.Any())
-            //{
-            //    throw new Exception(errors.ToString());
-            //}
+            if (response.StatusCode != HttpStatusCode.NoContent && (int)response.StatusCode != 200)
+                throw new Exception($"API returns {response.StatusCode}. API response is here: {content}");
 
             return JsonConvert.DeserializeObject<T>(content);
         }
@@ -104,18 +95,13 @@ namespace CSChatworkAPI.Communicators
 
             var response = client.Execute(request);
             var content = response.Content;
-            
-            var rl = new RateLimit(response);
-            if (rl.Remaining == 0)
-            {
-                throw new TooManyRequestsException(rl);
-            }
 
-            //var errors = JsonConvert.DeserializeObject<Errors>(content);
-            //if (errors.errors != null && errors.errors.Any())
-            //{
-            //    throw new Exception(errors.ToString());
-            //}
+            var rl = new RateLimit(response);
+            if ((int)response.StatusCode == 429)
+                throw new TooManyRequestsException(rl);
+
+            if (response.StatusCode != HttpStatusCode.NoContent && (int)response.StatusCode != 200)
+                throw new Exception($"API returns {response.StatusCode}. API response is here: {content}");
 
             return JsonConvert.DeserializeObject<T>(content);
         }

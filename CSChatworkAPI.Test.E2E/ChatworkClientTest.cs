@@ -127,8 +127,10 @@ namespace CSChatworkAPI.Test.E2E
             TestContext.ChatworkClient.LeaveRoom(room.RoomId);
 
             // assert
-            var actual = TestContext.ChatworkClient.GetRoom(room.RoomId);
-            Assert.IsNull(actual.RoomId);
+            var message = Assert.Throws<Exception>(() => TestContext.ChatworkClient.GetRoom(room.RoomId)).Message;
+            Assert.AreEqual(
+                "API returns Forbidden. API response is here: {\"errors\":[\"You don't have permission to get this room\"]}",
+                message);
         }
 
         [TestCase]
@@ -141,8 +143,10 @@ namespace CSChatworkAPI.Test.E2E
             TestContext.ChatworkClient.DeleteRoom(room.RoomId);
 
             // assert
-            var deletedRoom = TestContext.ChatworkClient.GetRoom(room.RoomId);
-            Assert.IsNull(deletedRoom.RoomId);
+            var message = Assert.Throws<Exception>(() => TestContext.ChatworkClient.GetRoom(room.RoomId)).Message;
+            Assert.AreEqual(
+                "API returns Forbidden. API response is here: {\"errors\":[\"You don't have permission to get this room\"]}",
+                message);
         }
 
         [TestCase]
