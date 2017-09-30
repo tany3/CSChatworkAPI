@@ -112,8 +112,8 @@ namespace CSChatworkAPI
         /// <summary>
         /// グループチャットを新規作成
         /// </summary>
-        public Room AddRoom(string description, string icon_preset,
-            IEnumerable<string> members_admin_ids, IEnumerable<string> members_member_ids, IEnumerable<string> members_readonly_ids,
+        public Room AddRoom(string description, string iconPreset,
+            IEnumerable<string> membersAdminIds, IEnumerable<string> membersMemberIds, IEnumerable<string> membersReadonlyIds,
             string name)
         {
             const string resource = @"rooms";
@@ -121,10 +121,10 @@ namespace CSChatworkAPI
             var parameters = new Dictionary<string, object>
             {
                 {"description", description},
-                {"icon_preset", icon_preset},
-                {"members_admin_ids", string.Join(",", members_admin_ids)},
-                {"members_member_ids", members_member_ids != null ? string.Join(",", members_member_ids) : ""},
-                {"members_readonly_ids", members_readonly_ids != null ? string.Join(",", members_readonly_ids) : ""},
+                {"icon_preset", iconPreset},
+                {"members_admin_ids", string.Join(",", membersAdminIds)},
+                {"members_member_ids", membersMemberIds != null ? string.Join(",", membersMemberIds) : ""},
+                {"members_readonly_ids", membersReadonlyIds != null ? string.Join(",", membersReadonlyIds) : ""},
                 {"name", name},
             };
 
@@ -147,10 +147,10 @@ namespace CSChatworkAPI
         /// </summary>
         /// <param name="roomId">ルームId</param>
         /// <param name="description">グループチャットの概要説明テキスト</param>
-        /// <param name="icon_preset">グループチャットのアイコン種類</param>
+        /// <param name="iconPreset">グループチャットのアイコン種類</param>
         /// <param name="name">グループチャットのチャット名</param>
         /// <returns>ルームId</returns>
-        public ResponseRoomId UpdateRoom(string roomId, string description, string icon_preset, string name)
+        public ResponseRoomId UpdateRoom(string roomId, string description, string iconPreset, string name)
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
@@ -159,7 +159,7 @@ namespace CSChatworkAPI
             var parameters = new Dictionary<string, object>
             {
                 {"description", description},
-                {"icon_preset", icon_preset},
+                {"icon_preset", iconPreset},
                 {"name", name},
             };
 
@@ -216,12 +216,12 @@ namespace CSChatworkAPI
         /// チャットのメンバーを一括変更
         /// </summary>
         /// <param name="roomId">ルームId</param>
-        /// <param name="members_admin_ids">作成したチャットに参加メンバーのうち、管理者権限にしたいユーザーのアカウントIDの配列。最低1人は指定する必要がある。</param>
-        /// <param name="members_member_ids">作成したチャットに参加メンバーのうち、メンバー権限にしたいユーザーのアカウントIDの配列。</param>
-        /// <param name="members_readonly_ids">作成したチャットに参加メンバーのうち、閲覧のみ権限にしたいユーザーのアカウントIDの配列。</param>
+        /// <param name="membersAdminIds">作成したチャットに参加メンバーのうち、管理者権限にしたいユーザーのアカウントIDの配列。最低1人は指定する必要がある。</param>
+        /// <param name="membersMemberIds">作成したチャットに参加メンバーのうち、メンバー権限にしたいユーザーのアカウントIDの配列。</param>
+        /// <param name="membersReadonlyIds">作成したチャットに参加メンバーのうち、閲覧のみ権限にしたいユーザーのアカウントIDの配列。</param>
         /// <returns>一括変更結果</returns>
         public MemberRoles UpdateRoomMembers(string roomId,
-            IEnumerable<string> members_admin_ids, IEnumerable<string> members_member_ids, IEnumerable<string> members_readonly_ids)
+            IEnumerable<string> membersAdminIds, IEnumerable<string> membersMemberIds, IEnumerable<string> membersReadonlyIds)
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
@@ -229,9 +229,9 @@ namespace CSChatworkAPI
 
             var parameters = new Dictionary<string, object>
             {
-                {"members_admin_ids", string.Join(",", members_admin_ids)},
-                {"members_member_ids", string.Join(",", members_member_ids)},
-                {"members_readonly_ids", string.Join(",", members_readonly_ids)},
+                {"members_admin_ids", string.Join(",", membersAdminIds)},
+                {"members_member_ids", string.Join(",", membersMemberIds)},
+                {"members_readonly_ids", string.Join(",", membersReadonlyIds)},
             };
 
             return _api.Send<MemberRoles>(resource, parameters, Method.PUT);
@@ -293,14 +293,14 @@ namespace CSChatworkAPI
         /// チャットのタスク一覧を取得 (※100件まで取得可能。今後、より多くのデータを取得する為のページネーションの仕組みを提供予定)
         /// </summary>
         /// <param name="roomId">ルームId</param>
-        /// <param name="account_id">タスクの担当者のアカウントID</param>
-        /// <param name="assigned_by_account_id">タスクの依頼者のアカウントID</param>
+        /// <param name="accountId">タスクの担当者のアカウントID</param>
+        /// <param name="assignedByAccountId">タスクの依頼者のアカウントID</param>
         /// <param name="status">
         /// <para>タスクのステータス</para>
         /// <para>正しい値の一覧：open, done</para>
         /// </param>
         /// <returns></returns>
-        public IEnumerable<Task> GetTasks(string roomId, string account_id, string assigned_by_account_id, string status)
+        public IEnumerable<Task> GetTasks(string roomId, string accountId, string assignedByAccountId, string status)
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
@@ -308,8 +308,8 @@ namespace CSChatworkAPI
 
             var parameters = new Dictionary<string, object>
             {
-                {"account_id", account_id},
-                {"assigned_by_account_id", assigned_by_account_id},
+                {"account_id", accountId},
+                {"assigned_by_account_id", assignedByAccountId},
                 {"status", status},
             };
 
@@ -322,13 +322,13 @@ namespace CSChatworkAPI
         /// <param name="roomId">ルームId</param>
         /// <param name="body">タスクの内容</param>
         /// <param name="limit">タスクの期限</param>
-        /// <param name="to_ids">
+        /// <param name="toIds">
         /// <para>担当者のアカウントID</para>
         /// <para>担当者のアカウントIDをカンマ区切りで</para>
         /// <para>※リストはカンマ区切りで複数の値を指定してください</para>
         /// </param>
         /// <returns>新しいタスクId</returns>
-        public ResponseTaskIds AddTask(string roomId, string body, DateTime? limit, IEnumerable<string> to_ids)
+        public ResponseTaskIds AddTask(string roomId, string body, DateTime? limit, IEnumerable<string> toIds)
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
 
@@ -337,7 +337,7 @@ namespace CSChatworkAPI
             var parameters = new Dictionary<string, object>
             {
                 {"body", body},
-                {"to_ids", string.Join(",", to_ids)},
+                {"to_ids", string.Join(",", toIds)},
             };
             if (limit.HasValue)
             {
@@ -366,18 +366,18 @@ namespace CSChatworkAPI
         /// チャットのファイル一覧を取得 (※100件まで取得可能。今後、より多くのデータを取得する為のページネーションの仕組みを提供予定)
         /// </summary>
         /// <param name="roomId">ルームId</param>
-        /// <param name="account_id">アップロードしたユーザーのアカウントID</param>
+        /// <param name="accountId">アップロードしたユーザーのアカウントID</param>
         /// <returns>ファイル情報一覧</returns>
-        public IEnumerable<File> GetFiles(string roomId, string account_id)
+        public IEnumerable<File> GetFiles(string roomId, string accountId)
         {
             if (string.IsNullOrEmpty(roomId)) throw new ArgumentException($"{nameof(roomId)} must not be NullOrEmpty.");
-            if (string.IsNullOrEmpty(account_id)) throw new ArgumentException($"{nameof(account_id)} must not be NullOrEmpty.");
+            if (string.IsNullOrEmpty(accountId)) throw new ArgumentException($"{nameof(accountId)} must not be NullOrEmpty.");
 
             var resource = string.Format("rooms/{0}/files", roomId);
 
             var parameters = new Dictionary<string, object>
             {
-                {"account_id", account_id},
+                {"account_id", accountId},
             };
 
             return _api.Get<IEnumerable<File>>(resource, parameters);
