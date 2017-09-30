@@ -14,6 +14,7 @@ namespace CSChatworkAPI.Test.E2E
         [OneTimeSetUp]
         public void SetUp()
         {
+            TestContext.CleanTestRooms();
             TestContext.SetUp();
         }
 

@@ -4,6 +4,8 @@ namespace CSChatworkAPI.Test.E2E
 {
     public static class TestCaseUtility
     {
+        public static string RoomNamePrefix = "CSChatworkAPI.Test.E2E";
+
         private static readonly ChatworkClient Client = new ChatworkClient(TestContext.TestData.InputData.APIToken);
 
         public static Models.Room CreateRoomForTest()
@@ -15,13 +17,15 @@ namespace CSChatworkAPI.Test.E2E
             var members = new[] { "" };
             var readonlyMembers = new[] { "" };
 
+            var roomName = $"{RoomNamePrefix} at {now}";
+
             var room = Client.AddRoom(
                 $"description for test room created at {now}",
                 "beer",
                 admins,
                 members,
                 readonlyMembers,
-                $"Test at {now}");
+                roomName);
             return room;
         }
 
