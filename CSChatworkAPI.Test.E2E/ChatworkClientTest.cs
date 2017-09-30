@@ -199,7 +199,7 @@ namespace CSChatworkAPI.Test.E2E
 
             // assert
             var messages = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id);
-            Assert.IsTrue(messages.Any(_ => _.body == messageBody));
+            Assert.IsTrue(messages.Any(_ => _.Body == messageBody));
         }
 
         [TestCase]
@@ -209,7 +209,7 @@ namespace CSChatworkAPI.Test.E2E
             var expected = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id, true).First();
 
             // act
-            var actual = TestContext.ChatworkClient.GetMessage(TestContext.TestRoom.room_id, expected.message_id);
+            var actual = TestContext.ChatworkClient.GetMessage(TestContext.TestRoom.room_id, expected.MessageId);
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -236,8 +236,8 @@ namespace CSChatworkAPI.Test.E2E
                 tasks.First().task_id);
 
             // assert
-            Assert.IsNotEmpty(responseTaskIds.task_ids);
-            Assert.IsTrue(responseTaskIds.task_ids.Any(_ => _ == task.task_id));
+            Assert.IsNotEmpty(responseTaskIds.TaskIds);
+            Assert.IsTrue(responseTaskIds.TaskIds.Any(_ => _ == task.task_id));
             Assert.GreaterOrEqual(tasks.Count, 1);
         }
 
