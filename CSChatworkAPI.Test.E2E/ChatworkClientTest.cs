@@ -154,6 +154,7 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_UpdateRoomMembers()
         {
+            // ユーザを追加しておくのがしんどい
             Assert.Inconclusive();
         }
 
