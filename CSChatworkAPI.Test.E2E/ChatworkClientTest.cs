@@ -242,15 +242,21 @@ namespace CSChatworkAPI.Test.E2E
         }
 
         [TestCase]
-        public void Test_GetFiles()
+        public void Test_GetFiles_GetFile()
         {
-            Assert.Inconclusive();
-        }
+            // act
+            // 予めファイルをアップロードしておくこと
+            var files = TestContext.ChatworkClient.GetFiles(
+                TestContext.Me.room_id,
+                TestContext.Me.account_id).ToList();
+            var file = TestContext.ChatworkClient.GetFile(
+                TestContext.Me.room_id,
+                files.First().file_id,
+                false);
 
-        [TestCase]
-        public void Test_GetFile()
-        {
-            Assert.Inconclusive();
+            // assert
+            Assert.GreaterOrEqual(files.Count, 1);
+            Assert.AreEqual(file, files.First());
         }
         #endregion endpoint /rooms
     }
