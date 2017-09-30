@@ -51,8 +51,8 @@ namespace CSChatworkAPI.Test.E2E
             Assert.IsNotNull(status);
         }
 
-        [TestCaseSource(typeof(GetTasksTestCase), nameof(GetTasksTestCase.TestCases))]
-        public void Test_GetTasks(string assignedByAccountId, IEnumerable<string> statuses, IEnumerable<Models.Task> result)
+        [TestCase]
+        public void Test_GetMyTasks()
         {
             Assert.Inconclusive();
         }
