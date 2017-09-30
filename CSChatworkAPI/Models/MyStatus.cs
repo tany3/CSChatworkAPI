@@ -1,19 +1,99 @@
 ﻿/* See the file "LICENSE" for the full license governing this code. */
 
+using System;
+using Newtonsoft.Json;
+
 namespace CSChatworkAPI.Models
 {
-    public class MyStatus
+    /// <summary>
+    /// MyStatus
+    /// </summary>
+    public class MyStatus : IEquatable<MyStatus>
     {
-        public int unread_room_num { get; set; }
-        public int mention_room_num { get; set; }
-        public int mytask_room_num { get; set; }
-        public int unread_num { get; set; }
-        public int mention_num { get; set; }
-        public int mytask_num { get; set; }
+        /// <summary>
+        /// unread_room_num
+        /// </summary>
+        [JsonProperty("unread_room_num")]
+        public long UnreadRoomNum { get; set; }
 
+        /// <summary>
+        /// mention_room_num
+        /// </summary>
+        [JsonProperty("mention_room_num")]
+        public long MentionRoomNum { get; set; }
+
+        /// <summary>
+        /// mytask_room_num
+        /// </summary>
+        [JsonProperty("mytask_room_num")]
+        public long MyTaskRoomNum { get; set; }
+
+        /// <summary>
+        /// unread_num
+        /// </summary>
+        [JsonProperty("unread_num")]
+        public long UnreadNum { get; set; }
+
+        /// <summary>
+        /// mention_num
+        /// </summary>
+        [JsonProperty("mention_num")]
+        public long MentionNum { get; set; }
+
+        /// <summary>
+        /// mytask_num
+        /// </summary>
+        [JsonProperty("mytask_num")]
+        public long MyTaskNum { get; set; }
+
+        #region ReSharper Generated
+        /// <summary>
+        /// formatting members
+        /// </summary>
         public override string ToString()
         {
-            return string.Format("mention_num: {0}, mention_room_num: {1}, mytask_num: {2}, mytask_room_num: {3}, unread_num: {4}, unread_room_num: {5}", mention_num, mention_room_num, mytask_num, mytask_room_num, unread_num, unread_room_num);
+            return
+                $"mention_num: {MentionNum}, mention_room_num: {MentionRoomNum}, mytask_num: {MyTaskNum}, mytask_room_num: {MyTaskRoomNum}, unread_num: {UnreadNum}, unread_room_num: {UnreadRoomNum}";
         }
+
+        public bool Equals(MyStatus other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return UnreadRoomNum == other.UnreadRoomNum && MentionRoomNum == other.MentionRoomNum && MyTaskRoomNum == other.MyTaskRoomNum && UnreadNum == other.UnreadNum && MentionNum == other.MentionNum && MyTaskNum == other.MyTaskNum;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((MyStatus) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = UnreadRoomNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MentionRoomNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MyTaskRoomNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ UnreadNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MentionNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MyTaskNum.GetHashCode();
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(MyStatus left, MyStatus right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(MyStatus left, MyStatus right)
+        {
+            return !Equals(left, right);
+        }
+        #endregion
     }
 }
