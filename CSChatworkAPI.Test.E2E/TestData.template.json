@@ -1,0 +1,8 @@
+﻿{
+  "InputData": {
+    "APIToken": "YourApiToken"
+  },
+  "ResultData": {
+    "ChatworkId": "YourChatworkId"
+  }
+}
