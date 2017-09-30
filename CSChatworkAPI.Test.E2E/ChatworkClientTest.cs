@@ -180,6 +180,9 @@ namespace CSChatworkAPI.Test.E2E
 
             // assert
             Assert.IsNull(actualMessagesAfter);
+
+            // tear down
+            TestContext.ChatworkClient.DeleteRoom(room.room_id);
         }
 
         [TestCase]
