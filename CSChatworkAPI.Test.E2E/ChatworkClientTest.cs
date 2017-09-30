@@ -224,11 +224,13 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_AddTask()
         {
+            // act
             var ids = TestContext.ChatworkClient.AddTask(TestContext.TestRoom.room_id,
                 $"task body created at {DateTime.Today}",
                 DateTime.Today.AddDays(1),
                 new[] { TestContext.Me.account_id });
 
+            // assert
             Assert.IsNotEmpty(ids.task_ids);
         }
 
