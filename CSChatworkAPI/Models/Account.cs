@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* See the file "LICENSE" for the full license governing this code. */
+
+using System;
 using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
@@ -26,6 +28,7 @@ namespace CSChatworkAPI.Models
         [JsonProperty("avatar_image_url")]
         public string AvatarImageUrl { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -69,5 +72,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }

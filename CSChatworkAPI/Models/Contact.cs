@@ -57,7 +57,8 @@ namespace CSChatworkAPI.Models
         /// </summary>
         [JsonProperty("avatar_image_url")]
         public string AvatarImageUrl { get; set; }
-
+        
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -107,5 +108,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }

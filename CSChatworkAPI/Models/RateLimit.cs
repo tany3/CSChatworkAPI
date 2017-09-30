@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* See the file "LICENSE" for the full license governing this code. */
+
+using System;
 using System.Linq;
 using CSChatworkAPI.Extensions;
 using Newtonsoft.Json;
@@ -52,6 +54,7 @@ namespace CSChatworkAPI.Models
             }    
         }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -59,5 +62,6 @@ namespace CSChatworkAPI.Models
         {
             return $"Limit: {Limit}, Remaining: {Remaining}, Reset: {Reset}";
         }
+        #endregion
     }
 }

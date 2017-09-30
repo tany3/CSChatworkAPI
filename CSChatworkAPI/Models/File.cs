@@ -48,6 +48,7 @@ namespace CSChatworkAPI.Models
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
         public DateTime UploadTime { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -94,5 +95,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }

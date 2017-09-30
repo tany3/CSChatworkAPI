@@ -46,6 +46,7 @@ namespace CSChatworkAPI.Models
         [JsonProperty("mytask_num")]
         public long MyTaskNum { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -93,5 +94,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿/* See the file "LICENSE" for the full license governing this code. */
+
+using System;
 using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
@@ -23,6 +25,7 @@ namespace CSChatworkAPI.Models
             RateLimit = rl;
         }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -30,5 +33,6 @@ namespace CSChatworkAPI.Models
         {
             return $"{base.ToString()}, RateLimit: {RateLimit}";
         }
+        #endregion
     }
 }

@@ -59,6 +59,7 @@ namespace CSChatworkAPI.Models
         [JsonProperty("avatar_image_url")]
         public string AvatarImageUrl { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -108,6 +109,7 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 
     /// <summary>
@@ -118,18 +120,22 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// admin
         /// </summary>
+        [JsonProperty("admin")]
         public List<string> Admin { get; set; }
 
         /// <summary>
         /// member
         /// </summary>
+        [JsonProperty("member")]
         public List<string> Member { get; set; }
 
         /// <summary>
         /// @readonly
         /// </summary>
+        [JsonProperty("readonly")]
         public List<string> Readonly { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
@@ -173,5 +179,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }
