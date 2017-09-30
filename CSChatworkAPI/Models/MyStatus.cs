@@ -12,46 +12,47 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// unread_room_num
         /// </summary>
-        public long unread_room_num { get; set; }
+        public long UnreadRoomNum { get; set; }
 
         /// <summary>
         /// mention_room_num
         /// </summary>
-        public long mention_room_num { get; set; }
+        public long MentionRoomNum { get; set; }
 
         /// <summary>
         /// mytask_room_num
         /// </summary>
-        public long mytask_room_num { get; set; }
+        public long MyTaskRoomNum { get; set; }
 
         /// <summary>
         /// unread_num
         /// </summary>
-        public long unread_num { get; set; }
+        public long UnreadNum { get; set; }
 
         /// <summary>
         /// mention_num
         /// </summary>
-        public long mention_num { get; set; }
+        public long MentionNum { get; set; }
 
         /// <summary>
         /// mytask_num
         /// </summary>
-        public long mytask_num { get; set; }
+        public long MyTaskNum { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します
         /// </summary>
         public override string ToString()
         {
-            return string.Format("mention_num: {0}, mention_room_num: {1}, mytask_num: {2}, mytask_room_num: {3}, unread_num: {4}, unread_room_num: {5}", mention_num, mention_room_num, mytask_num, mytask_room_num, unread_num, unread_room_num);
+            return
+                $"mention_num: {MentionNum}, mention_room_num: {MentionRoomNum}, mytask_num: {MyTaskNum}, mytask_room_num: {MyTaskRoomNum}, unread_num: {UnreadNum}, unread_room_num: {UnreadRoomNum}";
         }
 
         public bool Equals(MyStatus other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return unread_room_num == other.unread_room_num && mention_room_num == other.mention_room_num && mytask_room_num == other.mytask_room_num && unread_num == other.unread_num && mention_num == other.mention_num && mytask_num == other.mytask_num;
+            return UnreadRoomNum == other.UnreadRoomNum && MentionRoomNum == other.MentionRoomNum && MyTaskRoomNum == other.MyTaskRoomNum && UnreadNum == other.UnreadNum && MentionNum == other.MentionNum && MyTaskNum == other.MyTaskNum;
         }
 
         public override bool Equals(object obj)
@@ -66,12 +67,12 @@ namespace CSChatworkAPI.Models
         {
             unchecked
             {
-                var hashCode = unread_room_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ mention_room_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ mytask_room_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ unread_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ mention_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ mytask_num.GetHashCode();
+                var hashCode = UnreadRoomNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MentionRoomNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MyTaskRoomNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ UnreadNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MentionNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MyTaskNum.GetHashCode();
                 return hashCode;
             }
         }
