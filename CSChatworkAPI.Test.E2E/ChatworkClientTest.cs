@@ -89,7 +89,8 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_AddRoom()
         {
-            Assert.Inconclusive();
+            Assert.IsNotNull(TestContext.TestRoom);
+            Assert.IsNotNull(TestContext.TestRoom.room_id);
         }
 
         [TestCase]
