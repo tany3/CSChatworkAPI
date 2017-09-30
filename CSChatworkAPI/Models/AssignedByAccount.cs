@@ -6,9 +6,9 @@ using Newtonsoft.Json;
 namespace CSChatworkAPI.Models
 {
     /// <summary>
-    /// Account
+    /// AssignedByAccount
     /// </summary>
-    public class Account : IEquatable<Account>
+    public class AssignedByAccount : IEquatable<AssignedByAccount>
     {
         /// <summary>
         /// account_id
@@ -37,7 +37,7 @@ namespace CSChatworkAPI.Models
             return $"account_id: {AccountId}, avatar_image_url: {AvatarImageUrl}, name: {Name}";
         }
 
-        public bool Equals(Account other)
+        public bool Equals(AssignedByAccount other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -49,7 +49,7 @@ namespace CSChatworkAPI.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Account)obj);
+            return Equals((AssignedByAccount)obj);
         }
 
         public override int GetHashCode()
@@ -63,12 +63,12 @@ namespace CSChatworkAPI.Models
             }
         }
 
-        public static bool operator ==(Account left, Account right)
+        public static bool operator ==(AssignedByAccount left, AssignedByAccount right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Account left, Account right)
+        public static bool operator !=(AssignedByAccount left, AssignedByAccount right)
         {
             return !Equals(left, right);
         }

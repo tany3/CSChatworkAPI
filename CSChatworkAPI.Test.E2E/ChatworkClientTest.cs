@@ -37,9 +37,9 @@ namespace CSChatworkAPI.Test.E2E
             var me = TestContext.ChatworkClient.GetMe();
 
             Assert.IsNotNull(me);
-            Assert.IsNotEmpty(me.account_id);
-            Assert.IsNotEmpty(me.chatwork_id);
-            Assert.AreEqual(me.chatwork_id, chatworkId);
+            Assert.IsNotEmpty(me.AccountId);
+            Assert.IsNotEmpty(me.ChatworkId);
+            Assert.AreEqual(me.ChatworkId, chatworkId);
         }
         #endregion endpoint /me
 
@@ -52,7 +52,7 @@ namespace CSChatworkAPI.Test.E2E
         }
 
         [TestCaseSource(typeof(GetTasksTestCase), nameof(GetTasksTestCase.TestCases))]
-        public void Test_GetTasks(string assignedByAccountId, IEnumerable<string> statuses, IEnumerable<CSChatworkAPI.Models.Task> result)
+        public void Test_GetTasks(string assignedByAccountId, IEnumerable<string> statuses, IEnumerable<Models.Task> result)
         {
             Assert.Inconclusive();
         }
@@ -82,15 +82,15 @@ namespace CSChatworkAPI.Test.E2E
             Assert.Greater(actual.Count(), 2);
 
             // tear down
-            TestContext.ChatworkClient.DeleteRoom(room1.room_id);
-            TestContext.ChatworkClient.DeleteRoom(room2.room_id);
+            TestContext.ChatworkClient.DeleteRoom(room1.RoomId);
+            TestContext.ChatworkClient.DeleteRoom(room2.RoomId);
         }
 
         [TestCase]
         public void Test_AddRoom()
         {
             Assert.IsNotNull(TestContext.TestRoom);
-            Assert.IsNotNull(TestContext.TestRoom.room_id);
+            Assert.IsNotNull(TestContext.TestRoom.RoomId);
         }
 
         [TestCase]
@@ -105,16 +105,16 @@ namespace CSChatworkAPI.Test.E2E
             var newIconPath = "https://appdata.chatwork.com/icon/ico_star.png";
             var newDescription = $"description for test room created at {now}";
             var newRoomName = $"test room created at {now}";
-            TestContext.ChatworkClient.UpdateRoom(room.room_id, newDescription, newIcon, newRoomName);
+            TestContext.ChatworkClient.UpdateRoom(room.RoomId, newDescription, newIcon, newRoomName);
 
             // assert
-            var actual = TestContext.ChatworkClient.GetRoom(room.room_id);
-            Assert.AreEqual(newIconPath, actual.icon_path);
-            Assert.AreEqual(newDescription, actual.description);
-            Assert.AreEqual(newRoomName, actual.name);
+            var actual = TestContext.ChatworkClient.GetRoom(room.RoomId);
+            Assert.AreEqual(newIconPath, actual.IconPath);
+            Assert.AreEqual(newDescription, actual.Description);
+            Assert.AreEqual(newRoomName, actual.Name);
 
             // tear down
-            TestContext.ChatworkClient.DeleteRoom(room.room_id);
+            TestContext.ChatworkClient.DeleteRoom(room.RoomId);
         }
 
         [TestCase]
@@ -124,11 +124,13 @@ namespace CSChatworkAPI.Test.E2E
             var room = TestCaseUtility.CreateRoomForTest();
 
             // act
-            TestContext.ChatworkClient.LeaveRoom(room.room_id);
+            TestContext.ChatworkClient.LeaveRoom(room.RoomId);
 
             // assert
-            var actual = TestContext.ChatworkClient.GetRoom(room.room_id);
-            Assert.IsNull(actual.room_id);
+            var message = Assert.Throws<Exception>(() => TestContext.ChatworkClient.GetRoom(room.RoomId)).Message;
+            Assert.AreEqual(
+                "API returns Forbidden. API response is here: {\"errors\":[\"You don't have permission to get this room\"]}",
+                message);
         }
 
         [TestCase]
@@ -138,18 +140,20 @@ namespace CSChatworkAPI.Test.E2E
             var room = TestCaseUtility.CreateRoomForTest();
 
             // act
-            TestContext.ChatworkClient.DeleteRoom(room.room_id);
+            TestContext.ChatworkClient.DeleteRoom(room.RoomId);
 
             // assert
-            var deletedRoom = TestContext.ChatworkClient.GetRoom(room.room_id);
-            Assert.IsNull(deletedRoom.room_id);
+            var message = Assert.Throws<Exception>(() => TestContext.ChatworkClient.GetRoom(room.RoomId)).Message;
+            Assert.AreEqual(
+                "API returns Forbidden. API response is here: {\"errors\":[\"You don't have permission to get this room\"]}",
+                message);
         }
 
         [TestCase]
         public void Test_GetRoomMembers()
         {
             // act
-            var members = TestContext.ChatworkClient.GetRoomMembers(TestContext.TestRoom.room_id);
+            var members = TestContext.ChatworkClient.GetRoomMembers(TestContext.TestRoom.RoomId);
 
             // assert
             Assert.GreaterOrEqual(members.Count(), 1);
@@ -169,25 +173,25 @@ namespace CSChatworkAPI.Test.E2E
             var room = TestCaseUtility.CreateRoomForTest();
             var expectMessageList = new List<string>
             {
-                TestCaseUtility.SendMessage(room.room_id),
-                TestCaseUtility.SendMessage(room.room_id),
-                TestCaseUtility.SendMessage(room.room_id),
+                TestCaseUtility.SendMessage(room.RoomId),
+                TestCaseUtility.SendMessage(room.RoomId),
+                TestCaseUtility.SendMessage(room.RoomId),
             };
 
             // act
-            var actualMessages = TestContext.ChatworkClient.GetMessages(room.room_id).ToList();
+            var actualMessages = TestContext.ChatworkClient.GetMessages(room.RoomId).ToList();
 
             // assert
             Assert.IsTrue(actualMessages.Count == (expectMessageList.Count + 1/* room created message*/));
 
             // act
-            var actualMessagesAfter= TestContext.ChatworkClient.GetMessages(room.room_id);
+            var actualMessagesAfter= TestContext.ChatworkClient.GetMessages(room.RoomId);
 
             // assert
             Assert.IsNull(actualMessagesAfter);
 
             // tear down
-            TestContext.ChatworkClient.DeleteRoom(room.room_id);
+            TestContext.ChatworkClient.DeleteRoom(room.RoomId);
         }
 
         [TestCase]
@@ -195,21 +199,21 @@ namespace CSChatworkAPI.Test.E2E
         {
             // act
             var messageBody = $"message created at {DateTime.Now:yyyy/MM/dd hh:mm:ss.fff}";
-            TestContext.ChatworkClient.SendMessage(TestContext.TestRoom.room_id, messageBody);
+            TestContext.ChatworkClient.SendMessage(TestContext.TestRoom.RoomId, messageBody);
 
             // assert
-            var messages = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id);
-            Assert.IsTrue(messages.Any(_ => _.body == messageBody));
+            var messages = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.RoomId);
+            Assert.IsTrue(messages.Any(_ => _.Body == messageBody));
         }
 
         [TestCase]
         public void Test_GetMessage()
         {
             // prepare
-            var expected = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id, true).First();
+            var expected = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.RoomId, true).First();
 
             // act
-            var actual = TestContext.ChatworkClient.GetMessage(TestContext.TestRoom.room_id, expected.message_id);
+            var actual = TestContext.ChatworkClient.GetMessage(TestContext.TestRoom.RoomId, expected.MessageId);
 
             // assert
             Assert.AreEqual(expected, actual);
@@ -220,24 +224,24 @@ namespace CSChatworkAPI.Test.E2E
         {
             // act
             var responseTaskIds = TestContext.ChatworkClient.AddTask(
-                TestContext.TestRoom.room_id,
+                TestContext.TestRoom.RoomId,
                 $"task body created at {DateTime.Today}",
                 DateTime.Today.AddDays(1),
-                new[] { TestContext.Me.account_id });
+                new[] { TestContext.Me.AccountId });
 
             // act
             var tasks = TestContext.ChatworkClient.GetTasks(
-                TestContext.TestRoom.room_id,
-                TestContext.Me.account_id,
-                TestContext.Me.account_id,
+                TestContext.TestRoom.RoomId,
+                TestContext.Me.AccountId,
+                TestContext.Me.AccountId,
                 "open").ToList();
             var task = TestContext.ChatworkClient.GetTask(
-                TestContext.TestRoom.room_id,
-                tasks.First().task_id);
+                TestContext.TestRoom.RoomId,
+                tasks.First().TaskId);
 
             // assert
-            Assert.IsNotEmpty(responseTaskIds.task_ids);
-            Assert.IsTrue(responseTaskIds.task_ids.Any(_ => _ == task.task_id));
+            Assert.IsNotEmpty(responseTaskIds.TaskIds);
+            Assert.IsTrue(responseTaskIds.TaskIds.Any(_ => _ == task.TaskId));
             Assert.GreaterOrEqual(tasks.Count, 1);
         }
 
@@ -247,11 +251,11 @@ namespace CSChatworkAPI.Test.E2E
             // act
             // 予めファイルをアップロードしておくこと
             var files = TestContext.ChatworkClient.GetFiles(
-                TestContext.Me.room_id,
-                TestContext.Me.account_id).ToList();
+                TestContext.Me.RoomId,
+                TestContext.Me.AccountId).ToList();
             var file = TestContext.ChatworkClient.GetFile(
-                TestContext.Me.room_id,
-                files.First().file_id,
+                TestContext.Me.RoomId,
+                files.First().FileId,
                 false);
 
             // assert

@@ -14,88 +14,102 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// room_id
         /// </summary>
-        public string room_id { get; set; }
+        [JsonProperty("room_id")]
+        public string RoomId { get; set; }
 
         /// <summary>
         /// name
         /// </summary>
-        public string name { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
 
         /// <summary>
         /// type
         /// </summary>
-        public string type { get; set; }
+        [JsonProperty("type")]
+        public string Type { get; set; }
 
         /// <summary>
         /// role
         /// </summary>
-        public string role { get; set; }
+        [JsonProperty("role")]
+        public string Role { get; set; }
 
         /// <summary>
         /// sticky
         /// </summary>
-        public bool sticky { get; set; }
+        [JsonProperty("sticky")]
+        public bool Sticky { get; set; }
 
         /// <summary>
         /// unread_num
         /// </summary>
-        public long unread_num { get; set; }
+        [JsonProperty("unread_num")]
+        public long UnreadNum { get; set; }
 
         /// <summary>
         /// mention_num
         /// </summary>
-        public long mention_num { get; set; }
+        [JsonProperty("mention_num")]
+        public long MentionNum { get; set; }
 
         /// <summary>
         /// mytask_num
         /// </summary>
-        public long mytask_num { get; set; }
+        [JsonProperty("mytask_num")]
+        public long MyTaskNum { get; set; }
 
         /// <summary>
         /// message_num
         /// </summary>
-        public long message_num { get; set; }
+        [JsonProperty("message_num")]
+        public long MessageNum { get; set; }
 
         /// <summary>
         /// file_num
         /// </summary>
-        public long file_num { get; set; }
+        [JsonProperty("file_num")]
+        public long FileNum { get; set; }
 
         /// <summary>
         /// task_num
         /// </summary>
-        public long task_num { get; set; }
+        [JsonProperty("task_num")]
+        public long TaskNum { get; set; }
+
+        /// <summary>
+        /// icon_path
+        /// </summary>
+        [JsonProperty("icon_path")]
+        public string IconPath { get; set; }
 
         /// <summary>
         /// last_update_time
         /// </summary>
-        public string icon_path { get; set; }
-
-        /// <summary>
-        /// last_update_time
-        /// </summary>
-        [JsonProperty]
+        [JsonProperty("last_update_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
-        public DateTime last_update_time { get; set; }
+        public DateTime LastUpdateTime { get; set; }
 
         /// <summary>
         /// description
         /// </summary>
-        public string description { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
         /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return $"{nameof(room_id)}: {room_id}, {nameof(name)}: {name}, {nameof(type)}: {type}, {nameof(role)}: {role}, {nameof(sticky)}: {sticky}, {nameof(unread_num)}: {unread_num}, {nameof(mention_num)}: {mention_num}, {nameof(mytask_num)}: {mytask_num}, {nameof(message_num)}: {message_num}, {nameof(file_num)}: {file_num}, {nameof(task_num)}: {task_num}, {nameof(icon_path)}: {icon_path}, {nameof(last_update_time)}: {last_update_time}, {nameof(description)}: {description}";
+            return $"{nameof(RoomId)}: {RoomId}, {nameof(Name)}: {Name}, {nameof(Type)}: {Type}, {nameof(Role)}: {Role}, {nameof(Sticky)}: {Sticky}, {nameof(UnreadNum)}: {UnreadNum}, {nameof(MentionNum)}: {MentionNum}, {nameof(MyTaskNum)}: {MyTaskNum}, {nameof(MessageNum)}: {MessageNum}, {nameof(FileNum)}: {FileNum}, {nameof(TaskNum)}: {TaskNum}, {nameof(IconPath)}: {IconPath}, {nameof(LastUpdateTime)}: {LastUpdateTime}, {nameof(Description)}: {Description}";
         }
 
         public bool Equals(Room other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(room_id, other.room_id) && string.Equals(name, other.name) && string.Equals(type, other.type) && string.Equals(role, other.role) && sticky == other.sticky && unread_num == other.unread_num && mention_num == other.mention_num && mytask_num == other.mytask_num && message_num == other.message_num && file_num == other.file_num && task_num == other.task_num && string.Equals(icon_path, other.icon_path) && last_update_time.Equals(other.last_update_time) && string.Equals(description, other.description);
+            return string.Equals(RoomId, other.RoomId) && string.Equals(Name, other.Name) && string.Equals(Type, other.Type) && string.Equals(Role, other.Role) && Sticky == other.Sticky && UnreadNum == other.UnreadNum && MentionNum == other.MentionNum && MyTaskNum == other.MyTaskNum && MessageNum == other.MessageNum && FileNum == other.FileNum && TaskNum == other.TaskNum && string.Equals(IconPath, other.IconPath) && LastUpdateTime.Equals(other.LastUpdateTime) && string.Equals(Description, other.Description);
         }
 
         public override bool Equals(object obj)
@@ -110,20 +124,20 @@ namespace CSChatworkAPI.Models
         {
             unchecked
             {
-                var hashCode = (room_id != null ? room_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (type != null ? type.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (role != null ? role.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ sticky.GetHashCode();
-                hashCode = (hashCode * 397) ^ unread_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ mention_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ mytask_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ message_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ file_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ task_num.GetHashCode();
-                hashCode = (hashCode * 397) ^ (icon_path != null ? icon_path.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ last_update_time.GetHashCode();
-                hashCode = (hashCode * 397) ^ (description != null ? description.GetHashCode() : 0);
+                var hashCode = (RoomId != null ? RoomId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Type != null ? Type.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Role != null ? Role.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ Sticky.GetHashCode();
+                hashCode = (hashCode * 397) ^ UnreadNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MentionNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MyTaskNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ MessageNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ FileNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ TaskNum.GetHashCode();
+                hashCode = (hashCode * 397) ^ (IconPath != null ? IconPath.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ LastUpdateTime.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Description != null ? Description.GetHashCode() : 0);
                 return hashCode;
             }
         }
@@ -137,6 +151,7 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 
     /// <summary>
@@ -147,13 +162,23 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// room_id
         /// </summary>
-        public string room_id { get; set; }
+        [JsonProperty("room_id")]
+        public string RoomId { get; set; }
+
+        #region ReSharper Generated
+        /// <summary>
+        /// formatting members
+        /// </summary>
+        public override string ToString()
+        {
+            return $"{nameof(RoomId)}: {RoomId}";
+        }
 
         public bool Equals(ResponseRoomId other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(room_id, other.room_id);
+            return string.Equals(RoomId, other.RoomId);
         }
 
         public override bool Equals(object obj)
@@ -166,7 +191,7 @@ namespace CSChatworkAPI.Models
 
         public override int GetHashCode()
         {
-            return (room_id != null ? room_id.GetHashCode() : 0);
+            return (RoomId != null ? RoomId.GetHashCode() : 0);
         }
 
         public static bool operator ==(ResponseRoomId left, ResponseRoomId right)
@@ -178,5 +203,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }

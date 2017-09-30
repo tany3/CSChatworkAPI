@@ -1,4 +1,7 @@
-﻿using System;
+﻿/* See the file "LICENSE" for the full license governing this code. */
+
+using System;
+using Newtonsoft.Json;
 
 namespace CSChatworkAPI.Models
 {
@@ -10,6 +13,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// RateLimit
         /// </summary>
+        [JsonProperty("rate_limit")]
         public RateLimit RateLimit { get; private set; }
 
         /// <summary>
@@ -21,12 +25,14 @@ namespace CSChatworkAPI.Models
             RateLimit = rl;
         }
 
+        #region ReSharper Generated
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("{0}, RateLimit: {1}", base.ToString(), RateLimit);
+            return $"{base.ToString()}, RateLimit: {RateLimit}";
         }
+        #endregion
     }
 }

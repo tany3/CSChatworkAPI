@@ -15,45 +15,49 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// message_id
         /// </summary>
-        public string message_id { get; set; }
+        [JsonProperty("message_id")]
+        public string MessageId { get; set; }
 
         /// <summary>
         /// account
         /// </summary>
-        public Account account { get; set; }
+        [JsonProperty("account")]
+        public Account Account { get; set; }
 
         /// <summary>
         /// body
         /// </summary>
-        public string body { get; set; }
+        [JsonProperty("body")]
+        public string Body { get; set; }
 
         /// <summary>
         /// send_time
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("send_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
-        public DateTime send_time { get; set; }
+        public DateTime SendTime { get; set; }
 
         /// <summary>
         /// update_time
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("update_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
-        public DateTime update_time { get; set; }
+        public DateTime UpdateTime { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account: {0}, body: {1}, message_id: {2}, send_time: {3}, update_time: {4}", account, body, message_id, send_time, update_time);
+            return
+                $"account: {Account}, body: {Body}, message_id: {MessageId}, send_time: {SendTime}, update_time: {UpdateTime}";
         }
 
         public bool Equals(Message other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(message_id, other.message_id) && Equals(account, other.account) && string.Equals(body, other.body) && send_time.Equals(other.send_time) && update_time.Equals(other.update_time);
+            return string.Equals(MessageId, other.MessageId) && Equals(Account, other.Account) && string.Equals(Body, other.Body) && SendTime.Equals(other.SendTime) && UpdateTime.Equals(other.UpdateTime);
         }
 
         public override bool Equals(object obj)
@@ -68,11 +72,11 @@ namespace CSChatworkAPI.Models
         {
             unchecked
             {
-                var hashCode = (message_id != null ? message_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (account != null ? account.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (body != null ? body.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ send_time.GetHashCode();
-                hashCode = (hashCode * 397) ^ update_time.GetHashCode();
+                var hashCode = (MessageId != null ? MessageId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Account != null ? Account.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Body != null ? Body.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ SendTime.GetHashCode();
+                hashCode = (hashCode * 397) ^ UpdateTime.GetHashCode();
                 return hashCode;
             }
         }
@@ -96,21 +100,22 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// message_id
         /// </summary>
-        public string message_id { get; set; }
+        [JsonProperty("message_id")]
+        public string MessageId { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("message_id: {0}", message_id);
+            return $"message_id: {MessageId}";
         }
 
         public bool Equals(ResponseMessage other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(message_id, other.message_id);
+            return string.Equals(MessageId, other.MessageId);
         }
 
         public override bool Equals(object obj)
@@ -123,7 +128,7 @@ namespace CSChatworkAPI.Models
 
         public override int GetHashCode()
         {
-            return (message_id != null ? message_id.GetHashCode() : 0);
+            return (MessageId != null ? MessageId.GetHashCode() : 0);
         }
 
         public static bool operator ==(ResponseMessage left, ResponseMessage right)
@@ -145,21 +150,22 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// task_ids
         /// </summary>
-        public List<string> task_ids { get; set; }
+        [JsonProperty("task_ids")]
+        public List<string> TaskIds { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します
         /// </summary>
         public override string ToString()
         {
-            return string.Format("task_ids: {0}", task_ids);
+            return string.Format("task_ids: {0}", TaskIds);
         }
 
         public bool Equals(ResponseTaskIds other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(task_ids, other.task_ids);
+            return Equals(TaskIds, other.TaskIds);
         }
 
         public override bool Equals(object obj)
@@ -172,7 +178,7 @@ namespace CSChatworkAPI.Models
 
         public override int GetHashCode()
         {
-            return (task_ids != null ? task_ids.GetHashCode() : 0);
+            return (TaskIds != null ? TaskIds.GetHashCode() : 0);
         }
 
         public static bool operator ==(ResponseTaskIds left, ResponseTaskIds right)

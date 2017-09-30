@@ -36,7 +36,7 @@ namespace Example
             const string body = "Hello Chatwork!";
             var resp = client.SendMessage(roomId, body);
             Console.WriteLine(resp);
-            Console.WriteLine("Message: id={0} body={1}", resp.message_id, body);
+            Console.WriteLine("Message: id={0} body={1}", resp.MessageId, body);
         }
     }
 }

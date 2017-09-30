@@ -6,15 +6,15 @@ using Newtonsoft.Json;
 namespace CSChatworkAPI.Models
 {
     /// <summary>
-    /// Account
+    /// Room
     /// </summary>
-    public class Account : IEquatable<Account>
+    public class RoomInMyTask : IEquatable<RoomInMyTask>
     {
         /// <summary>
-        /// account_id
+        /// room_id
         /// </summary>
-        [JsonProperty("account_id")]
-        public string AccountId { get; set; }
+        [JsonProperty("room_id")]
+        public string RoomId { get; set; }
 
         /// <summary>
         /// name
@@ -23,10 +23,10 @@ namespace CSChatworkAPI.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// avatar_image_url
+        /// icon_path
         /// </summary>
-        [JsonProperty("avatar_image_url")]
-        public string AvatarImageUrl { get; set; }
+        [JsonProperty("icon_path")]
+        public string IconPath { get; set; }
 
         #region ReSharper Generated
         /// <summary>
@@ -34,14 +34,14 @@ namespace CSChatworkAPI.Models
         /// </summary>
         public override string ToString()
         {
-            return $"account_id: {AccountId}, avatar_image_url: {AvatarImageUrl}, name: {Name}";
+            return $"icon_path: {IconPath}, name: {Name}, room_id: {RoomId}";
         }
 
-        public bool Equals(Account other)
+        public bool Equals(RoomInMyTask other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(AccountId, other.AccountId) && string.Equals(Name, other.Name) && string.Equals(AvatarImageUrl, other.AvatarImageUrl);
+            return string.Equals(RoomId, other.RoomId) && string.Equals(Name, other.Name) && string.Equals(IconPath, other.IconPath);
         }
 
         public override bool Equals(object obj)
@@ -49,26 +49,26 @@ namespace CSChatworkAPI.Models
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Account)obj);
+            return Equals((RoomInMyTask)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = (AccountId != null ? AccountId.GetHashCode() : 0);
+                var hashCode = (RoomId != null ? RoomId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (AvatarImageUrl != null ? AvatarImageUrl.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (IconPath != null ? IconPath.GetHashCode() : 0);
                 return hashCode;
             }
         }
 
-        public static bool operator ==(Account left, Account right)
+        public static bool operator ==(RoomInMyTask left, RoomInMyTask right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Account left, Account right)
+        public static bool operator !=(RoomInMyTask left, RoomInMyTask right)
         {
             return !Equals(left, right);
         }

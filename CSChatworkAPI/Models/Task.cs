@@ -12,120 +12,63 @@ namespace CSChatworkAPI.Models
     public class Task : IEquatable<Task>
     {
         /// <summary>
-        /// AssignedByAccount
-        /// </summary>
-        public class AssignedByAccount : IEquatable<AssignedByAccount>
-        {
-            /// <summary>
-            /// account_id
-            /// </summary>
-            public string account_id { get; set; }
-
-            /// <summary>
-            /// name
-            /// </summary>
-            public string name { get; set; }
-
-            /// <summary>
-            /// avatar_image_url
-            /// </summary>
-            public string avatar_image_url { get; set; }
-
-            /// <summary>
-            /// フォーマット済み文字列を返します
-            /// </summary>
-            public override string ToString()
-            {
-                return string.Format("account_id: {0}, avatar_image_url: {1}, name: {2}", account_id, avatar_image_url, name);
-            }
-
-            public bool Equals(AssignedByAccount other)
-            {
-                if (ReferenceEquals(null, other)) return false;
-                if (ReferenceEquals(this, other)) return true;
-                return string.Equals(account_id, other.account_id) && string.Equals(name, other.name) && string.Equals(avatar_image_url, other.avatar_image_url);
-            }
-
-            public override bool Equals(object obj)
-            {
-                if (ReferenceEquals(null, obj)) return false;
-                if (ReferenceEquals(this, obj)) return true;
-                if (obj.GetType() != this.GetType()) return false;
-                return Equals((AssignedByAccount)obj);
-            }
-
-            public override int GetHashCode()
-            {
-                unchecked
-                {
-                    var hashCode = (account_id != null ? account_id.GetHashCode() : 0);
-                    hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
-                    hashCode = (hashCode * 397) ^ (avatar_image_url != null ? avatar_image_url.GetHashCode() : 0);
-                    return hashCode;
-                }
-            }
-
-            public static bool operator ==(AssignedByAccount left, AssignedByAccount right)
-            {
-                return Equals(left, right);
-            }
-
-            public static bool operator !=(AssignedByAccount left, AssignedByAccount right)
-            {
-                return !Equals(left, right);
-            }
-        }
-
-        /// <summary>
         /// task_id
         /// </summary>
-        public string task_id { get; set; }
+        [JsonProperty("task_id")]
+        public string TaskId { get; set; }
 
         /// <summary>
         /// account
         /// </summary>
-        public Account account { get; set; }
+        [JsonProperty("account")]
+        public Account Account { get; set; }
 
         /// <summary>
         /// assigned_by_account
         /// </summary>
-        public AssignedByAccount assigned_by_account { get; set; }
+        [JsonProperty("assigned_by_account")]
+        public AssignedByAccount AssignedByAccount { get; set; }
 
         /// <summary>
         /// message_id
         /// </summary>
-        public string message_id { get; set; }
+        [JsonProperty("message_id")]
+        public string MessageId { get; set; }
 
         /// <summary>
         /// body
         /// </summary>
-        public string body { get; set; }
+        [JsonProperty("body")]
+        public string Body { get; set; }
 
         /// <summary>
         /// limit_time
         /// </summary>
-        [JsonProperty]
+        [JsonProperty("limit_time")]
         [JsonConverter(typeof(DateTimeExtensions.UnixDateTimeConverter))]
-        public DateTime limit_time { get; set; }
+        public DateTime LimitTime { get; set; }
 
         /// <summary>
         /// status
         /// </summary>
-        public string status { get; set; }
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
+        #region ReSharper Generated
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account: {0}, assigned_by_account: {1}, body: {2}, limit_time: {3}, message_id: {4}, status: {5}, task_id: {6}", account, assigned_by_account, body, limit_time, message_id, status, task_id);
+            return
+                $"account: {Account}, assigned_by_account: {AssignedByAccount}, body: {Body}, limit_time: {LimitTime}, message_id: {MessageId}, status: {Status}, task_id: {TaskId}";
         }
 
         public bool Equals(Task other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(task_id, other.task_id) && Equals(account, other.account) && Equals(assigned_by_account, other.assigned_by_account) && string.Equals(message_id, other.message_id) && string.Equals(body, other.body) && limit_time.Equals(other.limit_time) && string.Equals(status, other.status);
+            return string.Equals(TaskId, other.TaskId) && Equals(Account, other.Account) && Equals(AssignedByAccount, other.AssignedByAccount) && string.Equals(MessageId, other.MessageId) && string.Equals(Body, other.Body) && LimitTime.Equals(other.LimitTime) && string.Equals(Status, other.Status);
         }
 
         public override bool Equals(object obj)
@@ -140,13 +83,13 @@ namespace CSChatworkAPI.Models
         {
             unchecked
             {
-                var hashCode = (task_id != null ? task_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (account != null ? account.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (assigned_by_account != null ? assigned_by_account.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (message_id != null ? message_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (body != null ? body.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ limit_time.GetHashCode();
-                hashCode = (hashCode * 397) ^ (status != null ? status.GetHashCode() : 0);
+                var hashCode = (TaskId != null ? TaskId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Account != null ? Account.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (AssignedByAccount != null ? AssignedByAccount.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (MessageId != null ? MessageId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Body != null ? Body.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ LimitTime.GetHashCode();
+                hashCode = (hashCode * 397) ^ (Status != null ? Status.GetHashCode() : 0);
                 return hashCode;
             }
         }
@@ -160,5 +103,6 @@ namespace CSChatworkAPI.Models
         {
             return !Equals(left, right);
         }
+        #endregion
     }
 }
