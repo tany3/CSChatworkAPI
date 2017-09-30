@@ -200,7 +200,14 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetMessage()
         {
-            Assert.Inconclusive();
+            // prepare
+            var expected = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id, true).First();
+
+            // act
+            var actual = TestContext.ChatworkClient.GetMessage(TestContext.TestRoom.room_id, expected.message_id);
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase]

@@ -48,6 +48,42 @@ namespace CSChatworkAPI.Models
         {
             return string.Format("account: {0}, body: {1}, message_id: {2}, send_time: {3}, update_time: {4}", account, body, message_id, send_time, update_time);
         }
+
+        protected bool Equals(Message other)
+        {
+            return string.Equals(message_id, other.message_id) && Equals(account, other.account) && string.Equals(body, other.body) && send_time.Equals(other.send_time) && update_time.Equals(other.update_time);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Message) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (message_id != null ? message_id.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (account != null ? account.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (body != null ? body.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ send_time.GetHashCode();
+                hashCode = (hashCode * 397) ^ update_time.GetHashCode();
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(Message left, Message right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Message left, Message right)
+        {
+            return !Equals(left, right);
+        }
     }
 
     /// <summary>
@@ -76,6 +112,40 @@ namespace CSChatworkAPI.Models
         public override string ToString()
         {
             return string.Format("account_id: {0}, avatar_image_url: {1}, name: {2}", account_id, avatar_image_url, name);
+        }
+
+        protected bool Equals(Account other)
+        {
+            return string.Equals(account_id, other.account_id) && string.Equals(name, other.name) && string.Equals(avatar_image_url, other.avatar_image_url);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Account) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (account_id != null ? account_id.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (avatar_image_url != null ? avatar_image_url.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(Account left, Account right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Account left, Account right)
+        {
+            return !Equals(left, right);
         }
     }
 
