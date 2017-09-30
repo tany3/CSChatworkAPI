@@ -53,7 +53,7 @@ namespace CSChatworkAPI.Models
         /// </summary>
         public override string ToString()
         {
-            return string.Format("Limit: {0}, Remaining: {1}, Reset: {2}", Limit, Remaining, Reset);
+            return $"Limit: {Limit}, Remaining: {Remaining}, Reset: {Reset}";
         }
     }
 }
