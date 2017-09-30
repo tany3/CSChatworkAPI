@@ -216,28 +216,29 @@ namespace CSChatworkAPI.Test.E2E
         }
 
         [TestCase]
-        public void Test_GetTasks()
-        {
-            Assert.Inconclusive();
-        }
-
-        [TestCase]
-        public void Test_AddTask()
+        public void Test_AddTask_GetTasks_GetTask()
         {
             // act
-            var ids = TestContext.ChatworkClient.AddTask(TestContext.TestRoom.room_id,
+            var responseTaskIds = TestContext.ChatworkClient.AddTask(
+                TestContext.TestRoom.room_id,
                 $"task body created at {DateTime.Today}",
                 DateTime.Today.AddDays(1),
                 new[] { TestContext.Me.account_id });
 
-            // assert
-            Assert.IsNotEmpty(ids.task_ids);
-        }
+            // act
+            var tasks = TestContext.ChatworkClient.GetTasks(
+                TestContext.TestRoom.room_id,
+                TestContext.Me.account_id,
+                TestContext.Me.account_id,
+                "open").ToList();
+            var task = TestContext.ChatworkClient.GetTask(
+                TestContext.TestRoom.room_id,
+                tasks.First().task_id);
 
-        [TestCase]
-        public void Test_GetTask()
-        {
-            Assert.Inconclusive();
+            // assert
+            Assert.IsNotEmpty(responseTaskIds.task_ids);
+            Assert.IsTrue(responseTaskIds.task_ids.Any(_ => _ == task.task_id));
+            Assert.GreaterOrEqual(tasks.Count, 1);
         }
 
         [TestCase]
