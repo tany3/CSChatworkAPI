@@ -12,7 +12,7 @@ namespace CSChatworkAPI.Test.E2E.TestCase
             {
                 var assignedByAccountId = "";
                 var statuses = new[] { "done" };
-                var tasks = new List<CSChatworkAPI.Models.Task>();
+                var tasks = new List<Models.Task>();
 
                 yield return new TestCaseData(assignedByAccountId, statuses, tasks);
             }

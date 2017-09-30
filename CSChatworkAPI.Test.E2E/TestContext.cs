@@ -43,13 +43,13 @@ namespace CSChatworkAPI.Test.E2E
 
     public static class TestContext
     {
-        public static CSChatworkAPI.ChatworkClient ChatworkClient { get; private set; }
+        public static ChatworkClient ChatworkClient { get; private set; }
 
         public static TestData TestData { get; private set; }
         
-        public static CSChatworkAPI.Models.Me Me { get; private set; }
+        public static Models.Me Me { get; private set; }
 
-        public static CSChatworkAPI.Models.Room TestRoom { get; private set; }
+        public static Models.Room TestRoom { get; private set; }
 
         static TestContext()
         {
@@ -59,7 +59,7 @@ namespace CSChatworkAPI.Test.E2E
 
 	    public static void SetUp()
 	    {
-			ChatworkClient = new CSChatworkAPI.ChatworkClient(TestData.InputData.APIToken);
+			ChatworkClient = new ChatworkClient(TestData.InputData.APIToken);
             Me = ChatworkClient.GetMe();
             TestRoom = TestCaseUtility.CreateRoomForTest();
 	    }
