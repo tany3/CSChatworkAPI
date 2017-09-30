@@ -58,18 +58,43 @@ namespace CSChatworkAPI.Test.E2E
         #endregion endpoint /my
 
         #region endpoint /contacts
+        [TestCase]
+        public void Test_Contact()
+        {
+            Assert.Inconclusive();
+        }
         #endregion endpoint /contacts
 
         #region endpoint /rooms
-        [TestCase]
-        public void Test_AddTask()
-        {
-            var ids = TestContext.ChatworkClient.AddTask(TestContext.TestRoom.room_id,
-                $"task body created at {DateTime.Today}",
-                DateTime.Today.AddDays(1),
-                new[] { TestContext.Me.account_id });
 
-            Assert.IsNotEmpty(ids.task_ids);
+        [TestCase]
+        public void Test_GetRooms()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_AddRoom()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_GetRoom()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_UpdateRoom()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_LeaveRoom()
+        {
+            Assert.Inconclusive();
         }
 
         [TestCase]
@@ -84,6 +109,71 @@ namespace CSChatworkAPI.Test.E2E
             // test
             var deletedRoom = TestContext.ChatworkClient.GetRoom(room.room_id);
             Assert.IsNull(deletedRoom.room_id);
+        }
+
+        [TestCase]
+        public void Test_GetRoomMembers()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_UpdateRoomMembers()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_GetMessages()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_SendMessage()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_GetMessage()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_GetTasks()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_AddTask()
+        {
+            var ids = TestContext.ChatworkClient.AddTask(TestContext.TestRoom.room_id,
+                $"task body created at {DateTime.Today}",
+                DateTime.Today.AddDays(1),
+                new[] { TestContext.Me.account_id });
+
+            Assert.IsNotEmpty(ids.task_ids);
+        }
+
+        [TestCase]
+        public void Test_GetTask()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_GetFiles()
+        {
+            Assert.Inconclusive();
+        }
+
+        [TestCase]
+        public void Test_GetFile()
+        {
+            Assert.Inconclusive();
         }
         #endregion endpoint /rooms
     }
