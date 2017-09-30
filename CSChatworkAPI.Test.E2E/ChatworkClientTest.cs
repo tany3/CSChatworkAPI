@@ -112,7 +112,15 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_LeaveRoom()
         {
-            Assert.Inconclusive();
+            // prepare
+            var room = TestCaseUtility.CreateRoomForTest();
+
+            // act
+            TestContext.ChatworkClient.LeaveRoom(room.room_id);
+
+            // assert
+            var actual = TestContext.ChatworkClient.GetRoom(room.room_id);
+            Assert.IsNull(actual.room_id);
         }
 
         [TestCase]
