@@ -2,9 +2,8 @@
 
 using System;
 using System.Collections.Generic;
-using CSChatworkAPI.Models;
+using System.Linq;
 using CSChatworkAPI.Test.E2E.TestCase;
-using CSChatworkAPI.Test.E2E.TestCaseSource;
 using NUnit.Framework;
 
 namespace CSChatworkAPI.Test.E2E
@@ -154,7 +153,26 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetMessages()
         {
-            Assert.Inconclusive();
+            // prepare
+            var room = TestCaseUtility.CreateRoomForTest();
+            var expectMessageList = new List<string>
+            {
+                TestCaseUtility.SendMessage(room.room_id),
+                TestCaseUtility.SendMessage(room.room_id),
+                TestCaseUtility.SendMessage(room.room_id),
+            };
+
+            // act
+            var actualMessages = TestContext.ChatworkClient.GetMessages(room.room_id).ToList();
+
+            // assert
+            Assert.IsTrue(actualMessages.Count == (expectMessageList.Count + 1/* room created message*/));
+
+            // act
+            var actualMessagesAfter= TestContext.ChatworkClient.GetMessages(room.room_id);
+
+            // assert
+            Assert.IsNull(actualMessagesAfter);
         }
 
         [TestCase]

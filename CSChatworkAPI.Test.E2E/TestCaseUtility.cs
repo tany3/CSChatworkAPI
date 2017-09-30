@@ -24,5 +24,12 @@ namespace CSChatworkAPI.Test.E2E
                 $"Test at {now}");
             return room;
         }
+
+        public static string SendMessage(string roomId)
+        {
+            var messageBody = $"message created at {DateTime.Now:yyyy/MM/dd hh:mm:ss.fff}";
+            Client.SendMessage(roomId, messageBody);
+            return messageBody;
+        }
     }
 }

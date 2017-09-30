@@ -50,7 +50,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestCase\GetTasksTestCase.cs" />
     <Compile Include="TestCase\MeTestCase.cs" />
-    <Compile Include="TestCase\TestCaseUtility.cs" />
+    <Compile Include="TestCaseUtility.cs" />
     <Compile Include="TestContext.cs" />
   </ItemGroup>
   <ItemGroup>
