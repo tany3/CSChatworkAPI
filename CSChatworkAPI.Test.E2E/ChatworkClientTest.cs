@@ -148,7 +148,11 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetRoomMembers()
         {
-            Assert.Inconclusive();
+            // act
+            var members = TestContext.ChatworkClient.GetRoomMembers(TestContext.TestRoom.room_id);
+
+            // assert
+            Assert.GreaterOrEqual(members.Count(), 1);
         }
 
         [TestCase]
