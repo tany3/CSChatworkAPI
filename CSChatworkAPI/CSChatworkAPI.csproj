@@ -56,6 +56,7 @@
     <Compile Include="ChatworkClient.cs" />
     <Compile Include="Communicators\ApiCommunicator.cs" />
     <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Me.cs" />

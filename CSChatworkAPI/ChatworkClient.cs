@@ -181,8 +181,7 @@ namespace CSChatworkAPI
                 {"action_type", "leave"},
             };
 
-            var resp = _api.Send<ResponseMessage>(resource, parameters, Method.DELETE);
-            Debug.WriteLine(resp);
+            _api.Send<object>(resource, parameters, Method.DELETE);
         }
 
         /// <summary>

@@ -140,7 +140,7 @@ namespace CSChatworkAPI.Test.E2E
             // act
             TestContext.ChatworkClient.DeleteRoom(room.room_id);
 
-            // test
+            // assert
             var deletedRoom = TestContext.ChatworkClient.GetRoom(room.room_id);
             Assert.IsNull(deletedRoom.room_id);
         }
@@ -148,12 +148,17 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetRoomMembers()
         {
-            Assert.Inconclusive();
+            // act
+            var members = TestContext.ChatworkClient.GetRoomMembers(TestContext.TestRoom.room_id);
+
+            // assert
+            Assert.GreaterOrEqual(members.Count(), 1);
         }
 
         [TestCase]
         public void Test_UpdateRoomMembers()
         {
+            // ユーザを追加しておくのがしんどい
             Assert.Inconclusive();
         }
 
@@ -200,42 +205,58 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetMessage()
         {
-            Assert.Inconclusive();
+            // prepare
+            var expected = TestContext.ChatworkClient.GetMessages(TestContext.TestRoom.room_id, true).First();
+
+            // act
+            var actual = TestContext.ChatworkClient.GetMessage(TestContext.TestRoom.room_id, expected.message_id);
+
+            // assert
+            Assert.AreEqual(expected, actual);
         }
 
         [TestCase]
-        public void Test_GetTasks()
+        public void Test_AddTask_GetTasks_GetTask()
         {
-            Assert.Inconclusive();
-        }
-
-        [TestCase]
-        public void Test_AddTask()
-        {
-            var ids = TestContext.ChatworkClient.AddTask(TestContext.TestRoom.room_id,
+            // act
+            var responseTaskIds = TestContext.ChatworkClient.AddTask(
+                TestContext.TestRoom.room_id,
                 $"task body created at {DateTime.Today}",
                 DateTime.Today.AddDays(1),
                 new[] { TestContext.Me.account_id });
 
-            Assert.IsNotEmpty(ids.task_ids);
+            // act
+            var tasks = TestContext.ChatworkClient.GetTasks(
+                TestContext.TestRoom.room_id,
+                TestContext.Me.account_id,
+                TestContext.Me.account_id,
+                "open").ToList();
+            var task = TestContext.ChatworkClient.GetTask(
+                TestContext.TestRoom.room_id,
+                tasks.First().task_id);
+
+            // assert
+            Assert.IsNotEmpty(responseTaskIds.task_ids);
+            Assert.IsTrue(responseTaskIds.task_ids.Any(_ => _ == task.task_id));
+            Assert.GreaterOrEqual(tasks.Count, 1);
         }
 
         [TestCase]
-        public void Test_GetTask()
+        public void Test_GetFiles_GetFile()
         {
-            Assert.Inconclusive();
-        }
+            // act
+            // 予めファイルをアップロードしておくこと
+            var files = TestContext.ChatworkClient.GetFiles(
+                TestContext.Me.room_id,
+                TestContext.Me.account_id).ToList();
+            var file = TestContext.ChatworkClient.GetFile(
+                TestContext.Me.room_id,
+                files.First().file_id,
+                false);
 
-        [TestCase]
-        public void Test_GetFiles()
-        {
-            Assert.Inconclusive();
-        }
-
-        [TestCase]
-        public void Test_GetFile()
-        {
-            Assert.Inconclusive();
+            // assert
+            Assert.GreaterOrEqual(files.Count, 1);
+            Assert.AreEqual(file, files.First());
         }
         #endregion endpoint /rooms
     }

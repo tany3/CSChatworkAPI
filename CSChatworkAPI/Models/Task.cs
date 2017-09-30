@@ -9,8 +9,73 @@ namespace CSChatworkAPI.Models
     /// <summary>
     /// Task
     /// </summary>
-    public class Task
+    public class Task : IEquatable<Task>
     {
+        /// <summary>
+        /// AssignedByAccount
+        /// </summary>
+        public class AssignedByAccount : IEquatable<AssignedByAccount>
+        {
+            /// <summary>
+            /// account_id
+            /// </summary>
+            public string account_id { get; set; }
+
+            /// <summary>
+            /// name
+            /// </summary>
+            public string name { get; set; }
+
+            /// <summary>
+            /// avatar_image_url
+            /// </summary>
+            public string avatar_image_url { get; set; }
+
+            /// <summary>
+            /// フォーマット済み文字列を返します
+            /// </summary>
+            public override string ToString()
+            {
+                return string.Format("account_id: {0}, avatar_image_url: {1}, name: {2}", account_id, avatar_image_url, name);
+            }
+
+            public bool Equals(AssignedByAccount other)
+            {
+                if (ReferenceEquals(null, other)) return false;
+                if (ReferenceEquals(this, other)) return true;
+                return string.Equals(account_id, other.account_id) && string.Equals(name, other.name) && string.Equals(avatar_image_url, other.avatar_image_url);
+            }
+
+            public override bool Equals(object obj)
+            {
+                if (ReferenceEquals(null, obj)) return false;
+                if (ReferenceEquals(this, obj)) return true;
+                if (obj.GetType() != this.GetType()) return false;
+                return Equals((AssignedByAccount)obj);
+            }
+
+            public override int GetHashCode()
+            {
+                unchecked
+                {
+                    var hashCode = (account_id != null ? account_id.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
+                    hashCode = (hashCode * 397) ^ (avatar_image_url != null ? avatar_image_url.GetHashCode() : 0);
+                    return hashCode;
+                }
+            }
+
+            public static bool operator ==(AssignedByAccount left, AssignedByAccount right)
+            {
+                return Equals(left, right);
+            }
+
+            public static bool operator !=(AssignedByAccount left, AssignedByAccount right)
+            {
+                return !Equals(left, right);
+            }
+        }
+
         /// <summary>
         /// task_id
         /// </summary>
@@ -55,34 +120,45 @@ namespace CSChatworkAPI.Models
         {
             return string.Format("account: {0}, assigned_by_account: {1}, body: {2}, limit_time: {3}, message_id: {4}, status: {5}, task_id: {6}", account, assigned_by_account, body, limit_time, message_id, status, task_id);
         }
-    }
 
-    /// <summary>
-    /// AssignedByAccount
-    /// </summary>
-    public class AssignedByAccount
-    {
-        /// <summary>
-        /// account_id
-        /// </summary>
-        public string account_id { get; set; }
-
-        /// <summary>
-        /// name
-        /// </summary>
-        public string name { get; set; }
-
-        /// <summary>
-        /// avatar_image_url
-        /// </summary>
-        public string avatar_image_url { get; set; }
-
-        /// <summary>
-        /// フォーマット済み文字列を返します
-        /// </summary>
-        public override string ToString()
+        public bool Equals(Task other)
         {
-            return string.Format("account_id: {0}, avatar_image_url: {1}, name: {2}", account_id, avatar_image_url, name);
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return string.Equals(task_id, other.task_id) && Equals(account, other.account) && Equals(assigned_by_account, other.assigned_by_account) && string.Equals(message_id, other.message_id) && string.Equals(body, other.body) && limit_time.Equals(other.limit_time) && string.Equals(status, other.status);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Task) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                var hashCode = (task_id != null ? task_id.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (account != null ? account.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (assigned_by_account != null ? assigned_by_account.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (message_id != null ? message_id.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (body != null ? body.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ limit_time.GetHashCode();
+                hashCode = (hashCode * 397) ^ (status != null ? status.GetHashCode() : 0);
+                return hashCode;
+            }
+        }
+
+        public static bool operator ==(Task left, Task right)
+        {
+            return Equals(left, right);
+        }
+
+        public static bool operator !=(Task left, Task right)
+        {
+            return !Equals(left, right);
         }
     }
 }
