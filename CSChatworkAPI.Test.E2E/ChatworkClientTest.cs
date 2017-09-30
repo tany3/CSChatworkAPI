@@ -140,7 +140,7 @@ namespace CSChatworkAPI.Test.E2E
             // act
             TestContext.ChatworkClient.DeleteRoom(room.room_id);
 
-            // test
+            // assert
             var deletedRoom = TestContext.ChatworkClient.GetRoom(room.room_id);
             Assert.IsNull(deletedRoom.room_id);
         }
