@@ -13,56 +13,56 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// account_id
         /// </summary>
-        public string account_id { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
         /// role
         /// </summary>
-        public string role { get; set; }
+        public string Role { get; set; }
 
         /// <summary>
         /// name
         /// </summary>
-        public string name { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// chatwork_id
         /// </summary>
-        public string chatwork_id { get; set; }
+        public string ChatworkId { get; set; }
 
         /// <summary>
         /// organization_id
         /// </summary>
-        public string organization_id { get; set; }
+        public string OrganizationId { get; set; }
 
         /// <summary>
         /// organization_name
         /// </summary>
-        public string organization_name { get; set; }
+        public string OrganizationName { get; set; }
 
         /// <summary>
         /// department
         /// </summary>
-        public string department { get; set; }
+        public string Department { get; set; }
 
         /// <summary>
         /// avatar_image_url
         /// </summary>
-        public string avatar_image_url { get; set; }
+        public string AvatarImageUrl { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account_id: {0}, avatar_image_url: {1}, chatwork_id: {2}, department: {3}, name: {4}, organization_id: {5}, organization_name: {6}, role: {7}", account_id, avatar_image_url, chatwork_id, department, name, organization_id, organization_name, role);
+            return string.Format("account_id: {0}, avatar_image_url: {1}, chatwork_id: {2}, department: {3}, name: {4}, organization_id: {5}, organization_name: {6}, role: {7}", AccountId, AvatarImageUrl, ChatworkId, Department, Name, OrganizationId, OrganizationName, Role);
         }
 
         public bool Equals(Member other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(account_id, other.account_id) && string.Equals(role, other.role) && string.Equals(name, other.name) && string.Equals(chatwork_id, other.chatwork_id) && string.Equals(organization_id, other.organization_id) && string.Equals(organization_name, other.organization_name) && string.Equals(department, other.department) && string.Equals(avatar_image_url, other.avatar_image_url);
+            return string.Equals(AccountId, other.AccountId) && string.Equals(Role, other.Role) && string.Equals(Name, other.Name) && string.Equals(ChatworkId, other.ChatworkId) && string.Equals(OrganizationId, other.OrganizationId) && string.Equals(OrganizationName, other.OrganizationName) && string.Equals(Department, other.Department) && string.Equals(AvatarImageUrl, other.AvatarImageUrl);
         }
 
         public override bool Equals(object obj)
@@ -77,14 +77,14 @@ namespace CSChatworkAPI.Models
         {
             unchecked
             {
-                var hashCode = (account_id != null ? account_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (role != null ? role.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (chatwork_id != null ? chatwork_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (organization_id != null ? organization_id.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (organization_name != null ? organization_name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (department != null ? department.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (avatar_image_url != null ? avatar_image_url.GetHashCode() : 0);
+                var hashCode = (AccountId != null ? AccountId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Role != null ? Role.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (ChatworkId != null ? ChatworkId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (OrganizationId != null ? OrganizationId.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (OrganizationName != null ? OrganizationName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Department != null ? Department.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (AvatarImageUrl != null ? AvatarImageUrl.GetHashCode() : 0);
                 return hashCode;
             }
         }
@@ -108,31 +108,31 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// admin
         /// </summary>
-        public List<string> admin { get; set; }
+        public List<string> Admin { get; set; }
 
         /// <summary>
         /// member
         /// </summary>
-        public List<string> member { get; set; }
+        public List<string> Member { get; set; }
 
         /// <summary>
         /// @readonly
         /// </summary>
-        public List<string> @readonly { get; set; }
+        public List<string> Readonly { get; set; }
 
         /// <summary>
         /// フォーマット済み文字列を返します
         /// </summary>
         public override string ToString()
         {
-            return string.Format("admin: {0}, member: {1}, readonly: {2}", admin, member, @readonly);
+            return string.Format("admin: {0}, member: {1}, readonly: {2}", Admin, Member, Readonly);
         }
 
         public bool Equals(MemberRoles other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return Equals(admin, other.admin) && Equals(member, other.member) && Equals(@readonly, other.@readonly);
+            return Equals(Admin, other.Admin) && Equals(Member, other.Member) && Equals(Readonly, other.Readonly);
         }
 
         public override bool Equals(object obj)
@@ -147,9 +147,9 @@ namespace CSChatworkAPI.Models
         {
             unchecked
             {
-                var hashCode = (admin != null ? admin.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (member != null ? member.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (@readonly != null ? @readonly.GetHashCode() : 0);
+                var hashCode = (Admin != null ? Admin.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Member != null ? Member.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (Readonly != null ? Readonly.GetHashCode() : 0);
                 return hashCode;
             }
         }
