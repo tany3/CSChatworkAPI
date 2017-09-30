@@ -4,7 +4,7 @@ using System;
 using CSChatworkAPI.Extensions;
 using Newtonsoft.Json;
 
-namespace CSChatworkAPI.Models.Tasks
+namespace CSChatworkAPI.Models
 {
     /// <summary>
     /// Task

@@ -68,12 +68,15 @@
     <Compile Include="Models\RateLimit.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\AssignedByAccount.cs" />
-    <Compile Include="Models\Tasks\Task.cs" />
+    <Compile Include="Models\Task.cs" />
     <Compile Include="Models\TooManyRequestsException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Tasks\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

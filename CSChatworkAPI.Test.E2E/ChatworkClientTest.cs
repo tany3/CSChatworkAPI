@@ -52,7 +52,7 @@ namespace CSChatworkAPI.Test.E2E
         }
 
         [TestCaseSource(typeof(GetTasksTestCase), nameof(GetTasksTestCase.TestCases))]
-        public void Test_GetTasks(string assignedByAccountId, IEnumerable<string> statuses, IEnumerable<CSChatworkAPI.Models.Tasks.Task> result)
+        public void Test_GetTasks(string assignedByAccountId, IEnumerable<string> statuses, IEnumerable<Models.Task> result)
         {
             Assert.Inconclusive();
         }
