@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSChatworkAPI.Models.MyTasks
+namespace CSChatworkAPI.Models
 {
     /// <summary>
     /// Room

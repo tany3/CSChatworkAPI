@@ -63,8 +63,8 @@
     <Compile Include="Models\Member.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\MyStatus.cs" />
-    <Compile Include="Models\MyTasks\MyTask.cs" />
-    <Compile Include="Models\MyTasks\RoomInMyTask.cs" />
+    <Compile Include="Models\MyTask.cs" />
+    <Compile Include="Models\RoomInMyTask.cs" />
     <Compile Include="Models\RateLimit.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\AssignedByAccount.cs" />
@@ -75,9 +75,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Tasks\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
