@@ -3,14 +3,14 @@
 namespace CSChatworkAPI.Models.MyTasks
 {
     /// <summary>
-    /// Room
+    /// AssignedByAccount
     /// </summary>
-    public class Room : IEquatable<Room>
+    public class AssignedByAccountInMyTask : IEquatable<AssignedByAccountInMyTask>
     {
         /// <summary>
-        /// room_id
+        /// account_id
         /// </summary>
-        public string RoomId { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
         /// name
@@ -18,23 +18,23 @@ namespace CSChatworkAPI.Models.MyTasks
         public string Name { get; set; }
 
         /// <summary>
-        /// icon_path
+        /// avatar_image_url
         /// </summary>
-        public string IconPath { get; set; }
+        public string AvatarImageUrl { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return $"icon_path: {IconPath}, name: {Name}, room_id: {RoomId}";
+            return $"account_id: {AccountId}, avatar_image_url: {AvatarImageUrl}, name: {Name}";
         }
 
-        public bool Equals(Room other)
+        public bool Equals(AssignedByAccountInMyTask other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(RoomId, other.RoomId) && string.Equals(Name, other.Name) && string.Equals(IconPath, other.IconPath);
+            return string.Equals(AccountId, other.AccountId) && string.Equals(Name, other.Name) && string.Equals(AvatarImageUrl, other.AvatarImageUrl);
         }
 
         public override bool Equals(object obj)
@@ -42,26 +42,26 @@ namespace CSChatworkAPI.Models.MyTasks
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((Room)obj);
+            return Equals((AssignedByAccountInMyTask)obj);
         }
 
         public override int GetHashCode()
         {
             unchecked
             {
-                var hashCode = (RoomId != null ? RoomId.GetHashCode() : 0);
+                var hashCode = (AccountId != null ? AccountId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (IconPath != null ? IconPath.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (AvatarImageUrl != null ? AvatarImageUrl.GetHashCode() : 0);
                 return hashCode;
             }
         }
 
-        public static bool operator ==(Room left, Room right)
+        public static bool operator ==(AssignedByAccountInMyTask left, AssignedByAccountInMyTask right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(Room left, Room right)
+        public static bool operator !=(AssignedByAccountInMyTask left, AssignedByAccountInMyTask right)
         {
             return !Equals(left, right);
         }

@@ -20,21 +20,21 @@ namespace CSChatworkAPI.Models.Tasks
         /// <summary>
         /// avatar_image_url
         /// </summary>
-        public string avatar_image_url { get; set; }
+        public string AvatarImageUrl { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account_id: {0}, avatar_image_url: {1}, name: {2}", account_id, avatar_image_url, name);
+            return $"account_id: {account_id}, avatar_image_url: {AvatarImageUrl}, name: {name}";
         }
 
         public bool Equals(AssignedByAccount other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(account_id, other.account_id) && string.Equals(name, other.name) && string.Equals(avatar_image_url, other.avatar_image_url);
+            return string.Equals(account_id, other.account_id) && string.Equals(name, other.name) && string.Equals(AvatarImageUrl, other.AvatarImageUrl);
         }
 
         public override bool Equals(object obj)
@@ -51,7 +51,7 @@ namespace CSChatworkAPI.Models.Tasks
             {
                 var hashCode = (account_id != null ? account_id.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (name != null ? name.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (avatar_image_url != null ? avatar_image_url.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (AvatarImageUrl != null ? AvatarImageUrl.GetHashCode() : 0);
                 return hashCode;
             }
         }

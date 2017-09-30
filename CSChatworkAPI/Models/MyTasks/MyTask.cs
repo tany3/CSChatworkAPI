@@ -19,12 +19,12 @@ namespace CSChatworkAPI.Models.MyTasks
         /// <summary>
         /// room
         /// </summary>
-        public Room Room { get; set; }
+        public RoomInMyTask Room { get; set; }
 
         /// <summary>
         /// assigned_by_account
         /// </summary>
-        public AssignedByAccount AssignedByAccount { get; set; }
+        public AssignedByAccountInMyTask AssignedByAccount { get; set; }
 
         /// <summary>
         /// message_id
@@ -49,7 +49,7 @@ namespace CSChatworkAPI.Models.MyTasks
         public string Status { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
