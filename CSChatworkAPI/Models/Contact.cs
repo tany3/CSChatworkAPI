@@ -50,7 +50,7 @@ namespace CSChatworkAPI.Models
         public string AvatarImageUrl { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {

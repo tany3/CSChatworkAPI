@@ -51,11 +51,12 @@ namespace CSChatworkAPI.Models
         public string AvatarImageUrl { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account_id: {0}, avatar_image_url: {1}, chatwork_id: {2}, department: {3}, name: {4}, organization_id: {5}, organization_name: {6}, role: {7}", AccountId, AvatarImageUrl, ChatworkId, Department, Name, OrganizationId, OrganizationName, Role);
+            return
+                $"account_id: {AccountId}, avatar_image_url: {AvatarImageUrl}, chatwork_id: {ChatworkId}, department: {Department}, name: {Name}, organization_id: {OrganizationId}, organization_name: {OrganizationName}, role: {Role}";
         }
 
         public bool Equals(Member other)
@@ -121,11 +122,11 @@ namespace CSChatworkAPI.Models
         public List<string> Readonly { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("admin: {0}, member: {1}, readonly: {2}", Admin, Member, Readonly);
+            return $"admin: {Admin}, member: {Member}, readonly: {Readonly}";
         }
 
         public bool Equals(MemberRoles other)

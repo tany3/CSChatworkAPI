@@ -149,6 +149,14 @@ namespace CSChatworkAPI.Models
         /// </summary>
         public string RoomId { get; set; }
 
+        /// <summary>
+        /// formatting members
+        /// </summary>
+        public override string ToString()
+        {
+            return $"{nameof(RoomId)}: {RoomId}";
+        }
+
         public bool Equals(ResponseRoomId other)
         {
             if (ReferenceEquals(null, other)) return false;

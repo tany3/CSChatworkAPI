@@ -42,11 +42,12 @@ namespace CSChatworkAPI.Models
         public DateTime UpdateTime { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account: {0}, body: {1}, message_id: {2}, send_time: {3}, update_time: {4}", Account, Body, MessageId, SendTime, UpdateTime);
+            return
+                $"account: {Account}, body: {Body}, message_id: {MessageId}, send_time: {SendTime}, update_time: {UpdateTime}";
         }
 
         public bool Equals(Message other)
@@ -99,11 +100,11 @@ namespace CSChatworkAPI.Models
         public string MessageId { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("message_id: {0}", MessageId);
+            return $"message_id: {MessageId}";
         }
 
         public bool Equals(ResponseMessage other)

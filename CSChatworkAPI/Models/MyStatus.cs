@@ -40,7 +40,7 @@ namespace CSChatworkAPI.Models
         public long MyTaskNum { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {

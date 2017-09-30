@@ -49,7 +49,7 @@ namespace CSChatworkAPI.Models
         }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {

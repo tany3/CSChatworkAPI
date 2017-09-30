@@ -100,11 +100,12 @@ namespace CSChatworkAPI.Models
         public string AvatarImageUrl { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account_id: {0}, avatar_image_url: {1}, chatwork_id: {2}, department: {3}, facebook: {4}, introduction: {5}, mail: {6}, name: {7}, organization_id: {8}, organization_name: {9}, room_id: {10}, skype: {11}, tel_extension: {12}, tel_mobile: {13}, tel_organization: {14}, title: {15}, twitter: {16}, url: {17}", AccountId, AvatarImageUrl, ChatworkId, Department, Facebook, Introduction, Mail, Name, OrganizationId, OrganizationName, RoomId, Skype, TelExtension, TelMobile, TelOrganization, Title, Twitter, Url);
+            return
+                $"account_id: {AccountId}, avatar_image_url: {AvatarImageUrl}, chatwork_id: {ChatworkId}, department: {Department}, facebook: {Facebook}, introduction: {Introduction}, mail: {Mail}, name: {Name}, organization_id: {OrganizationId}, organization_name: {OrganizationName}, room_id: {RoomId}, skype: {Skype}, tel_extension: {TelExtension}, tel_mobile: {TelMobile}, tel_organization: {TelOrganization}, title: {Title}, twitter: {Twitter}, url: {Url}";
         }
 
         public bool Equals(Me other)

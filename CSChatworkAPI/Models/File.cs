@@ -34,7 +34,7 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// filesize
         /// </summary>
-        public int Filesize { get; set; }
+        public int FileSize { get; set; }
 
         /// <summary>
         /// upload_time
@@ -44,18 +44,18 @@ namespace CSChatworkAPI.Models
         public DateTime UploadTime { get; set; }
 
         /// <summary>
-        /// フォーマット済み文字列を返します
+        /// formatting members
         /// </summary>
         public override string ToString()
         {
-            return string.Format("account: {0}, file_id: {1}, filename: {2}, filesize: {3}, message_id: {4}, upload_time: {5}", Account, FileId, Filename, Filesize, MessageId, UploadTime);
+            return string.Format("account: {0}, file_id: {1}, filename: {2}, filesize: {3}, message_id: {4}, upload_time: {5}", Account, FileId, Filename, FileSize, MessageId, UploadTime);
         }
 
         public bool Equals(File other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
-            return string.Equals(FileId, other.FileId) && Equals(Account, other.Account) && string.Equals(MessageId, other.MessageId) && string.Equals(Filename, other.Filename) && Filesize == other.Filesize && UploadTime.Equals(other.UploadTime);
+            return string.Equals(FileId, other.FileId) && Equals(Account, other.Account) && string.Equals(MessageId, other.MessageId) && string.Equals(Filename, other.Filename) && FileSize == other.FileSize && UploadTime.Equals(other.UploadTime);
         }
 
         public override bool Equals(object obj)
@@ -74,7 +74,7 @@ namespace CSChatworkAPI.Models
                 hashCode = (hashCode * 397) ^ (Account != null ? Account.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (MessageId != null ? MessageId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Filename != null ? Filename.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ Filesize;
+                hashCode = (hashCode * 397) ^ FileSize;
                 hashCode = (hashCode * 397) ^ UploadTime.GetHashCode();
                 return hashCode;
             }
