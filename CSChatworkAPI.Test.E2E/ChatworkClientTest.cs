@@ -81,13 +81,7 @@ namespace CSChatworkAPI.Test.E2E
         }
 
         [TestCase]
-        public void Test_GetRoom()
-        {
-            Assert.Inconclusive();
-        }
-
-        [TestCase]
-        public void Test_UpdateRoom()
+        public void Test_GetRoom_UpdateRoom()
         {
             // prepare
             var room = TestCaseUtility.CreateRoomForTest();
