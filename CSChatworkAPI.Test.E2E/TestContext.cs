@@ -67,7 +67,7 @@ namespace CSChatworkAPI.Test.E2E
         public static void TearDown()
         {
             if (TestRoom != null)
-                ChatworkClient.DeleteRoom(TestRoom.room_id);
+                ChatworkClient.DeleteRoom(TestRoom.RoomId);
         }
     }
 }
