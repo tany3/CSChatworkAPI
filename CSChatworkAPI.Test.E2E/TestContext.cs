@@ -43,9 +43,9 @@ namespace CSChatworkAPI.Test.E2E
 
     public static class TestContext
     {
-        public static ChatworkClient ChatworkClient { get; private set; }
+        public static ChatworkClient ChatworkClient { get; }
 
-        public static TestData TestData { get; private set; }
+        public static TestData TestData { get; }
 
         public static Models.Me Me { get; private set; }
 
@@ -56,18 +56,25 @@ namespace CSChatworkAPI.Test.E2E
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestData.json");
             TestData = TestData.Create(path);
             ChatworkClient = new ChatworkClient(TestData.InputData.APIToken);
+            Me = ChatworkClient.GetMe();
         }
 
         public static void SetUp()
         {
-            Me = ChatworkClient.GetMe();
             TestRoom = TestCaseUtility.CreateRoomForTest();
         }
 
         public static void TearDown()
         {
             if (TestRoom != null)
-                ChatworkClient.DeleteRoom(TestRoom.RoomId);
+                ChatworkClient.LeaveRoom(TestRoom.RoomId);
+        }
+
+        public static void CleanTestRooms()
+        {
+            foreach (var room in ChatworkClient.GetRooms())
+                if (room.Name.StartsWith(TestCaseUtility.RoomNamePrefix))
+                    ChatworkClient.LeaveRoom(room.RoomId);
         }
     }
 }

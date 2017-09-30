@@ -19,10 +19,10 @@ namespace CSChatworkAPI.Models
         /// <summary>
         /// TooManyRequestsException
         /// </summary>
-        /// <param name="rl">RateLimit</param>
-        public TooManyRequestsException(RateLimit rl)
+        /// <param name="rateLimit">RateLimit</param>
+        public TooManyRequestsException(RateLimit rateLimit)
         {
-            RateLimit = rl;
+            RateLimit = rateLimit;
         }
 
         #region ReSharper Generated

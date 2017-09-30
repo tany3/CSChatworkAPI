@@ -52,8 +52,7 @@ namespace CSChatworkAPI.Extensions
                 if (reader.TokenType != JsonToken.Integer)
                 {
                     throw new Exception(
-                        string.Format("Unexpected token parsing date. Expected Integer, got {0}.",
-                        reader.TokenType));
+                        $"Unexpected token parsing date. Expected Integer, got {reader.TokenType}.");
                 }
 
                 var ticks = (long)reader.Value;
