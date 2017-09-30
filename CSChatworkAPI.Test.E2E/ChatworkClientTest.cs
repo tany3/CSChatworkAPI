@@ -54,7 +54,24 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_GetMyTasks()
         {
-            Assert.Inconclusive();
+            // act
+            TestContext.ChatworkClient.AddTask(
+                TestContext.Me.RoomId,
+                $"task body created at {DateTime.Today}",
+                DateTime.Today.AddDays(1),
+                new[] { TestContext.Me.AccountId }).TaskIds.OrderByDescending(_ => _).LastOrDefault();
+            TestContext.ChatworkClient.AddTask(
+                TestContext.Me.RoomId,
+                $"task body created at {DateTime.Today}",
+                DateTime.Today.AddDays(1),
+                new[] { TestContext.Me.AccountId }).TaskIds.OrderByDescending(_ => _).LastOrDefault();
+
+            var tasks = TestContext.ChatworkClient.GetTasks(
+                TestContext.Me.AccountId,
+                new[] {"open", "done"});
+
+            // assert
+            Assert.Greater(tasks.Count(), 1);
         }
         #endregion endpoint /my
 
@@ -62,7 +79,11 @@ namespace CSChatworkAPI.Test.E2E
         [TestCase]
         public void Test_Contact()
         {
-            Assert.Inconclusive();
+            // act
+            var contacts = TestContext.ChatworkClient.GetContacts();
+
+            // assert
+            Assert.Greater(contacts.Count(), 1);
         }
         #endregion endpoint /contacts
 
